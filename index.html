@@ -6,32 +6,21 @@
     <title>Sinus-Milieus – Persona Übersicht</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
         body {
             font-family: 'Arial', sans-serif;
             background: #ffffff;
             padding: 30px 40px;
         }
-
-        h1 {
-            font-size: 0.85rem;
-            color: #c0392b;
-            font-weight: normal;
-            margin-bottom: 2px;
-        }
-
         .karte-wrapper {
             position: relative;
             max-width: 980px;
             margin: 0 auto;
         }
-
         svg {
             width: 100%;
             height: auto;
             display: block;
         }
-
         .tooltip {
             position: fixed;
             background: rgba(0,0,0,0.75);
@@ -45,7 +34,6 @@
             white-space: nowrap;
             z-index: 100;
         }
-
         .legende {
             font-size: 0.7rem;
             color: #aaa;
@@ -58,12 +46,10 @@
 <div class="karte-wrapper">
 <svg viewBox="0 0 980 660" xmlns="http://www.w3.org/2000/svg">
 
-    <!-- ==================== ACHSEN-BESCHRIFTUNG ==================== -->
-
+    <!-- ==================== ACHSENBESCHRIFTUNG ==================== -->
     <text x="30" y="28" font-size="13" fill="#c0392b" font-family="Arial" font-weight="bold">Soziale Lage</text>
     <text x="30" y="46" font-size="13" fill="#c0392b" font-family="Arial">↓</text>
 
-    <!-- Y-Achse -->
     <text x="30" y="112" font-size="11" fill="#555" font-family="Arial">Oberschicht /</text>
     <text x="30" y="126" font-size="11" fill="#555" font-family="Arial">Obere Mittelschicht</text>
 
@@ -77,232 +63,245 @@
     <line x1="185" y1="82"  x2="960" y2="82"  stroke="#ddd" stroke-width="1"/>
     <line x1="185" y1="272" x2="960" y2="272" stroke="#ddd" stroke-width="1"/>
     <line x1="185" y1="442" x2="960" y2="442" stroke="#ddd" stroke-width="1"/>
-    <line x1="185" y1="562" x2="960" y2="562" stroke="#ddd" stroke-width="1"/>
+    <line x1="185" y1="582" x2="960" y2="582" stroke="#ddd" stroke-width="1"/>
 
-    <!-- Vertikale Startlinie -->
-    <line x1="185" y1="82" x2="185" y2="562" stroke="#ddd" stroke-width="1"/>
+    <!-- Vertikale Hilfslinien -->
+    <line x1="185" y1="82" x2="185" y2="582" stroke="#ddd" stroke-width="1"/>
+    <line x1="430" y1="82" x2="430" y2="582" stroke="#ddd" stroke-width="1"/>
+    <line x1="700" y1="82" x2="700" y2="582" stroke="#ddd" stroke-width="1"/>
+    <line x1="960" y1="82" x2="960" y2="582" stroke="#ddd" stroke-width="1"/>
 
-    <!-- X-Achse -->
-    <text x="30"  y="598" font-size="13" fill="#c0392b" font-family="Arial" font-weight="bold">Grundorientierung  →</text>
-    <text x="240" y="598" font-size="11" fill="#555" font-family="Arial">Tradition</text>
-    <text x="430" y="598" font-size="11" fill="#555" font-family="Arial">Modernisierung &amp; Individualisierung</text>
-    <text x="765" y="598" font-size="11" fill="#555" font-family="Arial">Neuorientierung</text>
+    <!-- X-Achse Beschriftung -->
+    <text x="30" y="615"  font-size="13" fill="#c0392b" font-family="Arial" font-weight="bold">Grundorientierung →</text>
+    <text x="220" y="615" font-size="11" fill="#555" font-family="Arial">Tradition</text>
+    <text x="460" y="615" font-size="11" fill="#555" font-family="Arial">Modernisierung &amp; Individualisierung</text>
+    <text x="760" y="615" font-size="11" fill="#555" font-family="Arial">Neuorientierung</text>
 
-    <text x="30" y="638" font-size="10" fill="#aaa" font-family="Arial">Sinus-Milieus in Deutschland</text>
+    <!-- ==================== MILIEUS ==================== -->
 
-    <!-- ==================== 1. KONSERVATIV-GEHOBENES MILIEU ==================== -->
+    <!-- ── 01 KONSERVATIV-GEHOBEN ── -->
     <g id="konservativ">
-        <ellipse cx="312" cy="158" rx="108" ry="98"
-                 fill="rgba(255,255,255,0.01)" stroke="#c0392b" stroke-width="1.8"/>
-        <line x1="312" y1="60" x2="312" y2="256"
-              stroke="#c0392b" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.6"/>
+        <ellipse cx="295" cy="155" rx="105" ry="95"
+                 fill="white" fill-opacity="0.01"
+                 stroke="#c0392b" stroke-width="1.8"/>
+        <line x1="295" y1="60" x2="295" y2="250"
+              stroke="#c0392b" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
         <a href="01 persona_konservativ_gehoben_maennlich.html">
-            <rect x="204" y="60" width="108" height="196" fill="transparent" class="klick-feld"
+            <rect x="190" y="60" width="105" height="190" fill="transparent" class="klick-feld"
                   data-tip="Konservativ-Gehoben ♂ männlich"/>
         </a>
         <a href="01 persona_konservativ_gehoben_weiblich.html">
-            <rect x="312" y="60" width="108" height="196" fill="transparent" class="klick-feld"
+            <rect x="295" y="60" width="105" height="190" fill="transparent" class="klick-feld"
                   data-tip="Konservativ-Gehoben ♀ weiblich"/>
         </a>
-        <text x="312" y="138" font-size="12" fill="#111" font-family="Arial" text-anchor="middle" font-weight="bold">Konservativ-</text>
-        <text x="312" y="153" font-size="12" fill="#111" font-family="Arial" text-anchor="middle" font-weight="bold">Gehobenes</text>
-        <text x="312" y="168" font-size="12" fill="#111" font-family="Arial" text-anchor="middle" font-weight="bold">Milieu</text>
-        <text x="312" y="185" font-size="11" fill="#555" font-family="Arial" text-anchor="middle">11 %</text>
-        <text x="258" y="115" font-size="12" fill="#c0392b" font-family="Arial" text-anchor="middle">♂</text>
-        <text x="366" y="115" font-size="12" fill="#c0392b" font-family="Arial" text-anchor="middle">♀</text>
+        <text x="295" y="138" font-size="12" fill="#111" font-family="Arial" text-anchor="middle" font-weight="bold">Konservativ-</text>
+        <text x="295" y="153" font-size="12" fill="#111" font-family="Arial" text-anchor="middle" font-weight="bold">Gehobenes</text>
+        <text x="295" y="168" font-size="12" fill="#111" font-family="Arial" text-anchor="middle" font-weight="bold">Milieu</text>
+        <text x="295" y="185" font-size="11" fill="#555" font-family="Arial" text-anchor="middle">11 %</text>
+        <text x="247" y="115" font-size="12" fill="#c0392b" font-family="Arial" text-anchor="middle">♂</text>
+        <text x="343" y="115" font-size="12" fill="#c0392b" font-family="Arial" text-anchor="middle">♀</text>
     </g>
 
-    <!-- ==================== 2. POSTMATERIELLES MILIEU ==================== -->
+    <!-- ── 02 POSTMATERIELLES MILIEU ── -->
     <g id="postmateriell">
-        <ellipse cx="500" cy="140" rx="118" ry="92"
-                 fill="rgba(255,255,255,0.01)" stroke="#c0392b" stroke-width="1.8"/>
-        <line x1="500" y1="48" x2="500" y2="232"
-              stroke="#c0392b" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.6"/>
-        <a href="02 persona_postmateriel_katharina_meurer.html">
-            <rect x="382" y="48" width="118" height="184" fill="transparent" class="klick-feld"
+        <ellipse cx="510" cy="140" rx="110" ry="90"
+                 fill="white" fill-opacity="0.01"
+                 stroke="#c0392b" stroke-width="1.8"/>
+        <line x1="510" y1="50" x2="510" y2="230"
+              stroke="#c0392b" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
+        <a href="02 persona_Postmateriell_tobias_luettmann.html">
+            <rect x="400" y="50" width="110" height="180" fill="transparent" class="klick-feld"
                   data-tip="Postmateriell ♂ männlich"/>
         </a>
-        <a href="02 persona_Postmateriell_tobias_luettmann.html">
-            <rect x="500" y="48" width="118" height="184" fill="transparent" class="klick-feld"
+        <a href="02 persona_postmateriel_katharina_meurer.html">
+            <rect x="510" y="50" width="110" height="180" fill="transparent" class="klick-feld"
                   data-tip="Postmateriell ♀ weiblich"/>
         </a>
-        <text x="500" y="122" font-size="12" fill="#111" font-family="Arial" text-anchor="middle" font-weight="bold">Postmaterielles</text>
-        <text x="500" y="137" font-size="12" fill="#111" font-family="Arial" text-anchor="middle" font-weight="bold">Milieu</text>
-        <text x="500" y="154" font-size="11" fill="#555" font-family="Arial" text-anchor="middle">12 %</text>
-        <text x="444" y="102" font-size="12" fill="#c0392b" font-family="Arial" text-anchor="middle">♂</text>
-        <text x="556" y="102" font-size="12" fill="#c0392b" font-family="Arial" text-anchor="middle">♀</text>
+        <text x="510" y="123" font-size="12" fill="#111" font-family="Arial" text-anchor="middle" font-weight="bold">Postmaterielles</text>
+        <text x="510" y="138" font-size="12" fill="#111" font-family="Arial" text-anchor="middle" font-weight="bold">Milieu</text>
+        <text x="510" y="155" font-size="11" fill="#555" font-family="Arial" text-anchor="middle">12 %</text>
+        <text x="455" y="100" font-size="12" fill="#c0392b" font-family="Arial" text-anchor="middle">♂</text>
+        <text x="565" y="100" font-size="12" fill="#c0392b" font-family="Arial" text-anchor="middle">♀</text>
     </g>
 
-    <!-- ==================== 3. MILIEU DER PERFORMER ==================== -->
+    <!-- ── 03 PERFORMER ── -->
     <g id="performer">
-        <ellipse cx="692" cy="133" rx="108" ry="88"
-                 fill="rgba(255,255,255,0.01)" stroke="#c0392b" stroke-width="1.8"/>
-        <line x1="692" y1="45" x2="692" y2="221"
-              stroke="#c0392b" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.6"/>
+        <ellipse cx="700" cy="145" rx="100" ry="88"
+                 fill="white" fill-opacity="0.01"
+                 stroke="#c0392b" stroke-width="1.8"/>
+        <line x1="700" y1="57" x2="700" y2="233"
+              stroke="#c0392b" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
         <a href="03 persona_performer_maennlich.html">
-            <rect x="584" y="45" width="108" height="176" fill="transparent" class="klick-feld"
+            <rect x="600" y="57" width="100" height="176" fill="transparent" class="klick-feld"
                   data-tip="Performer ♂ männlich"/>
         </a>
         <a href="03 persona_performer_weiblich.html">
-            <rect x="692" y="45" width="108" height="176" fill="transparent" class="klick-feld"
+            <rect x="700" y="57" width="100" height="176" fill="transparent" class="klick-feld"
                   data-tip="Performer ♀ weiblich"/>
         </a>
-        <text x="692" y="116" font-size="12" fill="#111" font-family="Arial" text-anchor="middle" font-weight="bold">Milieu der</text>
-        <text x="692" y="131" font-size="12" fill="#111" font-family="Arial" text-anchor="middle" font-weight="bold">Performer</text>
-        <text x="692" y="148" font-size="11" fill="#555" font-family="Arial" text-anchor="middle">10 %</text>
-        <text x="638" y="98" font-size="12" fill="#c0392b" font-family="Arial" text-anchor="middle">♂</text>
-        <text x="746" y="98" font-size="12" fill="#c0392b" font-family="Arial" text-anchor="middle">♀</text>
+        <text x="700" y="128" font-size="12" fill="#111" font-family="Arial" text-anchor="middle" font-weight="bold">Milieu der</text>
+        <text x="700" y="143" font-size="12" fill="#111" font-family="Arial" text-anchor="middle" font-weight="bold">Performer</text>
+        <text x="700" y="160" font-size="11" fill="#555" font-family="Arial" text-anchor="middle">10 %</text>
+        <text x="650" y="100" font-size="12" fill="#c0392b" font-family="Arial" text-anchor="middle">♂</text>
+        <text x="750" y="100" font-size="12" fill="#c0392b" font-family="Arial" text-anchor="middle">♀</text>
     </g>
 
-    <!-- ==================== 4. EXPEDITIVES MILIEU ==================== -->
+    <!-- ── 04 EXPEDITIV ── -->
     <g id="expeditiv">
-        <ellipse cx="868" cy="128" rx="88" ry="82"
-                 fill="rgba(255,255,255,0.01)" stroke="#c0392b" stroke-width="1.8"/>
-        <line x1="868" y1="46" x2="868" y2="210"
-              stroke="#c0392b" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.6"/>
+        <ellipse cx="878" cy="145" rx="82" ry="85"
+                 fill="white" fill-opacity="0.01"
+                 stroke="#c0392b" stroke-width="1.8"/>
+        <line x1="878" y1="60" x2="878" y2="230"
+              stroke="#c0392b" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
         <a href="04 persona_expeditiv_maennlich.html">
-            <rect x="780" y="46" width="88" height="164" fill="transparent" class="klick-feld"
+            <rect x="796" y="60" width="82" height="170" fill="transparent" class="klick-feld"
                   data-tip="Expeditiv ♂ männlich"/>
         </a>
         <a href="04 persona_expeditiv_weiblich.html">
-            <rect x="868" y="46" width="88" height="164" fill="transparent" class="klick-feld"
+            <rect x="878" y="60" width="82" height="170" fill="transparent" class="klick-feld"
                   data-tip="Expeditiv ♀ weiblich"/>
         </a>
-        <text x="868" y="112" font-size="12" fill="#111" font-family="Arial" text-anchor="middle" font-weight="bold">Expeditives</text>
-        <text x="868" y="127" font-size="12" fill="#111" font-family="Arial" text-anchor="middle" font-weight="bold">Milieu</text>
-        <text x="868" y="144" font-size="11" fill="#555" font-family="Arial" text-anchor="middle">10 %</text>
-        <text x="824" y="94" font-size="12" fill="#c0392b" font-family="Arial" text-anchor="middle">♂</text>
-        <text x="912" y="94" font-size="12" fill="#c0392b" font-family="Arial" text-anchor="middle">♀</text>
+        <text x="878" y="128" font-size="12" fill="#111" font-family="Arial" text-anchor="middle" font-weight="bold">Expeditives</text>
+        <text x="878" y="143" font-size="12" fill="#111" font-family="Arial" text-anchor="middle" font-weight="bold">Milieu</text>
+        <text x="878" y="160" font-size="11" fill="#555" font-family="Arial" text-anchor="middle">10 %</text>
+        <text x="837" y="100" font-size="12" fill="#c0392b" font-family="Arial" text-anchor="middle">♂</text>
+        <text x="919" y="100" font-size="12" fill="#c0392b" font-family="Arial" text-anchor="middle">♀</text>
     </g>
 
-    <!-- ==================== 5. TRADITIONELLES MILIEU ==================== -->
-    <g id="traditionell">
-        <ellipse cx="228" cy="330" rx="88" ry="118"
-                 fill="rgba(255,255,255,0.01)" stroke="#c0392b" stroke-width="1.8"/>
-        <line x1="228" y1="212" x2="228" y2="448"
-              stroke="#c0392b" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.6"/>
-        <a href="05 persona_traditionell_maennlich.html">
-            <rect x="140" y="212" width="88" height="236" fill="transparent" class="klick-feld"
-                  data-tip="Traditionell ♂ männlich"/>
+    <!-- ── 05 NEO-ÖKOLOGISCH ── -->
+    <g id="neoekologisch">
+        <ellipse cx="868" cy="310" rx="82" ry="80"
+                 fill="white" fill-opacity="0.01"
+                 stroke="#c0392b" stroke-width="1.8"/>
+        <line x1="868" y1="230" x2="868" y2="390"
+              stroke="#c0392b" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
+        <a href="05 persona_neoekologisch.html">
+            <rect x="786" y="230" width="82" height="160" fill="transparent" class="klick-feld"
+                  data-tip="Neo-Ökologisch ♂ männlich"/>
         </a>
-        <a href="05 persona_traditionell_weiblich.html">
-            <rect x="228" y="212" width="88" height="236" fill="transparent" class="klick-feld"
-                  data-tip="Traditionell ♀ weiblich"/>
+        <a href="05 persona_neoekologisch_weiblich.html">
+            <rect x="868" y="230" width="82" height="160" fill="transparent" class="klick-feld"
+                  data-tip="Neo-Ökologisch ♀ weiblich"/>
         </a>
-        <text x="228" y="316" font-size="12" fill="#111" font-family="Arial" text-anchor="middle" font-weight="bold">Traditionelles</text>
-        <text x="228" y="331" font-size="12" fill="#111" font-family="Arial" text-anchor="middle" font-weight="bold">Milieu</text>
-        <text x="228" y="348" font-size="11" fill="#555" font-family="Arial" text-anchor="middle">9 %</text>
-        <text x="184" y="272" font-size="12" fill="#c0392b" font-family="Arial" text-anchor="middle">♂</text>
-        <text x="272" y="272" font-size="12" fill="#c0392b" font-family="Arial" text-anchor="middle">♀</text>
+        <text x="868" y="295" font-size="12" fill="#111" font-family="Arial" text-anchor="middle" font-weight="bold">Neo-</text>
+        <text x="868" y="310" font-size="12" fill="#111" font-family="Arial" text-anchor="middle" font-weight="bold">Ökologisches</text>
+        <text x="868" y="325" font-size="12" fill="#111" font-family="Arial" text-anchor="middle" font-weight="bold">Milieu</text>
+        <text x="868" y="342" font-size="11" fill="#555" font-family="Arial" text-anchor="middle">8 %</text>
+        <text x="827" y="260" font-size="12" fill="#c0392b" font-family="Arial" text-anchor="middle">♂</text>
+        <text x="909" y="260" font-size="12" fill="#c0392b" font-family="Arial" text-anchor="middle">♀</text>
     </g>
 
-    <!-- ==================== 6. NOSTALGISCH-BÜRGERLICHES MILIEU ==================== -->
-    <g id="nostalgisch">
-        <ellipse cx="418" cy="318" rx="112" ry="108"
-                 fill="rgba(255,255,255,0.01)" stroke="#c0392b" stroke-width="1.8"/>
-        <line x1="418" y1="210" x2="418" y2="426"
-              stroke="#c0392b" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.6"/>
-        <a href="06 persona_nostalgisch_buergerlich_maennlich.html">
-            <rect x="306" y="210" width="112" height="216" fill="transparent" class="klick-feld"
-                  data-tip="Nostalgisch-Bürgerlich ♂ männlich"/>
+    <!-- ── 06 HEDONISTISCH ── -->
+    <g id="hedonistisch">
+        <ellipse cx="720" cy="370" rx="95" ry="85"
+                 fill="white" fill-opacity="0.01"
+                 stroke="#c0392b" stroke-width="1.8"/>
+        <line x1="720" y1="285" x2="720" y2="455"
+              stroke="#c0392b" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
+        <a href="06 persona_hedonistisch_maennlich.html">
+            <rect x="625" y="285" width="95" height="170" fill="transparent" class="klick-feld"
+                  data-tip="Hedonistisch ♂ männlich"/>
         </a>
-        <a href="06 persona_nostalgisch_buergerlich_weiblich.html">
-            <rect x="418" y="210" width="112" height="216" fill="transparent" class="klick-feld"
-                  data-tip="Nostalgisch-Bürgerlich ♀ weiblich"/>
+        <a href="06 persona_hedonistisch_weiblich.html">
+            <rect x="720" y="285" width="95" height="170" fill="transparent" class="klick-feld"
+                  data-tip="Hedonistisch ♀ weiblich"/>
         </a>
-        <text x="418" y="298" font-size="12" fill="#111" font-family="Arial" text-anchor="middle" font-weight="bold">Nostalgisch-</text>
-        <text x="418" y="313" font-size="12" fill="#111" font-family="Arial" text-anchor="middle" font-weight="bold">Bürgerliches</text>
-        <text x="418" y="328" font-size="12" fill="#111" font-family="Arial" text-anchor="middle" font-weight="bold">Milieu</text>
-        <text x="418" y="345" font-size="11" fill="#555" font-family="Arial" text-anchor="middle">11 %</text>
-        <text x="362" y="258" font-size="12" fill="#c0392b" font-family="Arial" text-anchor="middle">♂</text>
-        <text x="474" y="258" font-size="12" fill="#c0392b" font-family="Arial" text-anchor="middle">♀</text>
+        <text x="720" y="353" font-size="12" fill="#111" font-family="Arial" text-anchor="middle" font-weight="bold">Konsum-</text>
+        <text x="720" y="368" font-size="12" fill="#111" font-family="Arial" text-anchor="middle" font-weight="bold">Hedonistisches</text>
+        <text x="720" y="383" font-size="12" fill="#111" font-family="Arial" text-anchor="middle" font-weight="bold">Milieu</text>
+        <text x="720" y="400" font-size="11" fill="#555" font-family="Arial" text-anchor="middle">8 %</text>
+        <text x="672" y="315" font-size="12" fill="#c0392b" font-family="Arial" text-anchor="middle">♂</text>
+        <text x="768" y="315" font-size="12" fill="#c0392b" font-family="Arial" text-anchor="middle">♀</text>
     </g>
 
-    <!-- ==================== 7. ADAPTIV-PRAGMATISCHE MITTE ==================== -->
+    <!-- ── 07 ADAPTIV-PRAGMATISCH ── -->
     <g id="adaptiv">
-        <ellipse cx="588" cy="308" rx="118" ry="102"
-                 fill="rgba(255,255,255,0.01)" stroke="#c0392b" stroke-width="1.8"/>
-        <line x1="588" y1="206" x2="588" y2="410"
-              stroke="#c0392b" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.6"/>
-        <a href="07 persona_adaptiv_pragmatisch_maennlich.html">
-            <rect x="470" y="206" width="118" height="204" fill="transparent" class="klick-feld"
+        <ellipse cx="535" cy="300" rx="110" ry="90"
+                 fill="white" fill-opacity="0.01"
+                 stroke="#c0392b" stroke-width="1.8"/>
+        <line x1="535" y1="210" x2="535" y2="390"
+              stroke="#c0392b" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
+        <a href="07 persona_adaptiv_pragmatisch.html">
+            <rect x="425" y="210" width="110" height="180" fill="transparent" class="klick-feld"
                   data-tip="Adaptiv-Pragmatisch ♂ männlich"/>
         </a>
         <a href="07 persona_adaptiv_pragmatisch_weiblich.html">
-            <rect x="588" y="206" width="118" height="204" fill="transparent" class="klick-feld"
+            <rect x="535" y="210" width="110" height="180" fill="transparent" class="klick-feld"
                   data-tip="Adaptiv-Pragmatisch ♀ weiblich"/>
         </a>
-        <text x="588" y="292" font-size="12" fill="#111" font-family="Arial" text-anchor="middle" font-weight="bold">Adaptiv-</text>
-        <text x="588" y="307" font-size="12" fill="#111" font-family="Arial" text-anchor="middle" font-weight="bold">Pragmatische</text>
-        <text x="588" y="322" font-size="12" fill="#111" font-family="Arial" text-anchor="middle" font-weight="bold">Mitte</text>
-        <text x="588" y="339" font-size="11" fill="#555" font-family="Arial" text-anchor="middle">12 %</text>
-        <text x="529" y="262" font-size="12" fill="#c0392b" font-family="Arial" text-anchor="middle">♂</text>
-        <text x="647" y="262" font-size="12" fill="#c0392b" font-family="Arial" text-anchor="middle">♀</text>
+        <text x="535" y="285" font-size="12" fill="#111" font-family="Arial" text-anchor="middle" font-weight="bold">Adaptiv-</text>
+        <text x="535" y="300" font-size="12" fill="#111" font-family="Arial" text-anchor="middle" font-weight="bold">Pragmatische</text>
+        <text x="535" y="315" font-size="12" fill="#111" font-family="Arial" text-anchor="middle" font-weight="bold">Mitte</text>
+        <text x="535" y="332" font-size="11" fill="#555" font-family="Arial" text-anchor="middle">12 %</text>
+        <text x="480" y="245" font-size="12" fill="#c0392b" font-family="Arial" text-anchor="middle">♂</text>
+        <text x="590" y="245" font-size="12" fill="#c0392b" font-family="Arial" text-anchor="middle">♀</text>
     </g>
 
-    <!-- ==================== 8. KONSUM-HEDONISTISCHES MILIEU ==================== -->
-    <g id="konsum">
-        <ellipse cx="726" cy="378" rx="102" ry="92"
-                 fill="rgba(255,255,255,0.01)" stroke="#c0392b" stroke-width="1.8"/>
-        <line x1="726" y1="286" x2="726" y2="470"
-              stroke="#c0392b" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.6"/>
-        <a href="08 persona_konsum_hedonistisch_maennlich.html">
-            <rect x="624" y="286" width="102" height="184" fill="transparent" class="klick-feld"
-                  data-tip="Konsum-Hedonistisch ♂ männlich"/>
+    <!-- ── 08 NOSTALGISCH-BÜRGERLICH ── -->
+    <g id="nostalgisch">
+        <ellipse cx="360" cy="310" rx="110" ry="90"
+                 fill="white" fill-opacity="0.01"
+                 stroke="#c0392b" stroke-width="1.8"/>
+        <line x1="360" y1="220" x2="360" y2="400"
+              stroke="#c0392b" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
+        <a href="08 persona_nostalgisch_buergerlich_maennlich.html">
+            <rect x="250" y="220" width="110" height="180" fill="transparent" class="klick-feld"
+                  data-tip="Nostalgisch-Bürgerlich ♂ männlich"/>
         </a>
-        <a href="08 persona_konsum_hedonistisch_weiblich.html">
-            <rect x="726" y="286" width="102" height="184" fill="transparent" class="klick-feld"
-                  data-tip="Konsum-Hedonistisch ♀ weiblich"/>
+        <a href="08 persona_nostalgisch_buergerlich_weiblich.html">
+            <rect x="360" y="220" width="110" height="180" fill="transparent" class="klick-feld"
+                  data-tip="Nostalgisch-Bürgerlich ♀ weiblich"/>
         </a>
-        <text x="726" y="360" font-size="12" fill="#111" font-family="Arial" text-anchor="middle" font-weight="bold">Konsum-</text>
-        <text x="726" y="375" font-size="12" fill="#111" font-family="Arial" text-anchor="middle" font-weight="bold">Hedonistisches</text>
-        <text x="726" y="390" font-size="12" fill="#111" font-family="Arial" text-anchor="middle" font-weight="bold">Milieu</text>
-        <text x="726" y="407" font-size="11" fill="#555" font-family="Arial" text-anchor="middle">8 %</text>
-        <text x="675" y="328" font-size="12" fill="#c0392b" font-family="Arial" text-anchor="middle">♂</text>
-        <text x="777" y="328" font-size="12" fill="#c0392b" font-family="Arial" text-anchor="middle">♀</text>
+        <text x="360" y="293" font-size="12" fill="#111" font-family="Arial" text-anchor="middle" font-weight="bold">Nostalgisch-</text>
+        <text x="360" y="308" font-size="12" fill="#111" font-family="Arial" text-anchor="middle" font-weight="bold">Bürgerliches</text>
+        <text x="360" y="323" font-size="12" fill="#111" font-family="Arial" text-anchor="middle" font-weight="bold">Milieu</text>
+        <text x="360" y="340" font-size="11" fill="#555" font-family="Arial" text-anchor="middle">11 %</text>
+        <text x="305" y="258" font-size="12" fill="#c0392b" font-family="Arial" text-anchor="middle">♂</text>
+        <text x="415" y="258" font-size="12" fill="#c0392b" font-family="Arial" text-anchor="middle">♀</text>
     </g>
 
-    <!-- ==================== 9. NEO-ÖKOLOGISCHES MILIEU ==================== -->
-    <g id="neooko">
-        <ellipse cx="880" cy="308" rx="82" ry="98"
-                 fill="rgba(255,255,255,0.01)" stroke="#c0392b" stroke-width="1.8"/>
-        <line x1="880" y1="210" x2="880" y2="406"
-              stroke="#c0392b" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.6"/>
-        <a href="09 persona_neo_oekologisch_maennlich.html">
-            <rect x="798" y="210" width="82" height="196" fill="transparent" class="klick-feld"
-                  data-tip="Neo-Ökologisch ♂ männlich"/>
+    <!-- ── 09 TRADITIONELL ── -->
+    <g id="traditionell">
+        <ellipse cx="225" cy="330" rx="85" ry="100"
+                 fill="white" fill-opacity="0.01"
+                 stroke="#c0392b" stroke-width="1.8"/>
+        <line x1="225" y1="230" x2="225" y2="430"
+              stroke="#c0392b" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
+        <a href="09 persona_traditionell_maennlich.html">
+            <rect x="140" y="230" width="85" height="200" fill="transparent" class="klick-feld"
+                  data-tip="Traditionell ♂ männlich"/>
         </a>
-        <a href="09 persona_neo_oekologisch_weiblich.html">
-            <rect x="880" y="210" width="82" height="196" fill="transparent" class="klick-feld"
-                  data-tip="Neo-Ökologisch ♀ weiblich"/>
+        <a href="09 persona_traditionell_weiblich.html">
+            <rect x="225" y="230" width="85" height="200" fill="transparent" class="klick-feld"
+                  data-tip="Traditionell ♀ weiblich"/>
         </a>
-        <text x="880" y="292" font-size="12" fill="#111" font-family="Arial" text-anchor="middle" font-weight="bold">Neo-</text>
-        <text x="880" y="307" font-size="12" fill="#111" font-family="Arial" text-anchor="middle" font-weight="bold">Ökologisches</text>
-        <text x="880" y="322" font-size="12" fill="#111" font-family="Arial" text-anchor="middle" font-weight="bold">Milieu</text>
-        <text x="880" y="339" font-size="11" fill="#555" font-family="Arial" text-anchor="middle">8 %</text>
-        <text x="839" y="258" font-size="12" fill="#c0392b" font-family="Arial" text-anchor="middle">♂</text>
-        <text x="921" y="258" font-size="12" fill="#c0392b" font-family="Arial" text-anchor="middle">♀</text>
+        <text x="225" y="313" font-size="12" fill="#111" font-family="Arial" text-anchor="middle" font-weight="bold">Traditionelles</text>
+        <text x="225" y="328" font-size="12" fill="#111" font-family="Arial" text-anchor="middle" font-weight="bold">Milieu</text>
+        <text x="225" y="345" font-size="11" fill="#555" font-family="Arial" text-anchor="middle">9 %</text>
+        <text x="182" y="268" font-size="12" fill="#c0392b" font-family="Arial" text-anchor="middle">♂</text>
+        <text x="268" y="268" font-size="12" fill="#c0392b" font-family="Arial" text-anchor="middle">♀</text>
     </g>
 
-    <!-- ==================== 10. PREKÄRES MILIEU ==================== -->
+    <!-- ── 10 PREKÄR ── -->
     <g id="prekaer">
-        <ellipse cx="418" cy="490" rx="118" ry="72"
-                 fill="rgba(255,255,255,0.01)" stroke="#c0392b" stroke-width="1.8"/>
-        <line x1="418" y1="418" x2="418" y2="562"
-              stroke="#c0392b" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.6"/>
+        <ellipse cx="420" cy="490" rx="115" ry="75"
+                 fill="white" fill-opacity="0.01"
+                 stroke="#c0392b" stroke-width="1.8"/>
+        <line x1="420" y1="415" x2="420" y2="565"
+              stroke="#c0392b" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
         <a href="10 persona_prekaer_maennlich.html">
-            <rect x="300" y="418" width="118" height="144" fill="transparent" class="klick-feld"
+            <rect x="305" y="415" width="115" height="150" fill="transparent" class="klick-feld"
                   data-tip="Prekär ♂ männlich"/>
         </a>
         <a href="10 persona_prekaer_weiblich.html">
-            <rect x="418" y="418" width="118" height="144" fill="transparent" class="klick-feld"
+            <rect x="420" y="415" width="115" height="150" fill="transparent" class="klick-feld"
                   data-tip="Prekär ♀ weiblich"/>
         </a>
-        <text x="418" y="480" font-size="12" fill="#111" font-family="Arial" text-anchor="middle" font-weight="bold">Prekäres</text>
-        <text x="418" y="495" font-size="12" fill="#111" font-family="Arial" text-anchor="middle" font-weight="bold">Milieu</text>
-        <text x="418" y="512" font-size="11" fill="#555" font-family="Arial" text-anchor="middle">9 %</text>
-        <text x="359" y="462" font-size="12" fill="#c0392b" font-family="Arial" text-anchor="middle">♂</text>
-        <text x="477" y="462" font-size="12" fill="#c0392b" font-family="Arial" text-anchor="middle">♀</text>
+        <text x="420" y="478" font-size="12" fill="#111" font-family="Arial" text-anchor="middle" font-weight="bold">Prekäres</text>
+        <text x="420" y="493" font-size="12" fill="#111" font-family="Arial" text-anchor="middle" font-weight="bold">Milieu</text>
+        <text x="420" y="510" font-size="11" fill="#555" font-family="Arial" text-anchor="middle">9 %</text>
+        <text x="362" y="455" font-size="12" fill="#c0392b" font-family="Arial" text-anchor="middle">♂</text>
+        <text x="478" y="455" font-size="12" fill="#c0392b" font-family="Arial" text-anchor="middle">♀</text>
     </g>
 
 </svg>
@@ -316,7 +315,6 @@
 
 <script>
     const tooltip = document.getElementById('tooltip');
-
     document.querySelectorAll('.klick-feld').forEach(rect => {
         rect.addEventListener('mouseenter', function(e) {
             this.setAttribute('fill', 'rgba(192,57,43,0.12)');
