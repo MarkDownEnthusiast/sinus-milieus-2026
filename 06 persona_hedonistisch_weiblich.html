@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Persona · Konsum-Hedonistisches Milieu · Vanessa Nowak</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:      #0e0a0d;
+    --surface: #17101a;
+    --panel:   #1f1524;
+    --border:  #302040;
+    --pink:    #ff3aaa;
+    --pink-d:  #cc2088;
+    --purple:  #9b6dff;
+    --mint:    #00f0c0;
+    --muted:   #6a5c70;
+    --text:    #cbbcd4;
+    --white:   #f4eef8;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(255,58,170,.07) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--pink), var(--purple), var(--mint));
+  }
+
+  .header-inner {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 48px 40px 44px;
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 40px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .milieu-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--pink);
+    color: var(--bg);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: .85rem;
+    letter-spacing: .12em;
+    padding: 4px 14px;
+    border-radius: 2px;
+    margin-bottom: 18px;
+  }
+
+  header h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3rem, 6vw, 5rem);
+    color: var(--white);
+    line-height: 0.95;
+    letter-spacing: .04em;
+    margin-bottom: 10px;
+  }
+  .h1-accent { color: var(--pink); }
+  .tagline { font-size: .95rem; color: var(--muted); font-style: italic; }
+
+  /* STECKBRIEF */
+  .steck { background: var(--panel); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
+  .steck-head { background: var(--pink); padding: 8px 16px; font-family: 'Bebas Neue', sans-serif; font-size: .9rem; letter-spacing: .1em; color: var(--bg); }
+  .steck-body { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); }
+  .si { background: var(--panel); padding: 10px 14px; }
+  .si.full { grid-column: 1/-1; }
+  .si .k { font-size: .62rem; color: var(--muted); letter-spacing: .14em; text-transform: uppercase; margin-bottom: 2px; }
+  .si .v { font-size: .88rem; color: var(--white); font-weight: 400; }
+
+  /* MOTTO */
+  .motto {
+    background: var(--pink);
+    padding: 16px 40px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: .1em;
+    color: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+  .motto::before, .motto::after { content: '♥'; font-size: 1rem; opacity: .5; }
+
+  /* ── MAIN ── */
+  main { max-width: 1040px; margin: 0 auto; padding: 56px 40px 100px; display: grid; gap: 52px; }
+
+  .sec-head { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+  .sec-num { font-family: 'Bebas Neue', sans-serif; font-size: .85rem; color: var(--pink); letter-spacing: .1em; }
+  .sec-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; color: var(--white); letter-spacing: .06em; }
+
+  p { color: #8a7890; font-size: .94rem; margin-bottom: 12px; }
+  p:last-child { margin-bottom: 0; }
+  em { font-style: italic; color: var(--pink); }
+
+  /* VALUES */
+  .val-list { list-style: none; counter-reset: vv; display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 10px; }
+  .val-list li { counter-increment: vv; background: var(--panel); border: 1px solid var(--border); border-left: 3px solid var(--pink); padding: 14px 18px; display: flex; gap: 12px; align-items: flex-start; border-radius: 2px; transition: border-left-color .15s; }
+  .val-list li:hover { border-left-color: var(--purple); }
+  .val-list li::before { content: '0'counter(vv); font-family: 'Bebas Neue', sans-serif; font-size: .9rem; color: var(--pink); flex-shrink: 0; min-width: 22px; }
+  .val-list li strong { display: block; color: var(--white); font-weight: 600; font-size: .9rem; margin-bottom: 3px; }
+  .val-list li span { font-size: .86rem; color: var(--muted); }
+
+  /* TWO COL */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } }
+
+  .card { background: var(--panel); border: 1px solid var(--border); border-radius: 4px; padding: 20px 22px; }
+  .card h3 { font-family: 'Bebas Neue', sans-serif; font-size: .85rem; color: var(--pink); letter-spacing: .1em; margin-bottom: 10px; }
+
+  /* TAGS */
+  .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 6px; }
+  .tag { background: transparent; border: 1px solid var(--border); color: var(--muted); font-size: .73rem; padding: 3px 10px; border-radius: 2px; letter-spacing: .04em; transition: all .13s; cursor: default; }
+  .tag:hover { border-color: var(--pink); color: var(--pink); }
+  .tag.hi { background: rgba(255,58,170,.06); border-color: rgba(255,58,170,.26); color: var(--pink); }
+  .tag.pu { background: rgba(155,109,255,.06); border-color: rgba(155,109,255,.24); color: var(--purple); }
+  .tag.mi { background: rgba(0,240,192,.05); border-color: rgba(0,240,192,.22); color: var(--mint); }
+
+  /* PULL */
+  .pull { background: var(--panel); border-left: 3px solid var(--pink); padding: 16px 22px; margin: 14px 0; border-radius: 0 4px 4px 0; }
+  .pull p { font-size: 1rem; font-style: italic; color: var(--white); margin: 0 0 8px; }
+  .pull cite { font-size: .62rem; color: var(--muted); letter-spacing: .12em; text-transform: uppercase; font-style: normal; }
+
+  /* POS GRID */
+  .pos-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
+  .pos-card { background: var(--panel); border: 1px solid var(--border); border-top: 2px solid var(--purple); border-radius: 2px; padding: 14px 16px; }
+  .pos-card .topic { font-family: 'Bebas Neue', sans-serif; font-size: .78rem; color: var(--purple); letter-spacing: .1em; margin-bottom: 6px; }
+  .pos-card p { font-size: .87rem; margin: 0; }
+
+  /* MEDIA */
+  .media-stack { display: flex; flex-direction: column; gap: 8px; }
+  .media-row { display: flex; gap: 12px; align-items: flex-start; padding: 10px 14px; background: var(--panel); border: 1px solid var(--border); border-radius: 3px; }
+  .media-lbl { font-family: 'Bebas Neue', sans-serif; font-size: .75rem; color: var(--pink); letter-spacing: .1em; min-width: 80px; flex-shrink: 0; padding-top: 1px; }
+  .media-c { color: var(--muted); font-size: .9rem; }
+
+  /* FRUST */
+  .frust-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
+  @media (max-width: 640px) { .frust-list { grid-template-columns: 1fr; } }
+  .frust-list li { background: var(--panel); border: 1px solid var(--border); border-left: 2px solid var(--purple); padding: 10px 14px; font-size: .9rem; color: var(--muted); border-radius: 0 3px 3px 0; }
+
+  /* CAMPAIGN TABLE */
+  .c-table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+  .c-table thead { background: var(--pink); }
+  .c-table th { font-family: 'Bebas Neue', sans-serif; font-size: .8rem; letter-spacing: .1em; color: var(--bg); text-align: left; padding: 10px 16px; }
+  .c-table td { padding: 11px 16px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .c-table tr:nth-child(odd) td { background: var(--panel); }
+  .c-table td:first-child { font-family: 'Bebas Neue', sans-serif; font-size: .78rem; color: var(--pink); letter-spacing: .08em; white-space: nowrap; width: 120px; }
+
+  /* FOOTER */
+  footer { border-top: 1px solid var(--border); text-align: center; padding: 24px 40px; font-size: .68rem; color: var(--muted); letter-spacing: .1em; text-transform: uppercase; line-height: 2; }
+  footer span { color: var(--pink); }
+
+  /* ANIM */
+  @keyframes up { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+  main > section { animation: up .45s ease both; }
+  main > section:nth-child(1) { animation-delay: .04s; }
+  main > section:nth-child(2) { animation-delay: .09s; }
+  main > section:nth-child(3) { animation-delay: .14s; }
+  main > section:nth-child(4) { animation-delay: .19s; }
+  main > section:nth-child(5) { animation-delay: .24s; }
+  main > section:nth-child(6) { animation-delay: .29s; }
+  main > section:nth-child(7) { animation-delay: .34s; }
+  main > section:nth-child(8) { animation-delay: .39s; }
+
+  @media (max-width: 720px) {
+    .header-inner { grid-template-columns: 1fr; padding: 36px 20px; }
+    .motto { padding: 14px 20px; }
+    main { padding: 40px 20px 80px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div>
+      <div class="milieu-tag">Sinus 2021 · Konsum-Hedonistisch · 8 %</div>
+      <h1>Vanessa<br><span class="h1-accent">Nowak</span></h1>
+      <p class="tagline">„Die Lebenshungrige" — Dortmund-Hörde, 25 J.</p>
+    </div>
+    <div class="steck">
+      <div class="steck-head">Steckbrief</div>
+      <div class="steck-body">
+        <div class="si"><div class="k">Alter</div><div class="v">25 Jahre</div></div>
+        <div class="si"><div class="k">Wohnort</div><div class="v">Dortmund-Hörde</div></div>
+        <div class="si"><div class="k">Beruf</div><div class="v">Verkäuferin Modekaufhaus (Vollzeit)</div></div>
+        <div class="si"><div class="k">Einkommen</div><div class="v">ca. 1.650 € netto</div></div>
+        <div class="si full"><div class="k">Bildung</div><div class="v">Mittlere Reife + abgebr. FH-Studium</div></div>
+        <div class="si full"><div class="k">Wohnen</div><div class="v">2er-WG, eigenes Zimmer 18 m²</div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="motto">„Nur wer feiert, hat auch was zu erzählen."</div>
+
+<main>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">01 /</span><span class="sec-title">Persönlichkeit & Werte</span></div>
+    <p>Vanessa ist eine Frau, die den Raum ausfüllt wenn sie reinkommt – laut, selbstbewusst, charmant. Sie weiß, was sie will. Und was sie will, ist Spaß. Guter Spaß. Mit den richtigen Leuten, in den richtigen Klamotten, an den richtigen Orten.</p>
+    <p>Sie ist nicht oberflächlich. Sie hat eine klare Sicht auf die Welt – nur eine andere als die, die in ihrer Timeline erklärt, wie man besser leben soll. <em>„Diese Posts scroll ich weg. Nicht weil ich's nicht verstehe. Ich brauch's nicht."</em></p>
+    <ul class="val-list">
+      <li><strong>Lebensfreude & Gegenwart</strong><span>Jetzt ist, was zählt. Später kommt später.</span></li>
+      <li><strong>Aussehen & Selbstdarstellung</strong><span>Der eigene Look ist Ausdruck von Persönlichkeit.</span></li>
+      <li><strong>Freundschaft</strong><span>Ihre Mädels sind ihr wichtigstes Netz. Füreinander da sein, immer.</span></li>
+      <li><strong>Freiheit</strong><span>Niemand sagt ihr was sie kaufen, essen oder anziehen soll.</span></li>
+      <li><strong>Anerkennung</strong><span>Gesehen werden. Geliked werden. Im echten Leben wie online.</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">02 /</span><span class="sec-title">Lebenswelt & Alltag</span></div>
+    <div class="two-col">
+      <div class="card">
+        <h3>Wohnen</h3>
+        <p>Lichterketten, großer Spiegel, Kleiderstangen, Schminktisch als Herzstück. Die WG mit Alina läuft gut – zusammen ausgehen, manchmal streiten über Putzen, eigentlich super. Eine eigene Wohnung: wäre schön, aber Mietpreise machen das schwierig.</p>
+      </div>
+      <div class="card">
+        <h3>Mobilität</h3>
+        <p>Kein Auto, kein Führerschein. Taxi und Uber für Abende, ÖPNV tagsüber. Deutschlandticket haben Eltern eingerichtet. Über E-Autos macht sie sich keine Gedanken.</p>
+      </div>
+      <div class="card">
+        <h3>Ernährung</h3>
+        <p>Essen ist sozial: Brunchen am Wochenende, Sushi oder Bowls für Instagram, McDonalds nach dem Ausgehen. Kochen wenn es Instagram-tauglich aussieht. Bio: kostet zu viel.</p>
+      </div>
+      <div class="card">
+        <h3>Freizeit</h3>
+        <div class="tags">
+          <span class="tag hi">Ausgehen & Feiern (heilig)</span>
+          <span class="tag hi">Shopping wöchentlich</span>
+          <span class="tag pu">Instagram täglich (eigene Posts)</span>
+          <span class="tag hi">Make-up & Beauty (echtes Hobby)</span>
+          <span class="tag mi">Reisen: Mallorca, Türkei, Amsterdam</span>
+          <span class="tag">Netflix Reality TV abends</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">03 /</span><span class="sec-title">Weltanschauung & Politik</span></div>
+    <p>Vanessa wählt – manchmal. Wenn sie daran denkt. Sie hat Grüne gewählt weil eine Freundin das auch machte. Beim letzten Mal vergessen. Sie findet das selbst ein bisschen peinlich – aber nicht peinlich genug um es zu ändern.</p>
+    <div class="pull">
+      <p>„Ich verursache weniger CO₂ als ein Mittelklasse-SUV-Fahrer der mich anmacht. Bitte."</p>
+      <cite>Vanessa über Klimadebatte und Doppelstandards</cite>
+    </div>
+    <div class="pos-grid">
+      <div class="pos-card"><div class="topic">Klima</div><p>Findet es real – aber Aktivismus oft anstrengend. Greenwashing nervt sie mehr als echte Klimapolitik.</p></div>
+      <div class="pos-card"><div class="topic">Nachhalt.</div><p>Interessiert wenn nicht teurer. SHEIN ist günstig und die Alternative ist für ihr Budget nicht drin.</p></div>
+      <div class="pos-card"><div class="topic">Miete</div><p>Ihr persönlichstes politisches Thema – eine eigene Wohnung rückt in weite Ferne.</p></div>
+      <div class="pos-card"><div class="topic">Feminismus</div><p>Ja, selbstverständlich. Aber keine Verbotspolitik im Namen des Feminismus.</p></div>
+      <div class="pos-card"><div class="topic">Wahl</div><p>Gelegentlich, nach Stimmung. Partei nach Gefühl, nicht nach Programm.</p></div>
+      <div class="pos-card"><div class="topic">Politik</div><p>Kein emotionales Thema. Nur wenn es sie direkt betrifft: Miete, Verbote.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">04 /</span><span class="sec-title">Konsumgewohnheiten</span></div>
+    <p>Vanessa gibt ihr Geld für Dinge aus, die man sieht: Kleidung, Make-up, Ausgehen, Urlaub. Das Unsichtbare spart sie.</p>
+    <div class="two-col">
+      <div>
+        <div class="card" style="margin-bottom:10px">
+          <h3>Kaufmuster</h3>
+          <div class="tags">
+            <span class="tag hi">SHEIN (schnelle Trends)</span>
+            <span class="tag hi">Zara / H&M (Basics)</span>
+            <span class="tag pu">Douglas / Sephora (Beauty)</span>
+            <span class="tag">iPhone (Raten)</span>
+            <span class="tag hi">ASOS, Zalando, Amazon</span>
+            <span class="tag mi">Klarna = bester Freund & Feind</span>
+          </div>
+        </div>
+        <div class="pull" style="margin:0">
+          <p>„Wenn ich 20 Euro für ein T-Shirt ausgebe, kaufe ich zwei von SHEIN. Ich kann mir das andere nicht leisten."</p>
+          <cite>Vanessa über nachhaltige Mode und Budget-Realität</cite>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Nachhaltigkeit</h3>
+        <p>Sie findet das Thema nicht so weit weg. Aber die finanzielle Barriere ist real. Keine Frage der Haltung – sondern der Kaufkraft.</p>
+        <p style="margin-top:12px; color:var(--pink); font-size:.87rem">Greenwashing-Content von Marken: erkennt sie sofort und reagiert ablehnend.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">05 /</span><span class="sec-title">Medien & Kommunikation</span></div>
+    <div class="two-col">
+      <div class="media-stack">
+        <div class="media-row"><div class="media-lbl">Instagram</div><div class="media-c">Hauptkanal. Stundenlang täglich, eigene Posts 2–3×/Wo, Stories täglich</div></div>
+        <div class="media-row"><div class="media-lbl">TikTok</div><div class="media-c">Beauty-Tutorials, Entertainment, gelegentlich News-Clips</div></div>
+        <div class="media-row"><div class="media-lbl">YouTube</div><div class="media-c">Make-up-Tutorials, Reality-TV-Recaps, Vlogs</div></div>
+        <div class="media-row"><div class="media-lbl">Spotify</div><div class="media-c">Pop, Deutschpop, R&B, Charts</div></div>
+        <div class="media-row"><div class="media-lbl">Netflix</div><div class="media-c">Love Island, Too Hot to Handle, Serien – Reality TV dominiert</div></div>
+      </div>
+      <div class="card">
+        <h3>Kommunikationsstil</h3>
+        <p>Direkt, expressiv, emotionsbasiert – schreibt wie sie spricht. Instagram DMs und WhatsApp gleichwertig. Viele lange Voice Notes.</p>
+        <p style="margin-top:12px; color:var(--pink); font-size:.87rem">Gesponserte Posts, die sich wie gesponserte Posts anfühlen: sofort erkannt und ignoriert. Micro-Influencer mit echtem Bezug wirken.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">06 /</span><span class="sec-title">Bezug zum Ruhrgebiet</span></div>
+    <p>Vanessa ist in Dortmund aufgewachsen und mag ihre Stadt. Nicht aus Sentimentalität – sie schätzt konkret: die Szene, die Clubs, die Preise, die Nähe zu allem.</p>
+    <div class="pull">
+      <p>„Dortmund ist unterschätzt. Hier ist mehr los als die meisten denken."</p>
+      <cite>Vanessa über ihr Ruhrgebiet</cite>
+    </div>
+    <div class="tags" style="margin-top:4px">
+      <span class="tag hi">Club-Szene Dortmund</span>
+      <span class="tag hi">Brunch-Kultur</span>
+      <span class="tag pu">Günstige Miete (noch)</span>
+      <span class="tag mi">Nähe zu allem</span>
+      <span class="tag pu">Ruhrgebiet unterschätzt</span>
+      <span class="tag">Mehr Sushi-Restaurants gewünscht</span>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">07 /</span><span class="sec-title">Frustrationen & Reibungspunkte</span></div>
+    <ul class="frust-list">
+      <li>Mietpreise für eine eigene Wohnung</li>
+      <li>Klarna-Raten am Monatsende</li>
+      <li>Nachhaltigkeitsdruck in sozialen Medien</li>
+      <li>SHEIN-Guilt ohne bezahlbare Alternative</li>
+      <li>Einzelhandel zahlt schlecht</li>
+      <li>Gesellschaftliche Debatten gehen an ihr vorbei</li>
+      <li>Gesponserte Posts die uncool wirken</li>
+      <li>Keine Karriereperspektive die sie wirklich will</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">08 /</span><span class="sec-title">Kampagnen-Empfehlungen</span></div>
+    <table class="c-table">
+      <thead><tr><th>Aspekt</th><th>Empfehlung</th></tr></thead>
+      <tbody>
+        <tr><td>TON</td><td>Visuell stark, authentisch, ohne Moralappelle – sie merkt Unechtes sofort</td></tr>
+        <tr><td>ARGUMENTE</td><td>Aussehen, Zugehörigkeit, Spaß, Erlebnisse, Preis-Leistung</td></tr>
+        <tr><td>KANÄLE</td><td>Instagram Reels & Stories, TikTok, YouTube (Beauty/Lifestyle), Spotify</td></tr>
+        <tr><td>VERMEIDEN</td><td>Grünes Framing ohne Alltagsbezug, Verbotssignale, uncool wirkende Marken</td></tr>
+        <tr><td>MOBILISIERUNG</td><td>Micro-Influencer mit echtem Bezug zu ihrem Leben – keine Celebrity-Werbung</td></tr>
+        <tr><td>BOTSCHAFT</td><td>„Für dich. Für jetzt. Sieht gut aus."</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+</main>
+
+<footer>
+  <span>Konsum-Hedonistisches Milieu · Sinus 2021</span> · Ruhrgebiet · Weibliche Persona<br>
+  Kampagnenplanung & Zielgruppenanalyse · Auf Basis Sinus-Milieuforschung
+</footer>
+
+</body>
+</html>

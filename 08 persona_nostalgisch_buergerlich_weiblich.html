@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Persona · Nostalgisch-Bürgerliches Milieu · Monika Brandt</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper:    #f3ede2;
+    --cream:    #faf5ee;
+    --warm:     #ede4d4;
+    --rule:     #cec4b2;
+    --stone:    #a09278;
+    --ink:      #2c2418;
+    --muted:    #706050;
+    --mid:      #8c7860;
+    --brown:    #6b3a1f;
+    --brown-l:  #8c5230;
+    --blue:     #1e3d5c;
+    --blue-l:   #2c5478;
+    --white:    #ffffff;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Source Sans 3', system-ui, sans-serif;
+    font-size: 15.5px;
+    line-height: 1.74;
+    font-weight: 300;
+  }
+
+  /* ── MASTHEAD ── */
+  .masthead {
+    background: var(--ink);
+    padding: 14px 40px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  .masthead-label { font-family: 'Libre Baskerville', Georgia, serif; font-size: .7rem; color: var(--stone); letter-spacing: .18em; text-transform: uppercase; }
+  .masthead-milieu { font-family: 'Libre Baskerville', Georgia, serif; font-size: .9rem; color: var(--warm); font-style: italic; }
+  .masthead-pct { font-family: 'Source Sans 3', sans-serif; font-size: .72rem; color: var(--stone); letter-spacing: .12em; }
+
+  /* ── HEADER ── */
+  header { background: var(--cream); border-bottom: 3px double var(--rule); }
+  .header-inner {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 48px 40px 40px;
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 48px;
+    align-items: start;
+  }
+
+  .kicker { font-family: 'Source Sans 3', sans-serif; font-size: .72rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--brown); margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+  .kicker::before { content: ''; display: block; width: 24px; height: 1px; background: var(--brown); }
+
+  header h1 { font-family: 'Libre Baskerville', Georgia, serif; font-size: clamp(2.4rem, 4.5vw, 3.6rem); font-weight: 700; color: var(--ink); line-height: 1.05; margin-bottom: 8px; }
+  .h1-sub { font-family: 'Libre Baskerville', Georgia, serif; font-size: 1rem; color: var(--muted); font-style: italic; border-top: 1px solid var(--rule); padding-top: 10px; margin-top: 12px; }
+
+  /* STECKBRIEF */
+  .steck { background: var(--warm); border: 1px solid var(--rule); border-top: 3px solid var(--ink); }
+  .steck-head { background: var(--ink); padding: 8px 16px; font-family: 'Source Sans 3', sans-serif; font-size: .68rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--warm); }
+  .steck-body { display: flex; flex-direction: column; }
+  .si { display: grid; grid-template-columns: 90px 1fr; gap: 8px; padding: 9px 16px; border-bottom: 1px solid var(--rule); font-size: .88rem; }
+  .si:last-child { border-bottom: none; }
+  .si .k { font-weight: 600; color: var(--mid); font-size: .78rem; padding-top: 1px; }
+  .si .v { color: var(--ink); }
+
+  /* MOTTO */
+  .motto-rule { background: var(--brown); color: var(--cream); padding: 14px 40px; font-family: 'Libre Baskerville', Georgia, serif; font-style: italic; font-size: 1.05rem; display: flex; align-items: center; gap: 16px; }
+  .motto-rule::before, .motto-rule::after { content: '✦'; color: rgba(255,255,255,.35); font-size: .8rem; flex-shrink: 0; font-style: normal; }
+
+  /* ── MAIN ── */
+  main { max-width: 1040px; margin: 0 auto; padding: 56px 40px 100px; display: grid; gap: 52px; }
+
+  .sec-head { display: flex; align-items: baseline; gap: 16px; margin-bottom: 24px; padding-bottom: 8px; border-bottom: 2px solid var(--ink); }
+  .sec-num { font-family: 'Libre Baskerville', Georgia, serif; font-size: .72rem; color: var(--brown); letter-spacing: .1em; flex-shrink: 0; }
+  .sec-title { font-family: 'Libre Baskerville', Georgia, serif; font-size: 1.3rem; font-weight: 700; color: var(--ink); }
+
+  p { color: var(--muted); font-size: .96rem; margin-bottom: 13px; }
+  p:last-child { margin-bottom: 0; }
+  em { font-style: italic; color: var(--brown); }
+
+  /* VALUES */
+  .val-list { list-style: none; counter-reset: vv; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 10px; }
+  .val-list li { counter-increment: vv; background: var(--cream); border: 1px solid var(--rule); border-left: 3px solid var(--brown); padding: 14px 18px; display: flex; gap: 12px; align-items: flex-start; transition: background .15s; }
+  .val-list li:hover { background: var(--white); }
+  .val-list li::before { content: counter(vv, upper-roman); font-family: 'Libre Baskerville', Georgia, serif; font-size: .8rem; color: var(--brown); flex-shrink: 0; padding-top: 2px; min-width: 22px; }
+  .val-list li strong { display: block; color: var(--ink); font-weight: 600; font-size: .9rem; margin-bottom: 3px; }
+  .val-list li span { font-size: .87rem; color: var(--muted); }
+
+  /* TWO COL */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } }
+
+  .card { background: var(--cream); border: 1px solid var(--rule); padding: 20px 22px; }
+  .card h3 { font-family: 'Libre Baskerville', Georgia, serif; font-size: .82rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--brown); margin-bottom: 10px; padding-bottom: 6px; border-bottom: 1px solid var(--rule); }
+
+  /* TAGS */
+  .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 6px; }
+  .tag { background: transparent; border: 1px solid var(--rule); color: var(--mid); font-family: 'Source Sans 3', sans-serif; font-size: .75rem; padding: 3px 10px; letter-spacing: .04em; transition: all .15s; cursor: default; }
+  .tag:hover { border-color: var(--brown); color: var(--brown); }
+  .tag.hi { background: rgba(107,58,31,.06); border-color: rgba(107,58,31,.22); color: var(--brown); }
+  .tag.blu { background: rgba(30,61,92,.05); border-color: rgba(30,61,92,.18); color: var(--blue-l); }
+
+  /* PULL QUOTE */
+  .pull { background: var(--warm); border-left: 4px solid var(--ink); padding: 18px 26px; margin: 16px 0; }
+  .pull p { font-family: 'Libre Baskerville', Georgia, serif; font-size: 1.04rem; font-style: italic; color: var(--ink); margin: 0 0 8px; }
+  .pull cite { font-family: 'Source Sans 3', sans-serif; font-size: .68rem; color: var(--stone); letter-spacing: .12em; text-transform: uppercase; font-style: normal; font-weight: 600; }
+
+  /* POSITION GRID */
+  .pos-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
+  .pos-card { background: var(--cream); border: 1px solid var(--rule); border-top: 2px solid var(--blue); padding: 14px 16px; }
+  .pos-card .topic { font-family: 'Source Sans 3', sans-serif; font-size: .7rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; color: var(--blue); margin-bottom: 6px; }
+  .pos-card p { font-size: .87rem; margin: 0; }
+
+  /* MEDIA */
+  .media-stack { display: flex; flex-direction: column; gap: 8px; }
+  .media-row { display: flex; gap: 12px; align-items: flex-start; padding: 10px 14px; background: var(--cream); border: 1px solid var(--rule); }
+  .media-lbl { font-family: 'Source Sans 3', sans-serif; font-size: .68rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--brown); min-width: 80px; flex-shrink: 0; padding-top: 1px; }
+  .media-c { color: var(--muted); font-size: .9rem; }
+
+  /* CONTRAST */
+  .contrast { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 8px; }
+  .contrast-side { background: var(--cream); border: 1px solid var(--rule); padding: 18px 20px; }
+  .contrast-side h4 { font-family: 'Libre Baskerville', Georgia, serif; font-size: .82rem; font-weight: 700; margin-bottom: 12px; padding-bottom: 6px; border-bottom: 1px solid var(--rule); }
+  .contrast-side.pos h4 { color: var(--blue); }
+  .contrast-side.neg h4 { color: var(--brown); }
+  .contrast-side ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+  .contrast-side ul li { font-size: .9rem; color: var(--muted); padding-left: 16px; position: relative; }
+  .contrast-side.pos ul li::before { content: '+'; position: absolute; left: 0; color: var(--blue); font-weight: 700; }
+  .contrast-side.neg ul li::before { content: '–'; position: absolute; left: 0; color: var(--brown); font-weight: 700; }
+  @media (max-width: 640px) { .contrast { grid-template-columns: 1fr; } }
+
+  /* FRUST */
+  .frust-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
+  @media (max-width: 640px) { .frust-list { grid-template-columns: 1fr; } }
+  .frust-list li { background: var(--cream); border: 1px solid var(--rule); border-left: 3px solid var(--brown-l); padding: 10px 14px; font-size: .9rem; color: var(--muted); }
+
+  /* CAMPAIGN TABLE */
+  .c-table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+  .c-table thead { background: var(--ink); }
+  .c-table th { font-family: 'Source Sans 3', sans-serif; font-size: .7rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--warm); text-align: left; padding: 10px 16px; }
+  .c-table td { padding: 11px 16px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  .c-table tr:nth-child(even) td { background: var(--warm); }
+  .c-table td:first-child { font-family: 'Source Sans 3', sans-serif; font-size: .72rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--brown); white-space: nowrap; width: 130px; }
+
+  /* FOOTER */
+  footer { background: var(--ink); color: var(--stone); text-align: center; padding: 24px 40px; font-family: 'Libre Baskerville', Georgia, serif; font-size: .75rem; font-style: italic; line-height: 2; }
+  footer span { color: var(--warm); font-style: normal; letter-spacing: .06em; }
+
+  /* ANIM */
+  @keyframes appear { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+  main > section { animation: appear .45s ease both; }
+  main > section:nth-child(1) { animation-delay: .04s; }
+  main > section:nth-child(2) { animation-delay: .09s; }
+  main > section:nth-child(3) { animation-delay: .14s; }
+  main > section:nth-child(4) { animation-delay: .19s; }
+  main > section:nth-child(5) { animation-delay: .24s; }
+  main > section:nth-child(6) { animation-delay: .29s; }
+  main > section:nth-child(7) { animation-delay: .34s; }
+  main > section:nth-child(8) { animation-delay: .39s; }
+
+  @media (max-width: 720px) {
+    .masthead { padding: 12px 20px; flex-wrap: wrap; gap: 6px; }
+    .header-inner { grid-template-columns: 1fr; padding: 36px 20px; }
+    .motto-rule { padding: 14px 20px; }
+    main { padding: 40px 20px 80px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <span class="masthead-label">Sinus-Milieus® 2021 · Persona</span>
+  <span class="masthead-milieu">Nostalgisch-Bürgerliches Milieu</span>
+  <span class="masthead-pct">11 % · Traditioneller Mainstream</span>
+</div>
+
+<header>
+  <div class="header-inner">
+    <div>
+      <div class="kicker">Persona-Profil · Weiblich · Ruhrgebiet</div>
+      <h1>Monika Brandt</h1>
+      <div class="h1-sub">„Die stille Bewahrerin" — Herne-Wanne-Eickel, 55 J.</div>
+    </div>
+    <div class="steck">
+      <div class="steck-head">Steckbrief</div>
+      <div class="steck-body">
+        <div class="si"><span class="k">Alter</span><span class="v">55 Jahre</span></div>
+        <div class="si"><span class="k">Wohnort</span><span class="v">Herne-Wanne-Eickel (Mietwohnung)</span></div>
+        <div class="si"><span class="k">Beruf</span><span class="v">Verkäuferin Drogerie, Teilzeit (30 Std.)</span></div>
+        <div class="si"><span class="k">Einkommen</span><span class="v">ca. 1.550 € + Witwenrente</span></div>
+        <div class="si"><span class="k">Familie</span><span class="v">Verwitwet (6 J.), 1 Sohn (Dortmund)</span></div>
+        <div class="si"><span class="k">Bildung</span><span class="v">Ausbildung Einzelhandelskauffrau</span></div>
+        <div class="si"><span class="k">Wohnen</span><span class="v">3-Zi.-Mietwohnung, 74 m², Balkon</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="motto-rule">„Man muss das Beste draus machen – aber manchmal ist das schwer."</div>
+
+<main>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">I.</span><span class="sec-title">Persönlichkeit & Werte</span></div>
+    <p>Monika ist eine Frau, die vieles still trägt. Den Tod ihres Mannes. Die Einsamkeit seitdem. Die Angst, dass die Rente nicht reicht. Die Veränderungen in ihrer Straße. Sie klagt selten – das wäre ihr zu viel. Aber sie zieht sich zurück. Immer mehr.</p>
+    <p>Was sie zusammenhält: Routine, Nachbarschaft, ihre Kirchengemeinde, ihr Sohn der anruft, ihr Balkon mit den Geranien. Das sind keine kleinen Dinge für sie. Das ist alles.</p>
+    <ul class="val-list">
+      <li><strong>Sicherheit & Kontinuität</strong><span>Veränderung bedeutet für sie Risiko, nicht Chance.</span></li>
+      <li><strong>Anstand & Respekt</strong><span>Im Umgang miteinander. Im öffentlichen Raum. Auf Ämtern.</span></li>
+      <li><strong>Familie & Gemeinschaft</strong><span>Bindungen, die halten. Nachbarschaft als gelebter Zusammenhalt.</span></li>
+      <li><strong>Bescheidenheit</strong><span>Man lebt von dem, was man hat. Man zeigt nicht, was man nicht hat.</span></li>
+      <li><strong>Glaube & Ritual</strong><span>Nicht dogmatisch, aber als Halt und Gemeinschaft unverzichtbar.</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">II.</span><span class="sec-title">Lebenswelt & Alltag</span></div>
+    <div class="two-col">
+      <div class="card">
+        <h3>Wohnen</h3>
+        <p>Viele Fotos (Mann, Sohn, Enkelnichten), Schrankwand aus den 1990ern, Zimmerpflanzen, Häkeldeckchen. Der Balkon ist ihr Stolz – jedes Jahr andere Blumen. Sie hat keine Ambitionen zu modernisieren. Die Wohnung ist vertraut, und das zählt.</p>
+      </div>
+      <div class="card">
+        <h3>Mobilität</h3>
+        <p>Kein Auto mehr seit dem Tod des Mannes. Bus und Bahn – sie kennt die Taktlücken genau. Für den Arzt gelegentlich ein Taxi. Für den Sohn nach Dortmund: Zug. Das Fahrrad im Sommer für kurze Wege.</p>
+      </div>
+      <div class="card">
+        <h3>Ernährung</h3>
+        <p>Täglich kochen, auch für sich allein – das ist ihr Ritual und ihr Trost. Deutsch, traditionell, saisonal aus Gewohnheit. Aldi und der türkische Gemüsehändler um die Ecke: <em>„Gute Qualität, netter Kerl."</em></p>
+      </div>
+      <div class="card">
+        <h3>Freizeit</h3>
+        <div class="tags">
+          <span class="tag hi">Kirchenchor (donnerstags)</span>
+          <span class="tag hi">Stricken & Häkeln</span>
+          <span class="tag blu">Nachmittagsspaziergänge</span>
+          <span class="tag hi">TV am Abend</span>
+          <span class="tag">Balkon-Gartenarbeit</span>
+          <span class="tag">Kaffee & Kuchen mit Bekannten</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">III.</span><span class="sec-title">Weltanschauung & Politik</span></div>
+    <p>Monika hat immer gewählt – das ist Bürgerpflicht. Früher CDU, zuletzt unsicher. Alles wirkt weit weg, kompliziert, unehrlich. Sie spricht über Politik selten – wenn sie es tut, klingt es nach Erschöpfung, nicht nach Zorn.</p>
+    <div class="pull">
+      <p>„Ich versteh die Parteien nicht mehr so gut wie früher. Und ich weiß nicht mehr, wen ich wählen soll."</p>
+      <cite>Monika über politische Orientierung</cite>
+    </div>
+    <div class="pos-grid">
+      <div class="pos-card"><div class="topic">Sicherheit</div><p>Ihr wichtigstes Thema. Sie fühlt sich im öffentlichen Raum unwohler als früher. Das ist nicht nur Einbildung, findet sie.</p></div>
+      <div class="pos-card"><div class="topic">Rente</div><p>Existenzangst. Sie rechnet regelmäßig nach, ob sie über die Runden kommt.</p></div>
+      <div class="pos-card"><div class="topic">Migration</div><p>Ambivalent. Der Gemüsehändler ist nett – aber „es ist zu viel auf einmal geworden."</p></div>
+      <div class="pos-card"><div class="topic">Soziales</div><p>Der Sozialstaat fühlt sich ungerecht verteilt an – sie zahlt, hat aber keine Stimme.</p></div>
+      <div class="pos-card"><div class="topic">Digitalisierung</div><p>Überfordert. Online-Banking ist ihr unangenehm. Behörden-Apps: keine Chance.</p></div>
+      <div class="pos-card"><div class="topic">Feminismus</div><p>Das Wort benutzt sie nicht. Aber sie weiß, was sie geleistet hat – und vermisst die Anerkennung dafür.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">IV.</span><span class="sec-title">Konsumgewohnheiten</span></div>
+    <p>Monika gibt wenig aus. Jede Ausgabe wird abgewogen. Kleine Freuden sind ihr trotzdem wichtig: die Blumen für den Balkon, die gute Pralinenschachtel zu Weihnachten, ein Buch für den Sohn.</p>
+    <div class="two-col">
+      <div>
+        <div class="card" style="margin-bottom:10px">
+          <h3>Einkaufsverhalten</h3>
+          <div class="tags">
+            <span class="tag hi">Aldi (täglich)</span>
+            <span class="tag blu">Türkischer Gemüsehändler</span>
+            <span class="tag hi">Bäcker samstags</span>
+            <span class="tag">C&A / Karstadt-Sale</span>
+            <span class="tag hi">Reparieren statt wegwerfen</span>
+            <span class="tag">Kein Online-Shopping</span>
+            <span class="tag">Prospekte liest sie wirklich</span>
+          </div>
+        </div>
+        <div class="pull" style="margin:0">
+          <p>„Wenn's noch gut ist, schmeiß ich's nicht weg. Das haben mir meine Eltern beigebracht."</p>
+          <cite>Monika über Konsumhaltung</cite>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Nachhaltigkeits-Praxis</h3>
+        <p>Sie lebt seit Jahrzehnten nachhaltig – ohne das Wort je zu benutzen. Reste verwerten, nichts wegwerfen, sparsam heizen.</p>
+        <p style="margin-top:12px; color:var(--brown); font-size:.88rem">Wenn ihr jemand erzählt, sie solle nachhaltiger leben: <em>„Was glauben die, wie ich seit 30 Jahren lebe?"</em></p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">V.</span><span class="sec-title">Medien & Kommunikation</span></div>
+    <div class="two-col">
+      <div class="media-stack">
+        <div class="media-row"><div class="media-lbl">TV</div><div class="media-c">ARD/ZDF ganztägig im Hintergrund, Dauerserien (Rote Rosen, In aller Freundschaft), Tatort sonntags</div></div>
+        <div class="media-row"><div class="media-lbl">Print</div><div class="media-c">WAZ (Wochenende, Print), Fernsehzeitschrift – wöchentlich, wird gründlich gelesen</div></div>
+        <div class="media-row"><div class="media-lbl">Radio</div><div class="media-c">WDR 4 tagsüber – Schlager, leichte Musik, Nachrichten</div></div>
+        <div class="media-row"><div class="media-lbl">Online</div><div class="media-c">Kaum. E-Mail über den Sohn eingerichtet. Kein Smartphone im eigentlichen Sinne.</div></div>
+        <div class="media-row"><div class="media-lbl">Werbung</div><div class="media-c">Aldi-, Lidl-, Rossmann-Prospekte: nimmt sie mit und liest sie wirklich</div></div>
+      </div>
+      <div class="card">
+        <h3>Kommunikationsstil</h3>
+        <p>Telefoniert lieber als alles andere – am liebsten lang. Schreibt Briefe für wichtige Anlässe. WhatsApp nur mit dem Sohn: kurze Texte und Bilder vom Balkon.</p>
+        <p style="margin-top:12px">Vertraut dem gesprochenen Wort und der persönlichen Begegnung über alles andere.</p>
+        <p style="margin-top:12px; color:var(--brown); font-size:.88rem">Sagt bei Themen, die sie unsicher machen, lieber nichts – aus Angst, etwas Falsches zu sagen.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">VI.</span><span class="sec-title">Bezug zum Ruhrgebiet</span></div>
+    <p>Monika ist in Wanne-Eickel geboren und hat die Stadt nie verlassen wollen. Hier ist alles, was ihr vertraut ist: die Straßen, die Läden, das Krankenhaus, das Grab ihres Mannes.</p>
+    <div class="pull">
+      <p>„Den Strukturwandel hab ich nie als Aufbruch erlebt. Immer nur als Verlust."</p>
+      <cite>Monika über das Ruhrgebiet</cite>
+    </div>
+    <div class="contrast">
+      <div class="contrast-side pos">
+        <h4>Was sie hält</h4>
+        <ul>
+          <li>Vertrautheit jeder Straße, jedes Gesichts</li>
+          <li>Kurze Wege, keine anonyme Großstadtatmo</li>
+          <li>Netz aus Familie und alten Bekannten</li>
+          <li>Das Grab ihres Mannes ist hier</li>
+        </ul>
+      </div>
+      <div class="contrast-side neg">
+        <h4>Was sie vermisst / kritisiert</h4>
+        <ul>
+          <li>Verlässlicher ÖPNV – für sie lebensnotwendig</li>
+          <li>Arzt um die Ecke (immer schwerer)</li>
+          <li>Veränderungen in ihrer Straße</li>
+          <li>Sicherheitsgefühl im öffentlichen Raum</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">VII.</span><span class="sec-title">Frustrationen & Reibungspunkte</span></div>
+    <ul class="frust-list">
+      <li>Einsamkeit nach dem Tod des Mannes, die nie ganz nachlässt</li>
+      <li>Existenzielle Angst: reicht die Rente?</li>
+      <li>Unsicherheitsgefühl im öffentlichen Raum</li>
+      <li>Digitalisierung schließt sie aus – Ämter, Arzt, Behörden</li>
+      <li>Eine Sprache in Medien und Politik, die sie nicht mehr versteht</li>
+      <li>Ihr Leben und ihre Leistung fühlen sich gesellschaftlich nicht wertgeschätzt</li>
+      <li>Veränderungen im Viertel, die sie überfordern</li>
+      <li>Das Gefühl, immer weniger zu verstehen, was um sie herum passiert</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">VIII.</span><span class="sec-title">Kampagnen-Empfehlungen</span></div>
+    <table class="c-table">
+      <thead><tr><th>Aspekt</th><th>Empfehlung</th></tr></thead>
+      <tbody>
+        <tr><td>TON</td><td>Warm, einfach, respektvoll – wie ein Gespräch mit einem vertrauten Menschen, nicht wie eine Kampagne</td></tr>
+        <tr><td>ARGUMENTE</td><td>Sicherheit, Verlässlichkeit, Gemeinschaft, Würde des Alltags, Anerkennung von Lebensleistung</td></tr>
+        <tr><td>KANÄLE</td><td>ARD/ZDF, WDR 4, WAZ Print, Fernsehzeitschrift, Prospektbeilagen, Kirchengemeinde</td></tr>
+        <tr><td>VERMEIDEN</td><td>Digitale Kanäle als Hauptweg, Fachsprache, abstrakte Werte, schnelle Schnitte, Jugendsprache</td></tr>
+        <tr><td>MOBILISIERUNG</td><td>Persönliche Ansprache an vertrauten Orten – Kirche, Gemeinschaftszentrum, Wochenmarkt</td></tr>
+        <tr><td>BOTSCHAFT</td><td>„Wir vergessen nicht, wer das hier aufgebaut hat."</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+</main>
+
+<footer>
+  <span>Nostalgisch-Bürgerliches Milieu · Sinus 2021</span> · Ruhrgebiet · Weibliche Persona<br>
+  Kampagnenplanung & Zielgruppenanalyse · Auf Basis Sinus-Milieuforschung
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Persona – Dr. Sabine Aldenhoff-Kremer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --stone-deep:   #1e1c1a;
+    --stone:        #3a3530;
+    --stone-mid:    #6b6358;
+    --stone-light:  #a09488;
+    --linen:        #f4f0ea;
+    --linen-warm:   #ede7dd;
+    --linen-mid:    #ddd5c8;
+    --linen-cool:   #e8e4de;
+    --sage:         #4a5e52;
+    --sage-light:   #6e8c7a;
+    --sage-pale:    #c8d8ce;
+    --terracotta:   #8c5a48;
+    --terra-light:  #b07a66;
+    --terra-pale:   #e8d0c8;
+    --rule:         #ccc5b8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--linen);
+    color: var(--stone-deep);
+    font-family: 'Jost', sans-serif;
+    font-size: 15px;
+    line-height: 1.75;
+    font-weight: 300;
+  }
+
+  /* ── Masthead ── */
+  .masthead {
+    background: var(--linen-warm);
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+    overflow: hidden;
+  }
+  .masthead::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 420px; height: 100%;
+    background: linear-gradient(135deg, transparent 40%, rgba(74,94,82,0.08) 100%);
+    pointer-events: none;
+  }
+  .masthead::after {
+    content: 'S';
+    position: absolute;
+    right: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 320px;
+    font-weight: 300;
+    font-style: italic;
+    color: rgba(74,94,82,0.07);
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+  }
+  .masthead-inner {
+    position: relative;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 56px 56px 48px;
+    display: grid;
+    grid-template-columns: 1fr 240px;
+    gap: 48px;
+    align-items: end;
+  }
+  .milieu-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+  .milieu-tag-line {
+    width: 32px;
+    height: 1px;
+    background: var(--sage);
+  }
+  .milieu-tag-text {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--sage);
+  }
+  .masthead h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--stone-deep);
+    letter-spacing: -0.01em;
+  }
+  .masthead h1 strong {
+    font-weight: 600;
+    color: var(--sage);
+  }
+  .masthead-meta {
+    margin-top: 14px;
+    font-size: 13px;
+    color: var(--stone-mid);
+    letter-spacing: 0.04em;
+  }
+  .masthead-meta span {
+    display: inline-block;
+    margin-right: 20px;
+  }
+  .masthead-meta span::before {
+    content: '· ';
+    color: var(--sage-light);
+    margin-right: 4px;
+  }
+  .masthead-card {
+    background: var(--sage);
+    color: var(--linen);
+    padding: 24px 22px;
+    font-size: 12px;
+    line-height: 2;
+  }
+  .masthead-card-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 4px;
+    margin-bottom: 4px;
+  }
+  .masthead-card-row:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+  .masthead-card-label {
+    color: var(--sage-pale);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+  }
+  .masthead-card-val {
+    text-align: right;
+    color: rgba(244,240,234,0.9);
+  }
+
+  /* ── Layout ── */
+  .page {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 56px 80px;
+  }
+
+  /* ── Intro ── */
+  .intro {
+    margin: 52px 0;
+    display: grid;
+    grid-template-columns: 3px 1fr;
+    gap: 28px;
+    align-items: start;
+  }
+  .intro-bar {
+    background: linear-gradient(180deg, var(--sage) 0%, var(--terracotta) 100%);
+    height: 100%;
+    min-height: 80px;
+  }
+  .intro-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--stone);
+    line-height: 1.6;
+  }
+
+  /* ── Sections ── */
+  .section {
+    margin-bottom: 56px;
+  }
+  .section-head {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    align-items: baseline;
+    gap: 0;
+    margin-bottom: 26px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .section-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    font-style: italic;
+    color: var(--sage-light);
+    letter-spacing: 0.05em;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--stone-deep);
+    letter-spacing: 0.02em;
+  }
+
+  /* ── Steckbrief ── */
+  .profile-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  .profile-table tr {
+    border-bottom: 1px solid var(--linen-mid);
+  }
+  .profile-table tr:last-child { border-bottom: none; }
+  .profile-table td {
+    padding: 13px 16px;
+    vertical-align: top;
+  }
+  .profile-table td:first-child {
+    font-weight: 500;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--sage);
+    width: 200px;
+    padding-right: 24px;
+    white-space: nowrap;
+  }
+  .profile-table td:last-child {
+    color: var(--stone);
+    line-height: 1.6;
+  }
+  .profile-table tr:nth-child(odd) td { background: var(--linen-warm); }
+  .profile-table tr:nth-child(even) td { background: var(--linen); }
+
+  /* ── Body Text ── */
+  .body p {
+    color: var(--stone);
+    margin-bottom: 14px;
+    font-size: 15px;
+    line-height: 1.8;
+  }
+  .body p:last-child { margin-bottom: 0; }
+
+  /* ── Tag Cloud ── */
+  .tag-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 18px;
+  }
+  .tag {
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    padding: 5px 14px;
+    border: 1px solid var(--rule);
+    color: var(--stone-mid);
+    background: var(--linen);
+  }
+  .tag.sage {
+    background: var(--sage);
+    border-color: var(--sage);
+    color: var(--linen);
+    font-weight: 500;
+  }
+  .tag.terra {
+    background: var(--terracotta);
+    border-color: var(--terracotta);
+    color: var(--linen);
+  }
+
+  /* ── Konsum Cards ── */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin-top: 4px;
+  }
+  .card {
+    background: var(--linen-warm);
+    padding: 22px 20px;
+  }
+  .card-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .card-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--sage-pale);
+  }
+  .card ul {
+    list-style: none;
+    font-size: 13.5px;
+    color: var(--stone);
+    line-height: 2;
+  }
+  .card li {
+    display: flex;
+    gap: 8px;
+    align-items: baseline;
+  }
+  .card li::before {
+    content: '›';
+    color: var(--terracotta);
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+
+  /* ── Medien Tabelle ── */
+  .media-wrap {
+    border: 1px solid var(--rule);
+    overflow: hidden;
+  }
+  .media-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+  }
+  .media-table thead {
+    background: var(--stone-deep);
+    color: var(--linen);
+  }
+  .media-table thead th {
+    padding: 13px 20px;
+    text-align: left;
+    font-family: 'Jost', sans-serif;
+    font-weight: 400;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+  .media-table tbody tr:nth-child(odd) { background: var(--linen-warm); }
+  .media-table tbody tr:nth-child(even) { background: var(--linen-cool); }
+  .media-table td {
+    padding: 11px 20px;
+    border-bottom: 1px solid var(--linen-mid);
+    color: var(--stone);
+    vertical-align: middle;
+  }
+  .media-table td:first-child {
+    font-weight: 500;
+    color: var(--stone-deep);
+    width: 220px;
+  }
+  .media-table td:nth-child(2) {
+    color: var(--sage);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    width: 140px;
+  }
+
+  /* ── Psycho Profil ── */
+  .psycho-list {
+    display: grid;
+    gap: 18px;
+  }
+  .psycho-item {
+    display: grid;
+    grid-template-columns: 220px 1fr 100px;
+    align-items: center;
+    gap: 20px;
+  }
+  .psycho-name {
+    font-size: 13px;
+    color: var(--stone);
+    font-weight: 400;
+  }
+  .bar-track {
+    height: 3px;
+    background: var(--linen-mid);
+    position: relative;
+  }
+  .bar-fill {
+    height: 100%;
+    position: absolute;
+    top: 0; left: 0;
+  }
+  .bar-fill.sage { background: var(--sage); }
+  .bar-fill.terra { background: var(--terracotta); }
+  .psycho-tag {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    color: var(--stone-mid);
+    text-align: right;
+  }
+
+  /* ── Kampagnen Box ── */
+  .kampagnen {
+    background: var(--linen-warm);
+    border: 1px solid var(--rule);
+    overflow: hidden;
+    margin-top: 4px;
+  }
+  .kampagnen-header {
+    background: var(--terracotta);
+    color: var(--linen);
+    padding: 18px 28px;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+  }
+  .kampagnen-body {
+    padding: 32px 28px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px 40px;
+  }
+  .k-item {}
+  .k-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .k-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--terra-pale);
+  }
+  .k-text {
+    font-size: 14px;
+    color: var(--stone);
+    line-height: 1.75;
+  }
+  .slogan-band {
+    grid-column: 1 / -1;
+    background: var(--stone-deep);
+    margin: 8px -28px -32px;
+    padding: 24px 28px;
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--linen-warm);
+    letter-spacing: 0.04em;
+  }
+  .slogan-band em {
+    color: var(--terra-light);
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  /* ── Footer ── */
+  .page-footer {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 24px 56px 48px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 10.5px;
+    color: var(--stone-light);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-top: 1px solid var(--rule);
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 700px) {
+    .masthead-inner { grid-template-columns: 1fr; padding: 36px 24px; }
+    .masthead-card { display: none; }
+    .page { padding: 0 24px 60px; }
+    .card-grid { grid-template-columns: 1fr; }
+    .psycho-item { grid-template-columns: 160px 1fr 80px; }
+    .kampagnen-body { grid-template-columns: 1fr; }
+    .page-footer { flex-direction: column; gap: 6px; }
+    .profile-table td:first-child { width: 130px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <div>
+      <div class="milieu-tag">
+        <span class="milieu-tag-line"></span>
+        <span class="milieu-tag-text">Konservativ-Gehobenes Milieu · Ruhrgebiet · Weibliche Persona</span>
+      </div>
+      <h1>Dr. Sabine<br><strong>Aldenhoff-Kremer</strong></h1>
+      <div class="masthead-meta">
+        <span>54 Jahre</span>
+        <span>Fachärztin &amp; Unternehmerin</span>
+        <span>Mülheim an der Ruhr</span>
+      </div>
+    </div>
+    <div class="masthead-card">
+      <div class="masthead-card-row">
+        <span class="masthead-card-label">Milieu</span>
+        <span class="masthead-card-val">Konservativ-Gehoben</span>
+      </div>
+      <div class="masthead-card-row">
+        <span class="masthead-card-label">Beruf</span>
+        <span class="masthead-card-val">Internistin + AR-Mitglied</span>
+      </div>
+      <div class="masthead-card-row">
+        <span class="masthead-card-label">Bildung</span>
+        <span class="masthead-card-val">Dr. med. + Gesundheitsök.</span>
+      </div>
+      <div class="masthead-card-row">
+        <span class="masthead-card-label">Einkommen</span>
+        <span class="masthead-card-val">160–220 T€ p.a.</span>
+      </div>
+      <div class="masthead-card-row">
+        <span class="masthead-card-label">Wohnort</span>
+        <span class="masthead-card-val">MH-Saarn, Ruhrhang</span>
+      </div>
+      <div class="masthead-card-row">
+        <span class="masthead-card-label">Familie</span>
+        <span class="masthead-card-val">Verheiratet, 2 Kinder</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="page">
+
+  <div class="intro">
+    <div class="intro-bar"></div>
+    <p class="intro-text">Sabine Aldenhoff-Kremer ist keine Frau für Schaufenster. Sie hätte nach dem Studium in München bleiben können – sie ist freiwillig zurückgekehrt. Das Ruhrgebiet ist für sie keine Kulisse, sondern eine Entscheidung. Und die trägt sie mit derselben Sorgfalt wie alles andere in ihrem Leben.</p>
+  </div>
+
+  <!-- 01 Steckbrief -->
+  <section class="section">
+    <div class="section-head">
+      <span class="section-num">01</span>
+      <h2 class="section-title">Persönlicher Steckbrief</h2>
+    </div>
+    <table class="profile-table">
+      <tr><td>Name</td><td>Dr. Sabine Aldenhoff-Kremer</td></tr>
+      <tr><td>Alter</td><td>54 Jahre</td></tr>
+      <tr><td>Beruf</td><td>Fachärztin für Innere Medizin, niedergelassene Praxis Mülheim a.d.R.; Aufsichtsratsmitglied Klinikverbund</td></tr>
+      <tr><td>Familienstand</td><td>Verheiratet (26 Jahre) mit Steuerberater; Tochter (24, Medizin Heidelberg), Sohn (21, BWL Münster)</td></tr>
+      <tr><td>Bildung</td><td>Medizinstudium Düsseldorf, Promotion summa cum laude, Fachärztin, Zusatzausbildung Gesundheitsökonomie</td></tr>
+      <tr><td>Wohnort</td><td>Mülheim-Saarn, denkmalgeschütztes EFH (Bj. 1928, restauriert), ~310 m², Landschaftsgarten am Ruhrhang</td></tr>
+      <tr><td>Einkommen</td><td>ca. 160.000–220.000 € brutto/Jahr (Praxis + Aufsichtsratsvergütung)</td></tr>
+      <tr><td>Fahrzeuge</td><td>Volvo XC60 Plug-in-Hybrid (privat) · BMW 5er (Ehemann)</td></tr>
+    </table>
+  </section>
+
+  <!-- 02 Lebenswelt -->
+  <section class="section">
+    <div class="section-head">
+      <span class="section-num">02</span>
+      <h2 class="section-title">Lebenswelt &amp; Alltagsrealität</h2>
+    </div>
+    <div class="body">
+      <p>Sabine lebt in Mülheim-Saarn, einem der ruhigsten und grünsten Stadtteile im Ruhrgebiet. Das denkmalgeschützte Haus aus den 1920er-Jahren, das sie und ihr Mann aufwendig restauriert haben, ist zugleich Lebensprojekt und Selbstaussage: Substanz, die hält.</p>
+      <p>Ihr Alltag ist klar gegliedert: Praxis von 8 bis 14 Uhr, Nachmittage für Verwaltung, Aufsichtsratsarbeit oder Fortbildung. Sie hat eine Haushaltshilfe – nicht als Luxus, sondern als pragmatische Entscheidung. Ressourcen werden dort eingesetzt, wo sie am meisten wirken.</p>
+      <p>Sie ist in ihrem Umfeld eine anerkannte Autorität – nicht wegen ihres Titels, sondern wegen ihrer Klarheit. Sie spricht wenig, aber wenn, dann präzise. Kein Small Talk, aber tiefe, jahrelange Freundschaften. Yoga zweimal pro Woche, Fahrrad an der Ruhr am Wochenende.</p>
+    </div>
+  </section>
+
+  <!-- 03 Werte -->
+  <section class="section">
+    <div class="section-head">
+      <span class="section-num">03</span>
+      <h2 class="section-title">Weltanschauung &amp; Werte</h2>
+    </div>
+    <div class="body">
+      <p>Leistung ist für Sabine Selbstverständlichkeit, keine Selbstdarstellung. Erfolg ist das Ergebnis von Disziplin und Kompetenz – keine Frage des Geschlechts oder der Netzwerke. Konservativ mit Augenmaß: Veränderungen müssen sich bewähren.</p>
+      <p>Ihren Feminismus definiert sie über Selbstständigkeit und gleiche Maßstäbe – nicht über Quoten oder Identitätspolitik. Jüngere Gender-Diskurse empfindet sie als kontraproduktiv. Religiös ist sie evangelisch, eher kulturell als spirituell: Kirchenmusik ist ihr Zugang zur Religion.</p>
+    </div>
+    <div class="tag-cloud">
+      <span class="tag sage">Evidenzbasiertes Denken</span>
+      <span class="tag sage">Generationenverantwortung</span>
+      <span class="tag sage">Qualitätsanspruch</span>
+      <span class="tag terra">Unabhängigkeit</span>
+      <span class="tag terra">Eigenverantwortung</span>
+      <span class="tag">Diskretion</span>
+      <span class="tag">Kontinuität</span>
+      <span class="tag">Lokale Verwurzelung</span>
+      <span class="tag">Sachlichkeit</span>
+      <span class="tag">Substanz über Schein</span>
+    </div>
+  </section>
+
+  <!-- 04 Politik -->
+  <section class="section">
+    <div class="section-head">
+      <span class="section-num">04</span>
+      <h2 class="section-title">Politische Haltung</h2>
+    </div>
+    <div class="body">
+      <p>Historisch CDU, zuletzt FDP bei der letzten Bundestagswahl wegen Wirtschafts- und Bildungskompetenz. Gesundheitspolitik ist ihr Kernthema: Sie ist zunehmend frustriert von bürokratischen Eingriffen in das Arzt-Patienten-Verhältnis und von der strukturellen Unterfinanzierung niedergelassener Medizin.</p>
+      <p>Kein Populismus, keine AfD – sie hält das für intellektuell unredlich. Sitzt im Beirat der lokalen CDU, nimmt aber kaum an Parteiveranstaltungen teil. Klimapolitik: Ja zur CO₂-Bepreisung, Nein zu Verboten. Technik löst Probleme – Verbote verschieben sie nur.</p>
+    </div>
+  </section>
+
+  <!-- 05 Konsum -->
+  <section class="section">
+    <div class="section-head">
+      <span class="section-num">05</span>
+      <h2 class="section-title">Konsumgewohnheiten</h2>
+    </div>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-label">Automobil</div>
+        <ul>
+          <li>Volvo XC60 Plug-in-Hybrid</li>
+          <li>Sicherheit &amp; Ergonomie vor Status</li>
+          <li>Pragmatische Hybrid-Wahl</li>
+          <li>Kein Lifestyle-Statement</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-label">Mode &amp; Stil</div>
+        <ul>
+          <li>Riani, Strenesse, MaxMara</li>
+          <li>Dezenter Schmuck, Gold, klassisch</li>
+          <li>Breuninger Düsseldorf</li>
+          <li>La Mer, Sisley Kosmetik</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-label">Ernährung</div>
+        <ul>
+          <li>Mediterran, wenig Fleisch</li>
+          <li>Kein Alkohol unter der Woche</li>
+          <li>Résidence Kettwig (Michelin)</li>
+          <li>Weißburgunder, Chablis, Barolo</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-label">Reisen</div>
+        <ul>
+          <li>Sommer: Ferienhaus Ardèche (12 J.)</li>
+          <li>Winter: Wien / Florenz / Leogang</li>
+          <li>Eigenorganisation, kein Reisebüro</li>
+          <li>Keine Kreuzfahrten, keine Pakete</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-label">Kultur &amp; Freizeit</div>
+        <ul>
+          <li>Abo Ruhrtriennale + Duisburger Phil.</li>
+          <li>Yoga (Studio), Radfahren Ruhr</li>
+          <li>Literatur: Müller, Kermani, Mann</li>
+          <li>Arte, 3sat, ZDF Mediathek</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-label">Netzwerk</div>
+        <ul>
+          <li>Vorstand Bürgerstiftung Mülheim</li>
+          <li>Rotary Club Mülheim (8 Jahre)</li>
+          <li>Ärzte, Juristen, Unternehmer</li>
+          <li>Studienfreundinnen (Jahrestreffen)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 Medien -->
+  <section class="section">
+    <div class="section-head">
+      <span class="section-num">06</span>
+      <h2 class="section-title">Medien- &amp; Kommunikationsverhalten</h2>
+    </div>
+    <div class="media-wrap">
+      <table class="media-table">
+        <thead>
+          <tr>
+            <th>Kanal</th>
+            <th>Intensität</th>
+            <th>Beschreibung</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>FAZ (Print + Digital)</td><td>Täglich</td><td>Erste und unverzichtbare Informationsquelle, morgens</td></tr>
+          <tr><td>Deutsches Ärzteblatt</td><td>Wöchentlich</td><td>Berufliche Pflichtlektüre, fachpolitisch relevant</td></tr>
+          <tr><td>LinkedIn</td><td>Regelmäßig</td><td>Gesundheitspolitik, Netzwerkpflege, Fachbeiträge</td></tr>
+          <tr><td>E-Mail</td><td>Täglich</td><td>Primärkanal, strukturiert und stilsicher formuliert</td></tr>
+          <tr><td>Podcasts</td><td>Gelegentlich</td><td>„Lanz &amp; Precht", „Auf den Punkt" (SZ), Medizinpodcasts</td></tr>
+          <tr><td>WhatsApp</td><td>Privat täglich</td><td>Familie und enger Freundeskreis – kein Gruppen-Overload</td></tr>
+          <tr><td>Instagram</td><td>Sehr selten</td><td>Passiv: Kunstinstitutionen, keine Lifestyle-Accounts</td></tr>
+          <tr><td>Facebook / TikTok</td><td>Nicht aktiv</td><td>Keine Präsenz, keine Relevanz</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="body" style="margin-top: 18px;">
+      <p><strong>Kommunikationsstil:</strong> Direkt, präzise, ohne Weichzeichner. Sie erwartet dasselbe von ihrem Gegenüber. Übermäßige Förmlichkeit empfindet sie als Distanzierung. Schriftlich sehr stilsicher – ihre E-Mails könnten als Musterbeispiele gelten.</p>
+    </div>
+  </section>
+
+  <!-- 07 Psycho -->
+  <section class="section">
+    <div class="section-head">
+      <span class="section-num">07</span>
+      <h2 class="section-title">Psychografisches Profil</h2>
+    </div>
+    <div class="psycho-list">
+      <div class="psycho-item">
+        <span class="psycho-name">Sicherheitsbedürfnis</span>
+        <div class="bar-track"><div class="bar-fill sage" style="width:80%"></div></div>
+        <span class="psycho-tag">Hoch (aus Kontrolle)</span>
+      </div>
+      <div class="psycho-item">
+        <span class="psycho-name">Statusorientierung</span>
+        <div class="bar-track"><div class="bar-fill sage" style="width:55%"></div></div>
+        <span class="psycho-tag">Mittel – dezent</span>
+      </div>
+      <div class="psycho-item">
+        <span class="psycho-name">Offenheit für Neues</span>
+        <div class="bar-track"><div class="bar-fill sage" style="width:65%"></div></div>
+        <span class="psycho-tag">Mittel-hoch</span>
+      </div>
+      <div class="psycho-item">
+        <span class="psycho-name">Risikobereitschaft</span>
+        <div class="bar-track"><div class="bar-fill terra" style="width:45%"></div></div>
+        <span class="psycho-tag">Kalkuliert</span>
+      </div>
+      <div class="psycho-item">
+        <span class="psycho-name">Emot. Ansprechbarkeit</span>
+        <div class="bar-track"><div class="bar-fill terra" style="width:20%"></div></div>
+        <span class="psycho-tag">Gering</span>
+      </div>
+      <div class="psycho-item">
+        <span class="psycho-name">Unabhängigkeitsdenken</span>
+        <div class="bar-track"><div class="bar-fill sage" style="width:92%"></div></div>
+        <span class="psycho-tag">Sehr stark</span>
+      </div>
+      <div class="psycho-item">
+        <span class="psycho-name">Qualitätsanspruch</span>
+        <div class="bar-track"><div class="bar-fill sage" style="width:97%"></div></div>
+        <span class="psycho-tag">Kompromisslos</span>
+      </div>
+      <div class="psycho-item">
+        <span class="psycho-name">Lokalpatriotismus</span>
+        <div class="bar-track"><div class="bar-fill terra" style="width:80%"></div></div>
+        <span class="psycho-tag">Stark (bewusst)</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 08 Kampagne -->
+  <section class="section">
+    <div class="section-head">
+      <span class="section-num">08</span>
+      <h2 class="section-title">Kampagnen-Empfehlungen</h2>
+    </div>
+    <div class="kampagnen">
+      <div class="kampagnen-header">Ansprache-Strategie · Konservativ-Gehobenes Milieu · Weiblich</div>
+      <div class="kampagnen-body">
+        <div class="k-item">
+          <div class="k-label">Ton &amp; Sprache</div>
+          <div class="k-text">Sachlich, auf Augenhöhe, ohne paternalistische Belehrung. Sie erkennt sofort, wenn jemand ihr etwas verkaufen will – und reagiert ablehnend. Keine Superlative.</div>
+        </div>
+        <div class="k-item">
+          <div class="k-label">Argumentationslogik</div>
+          <div class="k-text">Evidenz, Qualität, Langfristigkeit. Fakten schlagen Gefühle. Einmal überzeugt, ist sie loyale Nutzerin und aktive Empfehlerin im Netzwerk.</div>
+        </div>
+        <div class="k-item">
+          <div class="k-label">Ideale Kanäle</div>
+          <div class="k-text">FAZ-Anzeigen, LinkedIn (fachlich), persönliche Empfehlung aus dem Netzwerk, hochwertiges Printmailing, Fach- und Netzwerkveranstaltungen.</div>
+        </div>
+        <div class="k-item">
+          <div class="k-label">Zu vermeiden</div>
+          <div class="k-text">Gendernde Sprache, Lifestyle-Inszenierung, Buzzwords wie „Empowerment" oder „transformativ", soziale Appelle ohne sachliche Fundierung.</div>
+        </div>
+        <div class="slogan-band">
+          „Weil Qualität keine Erklärung braucht –<em> nur Beständigkeit.</em>"
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="page-footer">
+  <span>Milieu-basierte Kampagnenplanung · Konservativ-Gehobenes Milieu</span>
+  <span>Weibliche Persona · Mülheim an der Ruhr · Ruhrgebiet</span>
+</footer>
+
+</body>
+</html>

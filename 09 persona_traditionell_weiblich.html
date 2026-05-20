@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Persona · Traditionelles Milieu · Edeltraud Jansen</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sepia:   #f5eee0;
+    --parch:   #ede4cf;
+    --warm:    #e8dfc8;
+    --rule:    #ccc0a4;
+    --stone:   #9c9078;
+    --ink:     #2c2418;
+    --muted:   #6c6048;
+    --mid:     #8c7c60;
+    --plum:    #5e3050;
+    --plum-l:  #7a4868;
+    --coal:    #3a2c28;
+    --white:   #fdf9f2;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--sepia);
+    color: var(--ink);
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 16px;
+    line-height: 1.8;
+    font-weight: 400;
+  }
+
+  /* TOP RULE */
+  .top-rule { background: var(--coal); padding: 10px 40px; display: flex; justify-content: space-between; align-items: center; }
+  .top-rule span { font-family: 'Source Sans 3', sans-serif; font-size: .68rem; color: var(--warm); letter-spacing: .18em; text-transform: uppercase; }
+
+  /* HEADER */
+  header { background: var(--white); border-bottom: 3px double var(--rule); padding: 52px 40px 44px; }
+  .header-inner { max-width: 1020px; margin: 0 auto; display: grid; grid-template-columns: 1fr 300px; gap: 52px; align-items: start; }
+
+  .ornament { color: var(--plum); font-size: 1.3rem; margin-bottom: 12px; letter-spacing: .2em; }
+
+  header h1 { font-family: 'EB Garamond', Georgia, serif; font-size: clamp(2.8rem, 5vw, 4.2rem); font-weight: 700; color: var(--coal); line-height: 1.0; margin-bottom: 6px; }
+  .h1-rule { border: none; border-top: 1px solid var(--rule); margin: 12px 0 10px; }
+  .tagline { font-style: italic; font-size: 1.05rem; color: var(--muted); }
+
+  /* STECKBRIEF */
+  .steck { border: 1px solid var(--rule); border-top: 3px solid var(--coal); background: var(--parch); }
+  .steck-head { background: var(--coal); padding: 7px 16px; font-family: 'Source Sans 3', sans-serif; font-size: .65rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--warm); }
+  .si { display: grid; grid-template-columns: 80px 1fr; gap: 8px; padding: 8px 14px; border-bottom: 1px solid var(--rule); font-size: .88rem; }
+  .si:last-child { border-bottom: none; }
+  .si .k { font-family: 'Source Sans 3', sans-serif; font-weight: 600; color: var(--mid); font-size: .72rem; padding-top: 2px; text-transform: uppercase; letter-spacing: .06em; }
+  .si .v { color: var(--ink); font-family: 'EB Garamond', serif; }
+
+  /* MOTTO */
+  .motto-band { background: var(--plum); color: var(--warm); padding: 16px 40px; font-family: 'EB Garamond', Georgia, serif; font-style: italic; font-size: 1.1rem; text-align: center; letter-spacing: .03em; }
+  .motto-band::before { content: '✦  '; }
+  .motto-band::after  { content: '  ✦'; }
+
+  /* MAIN */
+  main { max-width: 1020px; margin: 0 auto; padding: 56px 40px 100px; display: grid; gap: 52px; }
+
+  .sec-head { display: flex; align-items: baseline; gap: 16px; margin-bottom: 22px; padding-bottom: 6px; border-bottom: 2px solid var(--coal); }
+  .sec-num { font-family: 'Source Sans 3', sans-serif; font-size: .68rem; color: var(--plum); letter-spacing: .14em; text-transform: uppercase; }
+  .sec-title { font-family: 'EB Garamond', Georgia, serif; font-size: 1.5rem; font-weight: 700; color: var(--coal); }
+
+  p { color: var(--muted); font-size: .97rem; margin-bottom: 13px; font-family: 'EB Garamond', serif; }
+  p:last-child { margin-bottom: 0; }
+  em { font-style: italic; color: var(--plum); }
+
+  /* VALUES */
+  .val-list { list-style: none; counter-reset: vv; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 10px; }
+  .val-list li { counter-increment: vv; background: var(--white); border: 1px solid var(--rule); border-left: 3px solid var(--plum); padding: 14px 18px; display: flex; gap: 14px; align-items: flex-start; }
+  .val-list li::before { content: counter(vv, upper-roman); font-family: 'EB Garamond', serif; font-size: .9rem; color: var(--plum); flex-shrink: 0; min-width: 24px; padding-top: 1px; }
+  .val-list li strong { display: block; color: var(--coal); font-weight: 500; font-size: .97rem; margin-bottom: 2px; }
+  .val-list li span { font-size: .88rem; color: var(--muted); }
+
+  /* TWO COL */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } }
+
+  .card { background: var(--white); border: 1px solid var(--rule); padding: 20px 22px; }
+  .card h3 { font-family: 'Source Sans 3', sans-serif; font-size: .7rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--plum); margin-bottom: 10px; padding-bottom: 6px; border-bottom: 1px solid var(--rule); }
+
+  /* TAGS */
+  .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 6px; }
+  .tag { background: transparent; border: 1px solid var(--rule); color: var(--mid); font-family: 'Source Sans 3', sans-serif; font-size: .72rem; padding: 3px 10px; letter-spacing: .04em; transition: all .15s; cursor: default; }
+  .tag:hover { border-color: var(--plum); color: var(--plum); }
+  .tag.hi { background: rgba(94,48,80,.06); border-color: rgba(94,48,80,.2); color: var(--plum); }
+  .tag.co { background: rgba(58,44,40,.06); border-color: rgba(58,44,40,.2); color: var(--coal); }
+
+  /* PULL */
+  .pull { background: var(--parch); border-left: 4px solid var(--plum); padding: 18px 26px; margin: 14px 0; }
+  .pull p { font-size: 1.08rem; font-style: italic; color: var(--coal); margin: 0 0 8px; }
+  .pull cite { font-family: 'Source Sans 3', sans-serif; font-size: .65rem; color: var(--stone); letter-spacing: .14em; text-transform: uppercase; font-style: normal; font-weight: 600; }
+
+  /* POS GRID */
+  .pos-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
+  .pos-card { background: var(--white); border: 1px solid var(--rule); border-top: 2px solid var(--coal); padding: 14px 16px; }
+  .pos-card .topic { font-family: 'Source Sans 3', sans-serif; font-size: .68rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--coal); margin-bottom: 6px; }
+  .pos-card p { font-size: .88rem; margin: 0; }
+
+  /* MEDIA */
+  .media-stack { display: flex; flex-direction: column; gap: 8px; }
+  .media-row { display: flex; gap: 12px; align-items: flex-start; padding: 10px 14px; background: var(--white); border: 1px solid var(--rule); }
+  .media-lbl { font-family: 'Source Sans 3', sans-serif; font-size: .65rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--plum); min-width: 80px; flex-shrink: 0; padding-top: 2px; }
+  .media-c { color: var(--muted); font-size: .9rem; font-family: 'EB Garamond', serif; }
+
+  /* CONTRAST */
+  .contrast { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .contrast-side { background: var(--white); border: 1px solid var(--rule); padding: 18px 20px; }
+  .contrast-side h4 { font-family: 'Source Sans 3', sans-serif; font-size: .7rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 12px; padding-bottom: 6px; border-bottom: 1px solid var(--rule); }
+  .contrast-side.pos h4 { color: var(--coal); }
+  .contrast-side.neg h4 { color: var(--plum-l); }
+  .contrast-side ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+  .contrast-side ul li { font-size: .9rem; color: var(--muted); padding-left: 16px; position: relative; font-family: 'EB Garamond', serif; }
+  .contrast-side.pos ul li::before { content: '+'; position: absolute; left: 0; color: var(--coal); font-family: 'Source Sans 3'; font-weight: 600; }
+  .contrast-side.neg ul li::before { content: '–'; position: absolute; left: 0; color: var(--plum-l); font-family: 'Source Sans 3'; font-weight: 600; }
+  @media (max-width: 640px) { .contrast { grid-template-columns: 1fr; } }
+
+  /* FRUST */
+  .frust-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
+  @media (max-width: 640px) { .frust-list { grid-template-columns: 1fr; } }
+  .frust-list li { background: var(--white); border: 1px solid var(--rule); border-left: 3px solid var(--plum-l); padding: 10px 14px; font-size: .92rem; color: var(--muted); font-family: 'EB Garamond', serif; }
+
+  /* CAMPAIGN TABLE */
+  .c-table { width: 100%; border-collapse: collapse; font-size: .92rem; }
+  .c-table thead { background: var(--coal); }
+  .c-table th { font-family: 'Source Sans 3', sans-serif; font-size: .66rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--warm); text-align: left; padding: 10px 16px; }
+  .c-table td { padding: 11px 16px; border-bottom: 1px solid var(--rule); vertical-align: top; font-family: 'EB Garamond', serif; }
+  .c-table tr:nth-child(even) td { background: var(--parch); }
+  .c-table td:first-child { font-family: 'Source Sans 3', sans-serif; font-size: .68rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--plum); white-space: nowrap; width: 130px; }
+
+  /* FOOTER */
+  footer { background: var(--coal); color: var(--stone); text-align: center; padding: 24px 40px; font-family: 'EB Garamond', serif; font-size: .82rem; font-style: italic; line-height: 2; }
+  footer span { color: var(--warm); font-style: normal; font-family: 'Source Sans 3', sans-serif; font-size: .7rem; letter-spacing: .1em; }
+
+  /* ANIM */
+  @keyframes fade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+  main > section { animation: fade .5s ease both; }
+  main > section:nth-child(1) { animation-delay: .04s; }
+  main > section:nth-child(2) { animation-delay: .09s; }
+  main > section:nth-child(3) { animation-delay: .14s; }
+  main > section:nth-child(4) { animation-delay: .19s; }
+  main > section:nth-child(5) { animation-delay: .24s; }
+  main > section:nth-child(6) { animation-delay: .29s; }
+  main > section:nth-child(7) { animation-delay: .34s; }
+  main > section:nth-child(8) { animation-delay: .39s; }
+
+  @media (max-width: 720px) {
+    header { padding: 36px 20px; }
+    .header-inner { grid-template-columns: 1fr; }
+    .motto-band { padding: 14px 20px; }
+    .top-rule { flex-direction: column; gap: 4px; padding: 10px 20px; }
+    main { padding: 40px 20px 80px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="top-rule">
+  <span>Sinus-Milieus® 2021 · Persona-Profil</span>
+  <span>Traditionelles Milieu · 10 % · Traditioneller Mainstream</span>
+</div>
+
+<header>
+  <div class="header-inner">
+    <div>
+      <div class="ornament">✦ ✦ ✦</div>
+      <h1>Edeltraud Jansen</h1>
+      <hr class="h1-rule">
+      <p class="tagline">„Die stille Hüterin" — Oberhausen-Sterkrade, 71 Jahre</p>
+      <p class="tagline" style="font-style:normal; margin-top:6px; font-size:.9rem; color:var(--stone);">Ehem. Näherin & Reinigungskraft · Rentnerin · Weibliche Persona · Ruhrgebiet</p>
+    </div>
+    <div class="steck">
+      <div class="steck-head">Steckbrief</div>
+      <div class="si"><span class="k">Alter</span><span class="v">71 Jahre</span></div>
+      <div class="si"><span class="k">Wohnort</span><span class="v">Oberhausen-Sterkrade</span></div>
+      <div class="si"><span class="k">Beruf</span><span class="v">Rentnerin (ehem. Näherin / Reinigung)</span></div>
+      <div class="si"><span class="k">Einkommen</span><span class="v">ca. 1.150 € + Witwenrente</span></div>
+      <div class="si"><span class="k">Familie</span><span class="v">Verwitwet (9 J.), 3 Kinder, 7 Enkel</span></div>
+      <div class="si"><span class="k">Bildung</span><span class="v">Volksschule, keine formale Ausbildung</span></div>
+      <div class="si"><span class="k">Wohnen</span><span class="v">Mietwohnung 68 m², Erdgeschoss</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="motto-band">„Zusammenhalten – das war immer das Wichtigste."</div>
+
+<main>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">I.</span><span class="sec-title">Persönlichkeit & Werte</span></div>
+    <p>Edeltraud ist eine Frau, die ihr Leben lang gegeben hat – und das ohne Aufrechnung. Sie hat gearbeitet, gekocht, erzogen, gepflegt und dabei kaum an sich selbst gedacht. Nicht weil man ihr das aufgezwungen hätte, sondern weil Fürsorge für sie einfach das war, was eine Person tut.</p>
+    <p>Seit dem Tod ihres Mannes Karl ist sie ruhiger geworden, ein wenig langsamer. Aber nicht gebrochen. Die Enkelkinder geben ihr Energie, der Kirchenkreis gibt ihr Gemeinschaft, der Garten gibt ihr Sinn. Sie kommt zurecht. Mit Würde.</p>
+    <ul class="val-list">
+      <li><strong>Familie als Zentrum</strong><span>Alles dreht sich um die Kinder und Enkelkinder.</span></li>
+      <li><strong>Fürsorge & Geben</strong><span>Das Wohl anderer steht vor dem eigenen. Immer.</span></li>
+      <li><strong>Anstand & Dankbarkeit</strong><span>Man ist dankbar für das, was man hat. Man beklagt nicht, was fehlt.</span></li>
+      <li><strong>Glauben als Halt</strong><span>Nicht dogmatisch, aber tief und aufrichtig.</span></li>
+      <li><strong>Erinnerung & Kontinuität</strong><span>Die Geschichte der Familie und des Reviers bewahren.</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">II.</span><span class="sec-title">Lebenswelt & Alltag</span></div>
+    <div class="two-col">
+      <div class="card">
+        <h3>Wohnen</h3>
+        <p>Familienfotos an jeder Wand, Heiligenbilder über der Tür, Nähmaschine im Schlafzimmer, Topfpflanzen überall. Es riecht nach Kaffee und nach Zuhause. Der kleine Vorgarten ist ihr Stolz – sie kennt jede Pflanze beim Namen.</p>
+      </div>
+      <div class="card">
+        <h3>Mobilität</h3>
+        <p>Kein Auto. Immer zu Fuß oder mit dem Bus. Das Deutschlandticket hat ihr das Leben merklich leichter gemacht – <em>„Die Tochter hat es eingerichtet."</em> Für weite Strecken Zug, wenn jemand beim Einsteigen hilft.</p>
+      </div>
+      <div class="card">
+        <h3>Ernährung</h3>
+        <p>Kochen ist ihr Leben. Jeden Tag, auch für sich allein. Kartoffeln, Eintöpfe, Sonntagsbraten wenn die Familie kommt. Aldi, Bäcker um die Ecke, der türkische Gemüsehändler mittwochs: <em>„Gute Qualität, nette Menschen."</em></p>
+      </div>
+      <div class="card">
+        <h3>Freizeit</h3>
+        <div class="tags">
+          <span class="tag hi">Kirchenkreis (wöchentlich)</span>
+          <span class="tag hi">Näharbeiten für Enkel</span>
+          <span class="tag co">Spaziergänge mit Nachbarin</span>
+          <span class="tag hi">TV täglich nachmittags</span>
+          <span class="tag">Brieffreundschaft (seit Schulzeit)</span>
+          <span class="tag hi">Kaffee bei den Kindern</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">III.</span><span class="sec-title">Weltanschauung & Politik</span></div>
+    <p>Edeltraud hat immer CDU gewählt – die Partei der Kirche, der Familie, der Ordnung. Ob sie das heute noch tut, ist ihr selbst nicht ganz sicher. Aber wählen geht sie: <em>„Das ist Bürgerpflicht. Dafür haben die gekämpft."</em></p>
+    <div class="pull">
+      <p>„Wenn ich nicht weiß, was ich tun soll, bete ich. Das hilft wirklich."</p>
+      <cite>Edeltraud über Sorgen und Glauben</cite>
+    </div>
+    <div class="pos-grid">
+      <div class="pos-card"><div class="topic">Gesundheit</div><p>Ihr dringlichstes Thema. Arzttermine, Medikamente, Zuzahlungen – das macht ihr Sorgen.</p></div>
+      <div class="pos-card"><div class="topic">Rente</div><p>Sie kommt zurecht, aber mit wenig. Sie fragt sich, wie das bei den Jungen sein wird.</p></div>
+      <div class="pos-card"><div class="topic">Familie</div><p>Familien brauchen Unterstützung. Nicht nur Geld – Zeit und Gemeinschaft.</p></div>
+      <div class="pos-card"><div class="topic">Migration</div><p>Türkische Nachbarn seit 30 Jahren. Das hat nie ein Problem gemacht.</p></div>
+      <div class="pos-card"><div class="topic">Digitalisierung</div><p>Ihre Enkelkinder schauen immer auf das Telefon. Das macht ihr Sorgen – mehr als Klimawandel.</p></div>
+      <div class="pos-card"><div class="topic">Debatten</div><p>Sie verfolgt keine. Sie lebt ihr Leben. Wenn die Nachrichten sie besorgen, schläft sie schlechter.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">IV.</span><span class="sec-title">Konsumgewohnheiten</span></div>
+    <p>Edeltraud gibt wenig aus und überlegt alles. Kleine Freuden sind ihr trotzdem wichtig: Blumen für die Wohnung, Pralinen für die Besucher, ein Geschenk für die Enkelkinder.</p>
+    <div class="two-col">
+      <div>
+        <div class="card" style="margin-bottom:10px">
+          <h3>Kaufmuster</h3>
+          <div class="tags">
+            <span class="tag hi">Aldi täglich</span>
+            <span class="tag hi">Bäcker samstags</span>
+            <span class="tag co">Türk. Gemüsehändler mittwochs</span>
+            <span class="tag hi">Kleidung selten, trägt lange</span>
+            <span class="tag co">Kein Smartphone, kein Online</span>
+            <span class="tag hi">Markentreue sehr hoch</span>
+          </div>
+        </div>
+        <div class="pull" style="margin:0">
+          <p>„Das hab ich immer so gemacht. Wozu soll ich was Neues anfangen?"</p>
+          <cite>Edeltraud über Markentreue und Routinen</cite>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Nachhaltigkeits-Praxis</h3>
+        <p>Sie kennt kein anderes Leben als das nachhaltige. Reste werden verwertet, Kleidung repariert, nichts weggeworfen was noch gut ist.</p>
+        <p style="margin-top:12px; color:var(--plum); font-size:.9rem">Das ist keine Weltanschauung – das ist, wie man das macht. So hat es ihre Mutter gemacht. So macht sie es.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">V.</span><span class="sec-title">Medien & Kommunikation</span></div>
+    <div class="two-col">
+      <div class="media-stack">
+        <div class="media-row"><div class="media-lbl">TV</div><div class="media-c">ARD-Nachmittagsserien (Rote Rosen, Sturm der Liebe), Tagesschau, Heute Journal, Tatort sonntags.</div></div>
+        <div class="media-row"><div class="media-lbl">Radio</div><div class="media-c">WDR 4 beim Kochen und Aufräumen – seit Jahrzehnten. Schlager, leichte Musik, Nachrichten.</div></div>
+        <div class="media-row"><div class="media-lbl">Zeitung</div><div class="media-c">WAZ täglich, Print. Besonders Lokalteil und Todesanzeigen.</div></div>
+        <div class="media-row"><div class="media-lbl">Kein</div><div class="media-c">Internet. Kein Computer, kein Tablet, kein Smartphone.</div></div>
+        <div class="media-row"><div class="media-lbl">Festnetz</div><div class="media-c">Ruft täglich mindestens ein Kind an. Das ist ihr Kommunikationsnetz.</div></div>
+      </div>
+      <div class="card">
+        <h3>Kommunikationsstil</h3>
+        <p>Telefoniert täglich, ausführlich, am Festnetz. Schreibt Briefe und Karten – zu jedem Geburtstag, jeder Konfirmation, jedem Todesfall.</p>
+        <p style="margin-top:12px">Direkter, warmer Ton. Sie meint, was sie sagt.</p>
+        <p style="margin-top:12px; color:var(--plum); font-size:.9rem; font-style:italic">„Wenn ich nicht weiß, wer das ist, geh ich nicht ran."</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">VI.</span><span class="sec-title">Bezug zum Ruhrgebiet</span></div>
+    <p>Sterkrade, Oberhausen – das ist Edeltrauds Welt. Hier hat sie geheiratet, hier sind die Kinder aufgewachsen, hier ist Karl begraben. Woanders zu leben war nie ein Gedanke.</p>
+    <div class="pull">
+      <p>„Wir haben das alles mitgemacht. Den Wandel, die Schließungen, alles. Und wir sind geblieben."</p>
+      <cite>Edeltraud über das Ruhrgebiet und ihre Generation</cite>
+    </div>
+    <div class="contrast">
+      <div class="contrast-side pos">
+        <h4>Was sie bindet</h4>
+        <ul>
+          <li>Vertrautheit jeder Straße und jedes Gesichts</li>
+          <li>Kirchengemeinde und Nachbarin Anni</li>
+          <li>Die Kinder sind in der Nähe</li>
+          <li>Hier ist Karl begraben</li>
+        </ul>
+      </div>
+      <div class="contrast-side neg">
+        <h4>Was sie vermisst / besorgt</h4>
+        <ul>
+          <li>Verlässlicher Bus zur Kirche</li>
+          <li>Arzt im Viertel (wird schwieriger)</li>
+          <li>Einsamkeit – die Freundinnen werden weniger</li>
+          <li>Jugend zieht weg</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">VII.</span><span class="sec-title">Frustrationen & Reibungspunkte</span></div>
+    <ul class="frust-list">
+      <li>Digitale Ausgrenzung: Arzttermine, Behörden nur online</li>
+      <li>Einsamkeit – die Freundinnen werden weniger</li>
+      <li>Stille Angst vor Krankheit und Pflegebedarf</li>
+      <li>Busverbindung zur Kirche wurde schlechter</li>
+      <li>Sprache in Medien und Politik fremd geworden</li>
+      <li>Niemand hat mehr Zeit – nicht Kinder, nicht Ärzte</li>
+      <li>Das Gefühl, eine Last zu sein, wenn sie Hilfe braucht</li>
+      <li>34 Berufsjahre – aber Rente ist knapp</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">VIII.</span><span class="sec-title">Kampagnen-Empfehlungen</span></div>
+    <table class="c-table">
+      <thead><tr><th>Aspekt</th><th>Empfehlung</th></tr></thead>
+      <tbody>
+        <tr><td>TON</td><td>Herzlich, geduldig, klar – wie eine fürsorgliche Erklärung, nicht wie Werbung</td></tr>
+        <tr><td>ARGUMENTE</td><td>Gesundheit, Gemeinschaft, Würde im Alter, Erreichbarkeit von Dienstleistungen offline</td></tr>
+        <tr><td>KANÄLE</td><td>ARD Nachmittags- und Abendprogramm, WDR 4, WAZ Print, Gemeindeblatt, Kirchenkreis</td></tr>
+        <tr><td>VERMEIDEN</td><td>Digitale Kanäle als einziger Weg, schnelle Sprache, Bilder von Gebrechlichkeit oder Mitleid</td></tr>
+        <tr><td>MOBILISIERUNG</td><td>Über Kirchenkreis, Nachbarschaft, Kinder als Vermittler, Sozialstation persönlich</td></tr>
+        <tr><td>BOTSCHAFT</td><td>„Wir sind für Sie da. Einfach. Persönlich. Zuverlässig."</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+</main>
+
+<footer>
+  <span>Traditionelles Milieu · Sinus 2021 · Ruhrgebiet · Weibliche Persona</span><br>
+  Kampagnenplanung & Zielgruppenanalyse · Auf Basis Sinus-Milieuforschung
+</footer>
+
+</body>
+</html>

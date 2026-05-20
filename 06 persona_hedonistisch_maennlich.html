@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Persona · Konsum-Hedonistisches Milieu · Kevin Schuster</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:      #0d0d0d;
+    --surface: #161616;
+    --panel:   #1e1e1e;
+    --border:  #2e2e2e;
+    --neon:    #e8ff00;
+    --neon-d:  #b8cc00;
+    --hot:     #ff3c3c;
+    --blue:    #00c8ff;
+    --muted:   #666;
+    --text:    #ccc;
+    --white:   #f0f0f0;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(232,255,0,.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--neon), var(--blue), var(--hot));
+  }
+
+  .header-inner {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 48px 40px 44px;
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 40px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .milieu-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--neon);
+    color: var(--bg);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: .85rem;
+    letter-spacing: .12em;
+    padding: 4px 14px;
+    border-radius: 2px;
+    margin-bottom: 18px;
+  }
+
+  header h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3rem, 6vw, 5rem);
+    color: var(--white);
+    line-height: 0.95;
+    letter-spacing: .04em;
+    margin-bottom: 10px;
+  }
+  .h1-accent { color: var(--neon); }
+  .tagline { font-size: .95rem; color: var(--muted); font-style: italic; }
+
+  /* STECKBRIEF */
+  .steck { background: var(--panel); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
+  .steck-head { background: var(--neon); padding: 8px 16px; font-family: 'Bebas Neue', sans-serif; font-size: .9rem; letter-spacing: .1em; color: var(--bg); }
+  .steck-body { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); }
+  .si { background: var(--panel); padding: 10px 14px; }
+  .si.full { grid-column: 1/-1; }
+  .si .k { font-size: .62rem; color: var(--muted); letter-spacing: .14em; text-transform: uppercase; margin-bottom: 2px; }
+  .si .v { font-size: .88rem; color: var(--white); font-weight: 400; }
+
+  /* MOTTO */
+  .motto {
+    background: var(--neon);
+    padding: 16px 40px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: .1em;
+    color: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+  .motto::before, .motto::after { content: '★'; font-size: 1rem; opacity: .5; }
+
+  /* ── MAIN ── */
+  main { max-width: 1040px; margin: 0 auto; padding: 56px 40px 100px; display: grid; gap: 52px; }
+
+  .sec-head { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+  .sec-num { font-family: 'Bebas Neue', sans-serif; font-size: .85rem; color: var(--neon); letter-spacing: .1em; }
+  .sec-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; color: var(--white); letter-spacing: .06em; }
+
+  p { color: #8a8a8a; font-size: .94rem; margin-bottom: 12px; }
+  p:last-child { margin-bottom: 0; }
+  em { font-style: italic; color: var(--neon); }
+
+  /* VALUES */
+  .val-list { list-style: none; counter-reset: vv; display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 10px; }
+  .val-list li { counter-increment: vv; background: var(--panel); border: 1px solid var(--border); border-left: 3px solid var(--neon); padding: 14px 18px; display: flex; gap: 12px; align-items: flex-start; border-radius: 2px; transition: border-left-color .15s; }
+  .val-list li:hover { border-left-color: var(--hot); }
+  .val-list li::before { content: '0'counter(vv); font-family: 'Bebas Neue', sans-serif; font-size: .9rem; color: var(--neon); flex-shrink: 0; min-width: 22px; }
+  .val-list li strong { display: block; color: var(--white); font-weight: 600; font-size: .9rem; margin-bottom: 3px; }
+  .val-list li span { font-size: .86rem; color: var(--muted); }
+
+  /* TWO COL */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } }
+
+  .card { background: var(--panel); border: 1px solid var(--border); border-radius: 4px; padding: 20px 22px; }
+  .card h3 { font-family: 'Bebas Neue', sans-serif; font-size: .85rem; color: var(--neon); letter-spacing: .1em; margin-bottom: 10px; }
+
+  /* TAGS */
+  .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 6px; }
+  .tag { background: transparent; border: 1px solid var(--border); color: var(--muted); font-size: .73rem; padding: 3px 10px; border-radius: 2px; letter-spacing: .04em; transition: all .13s; cursor: default; }
+  .tag:hover { border-color: var(--neon); color: var(--neon); }
+  .tag.hi { background: rgba(232,255,0,.06); border-color: rgba(232,255,0,.28); color: var(--neon); }
+  .tag.hot { background: rgba(255,60,60,.06); border-color: rgba(255,60,60,.25); color: var(--hot); }
+  .tag.bl { background: rgba(0,200,255,.05); border-color: rgba(0,200,255,.22); color: var(--blue); }
+
+  /* PULL */
+  .pull { background: var(--panel); border-left: 3px solid var(--neon); padding: 16px 22px; margin: 14px 0; border-radius: 0 4px 4px 0; }
+  .pull p { font-size: 1rem; font-style: italic; color: var(--white); margin: 0 0 8px; }
+  .pull cite { font-size: .62rem; color: var(--muted); letter-spacing: .12em; text-transform: uppercase; font-style: normal; }
+
+  /* POS GRID */
+  .pos-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
+  .pos-card { background: var(--panel); border: 1px solid var(--border); border-top: 2px solid var(--blue); border-radius: 2px; padding: 14px 16px; }
+  .pos-card .topic { font-family: 'Bebas Neue', sans-serif; font-size: .78rem; color: var(--blue); letter-spacing: .1em; margin-bottom: 6px; }
+  .pos-card p { font-size: .87rem; margin: 0; }
+
+  /* MEDIA */
+  .media-stack { display: flex; flex-direction: column; gap: 8px; }
+  .media-row { display: flex; gap: 12px; align-items: flex-start; padding: 10px 14px; background: var(--panel); border: 1px solid var(--border); border-radius: 3px; }
+  .media-lbl { font-family: 'Bebas Neue', sans-serif; font-size: .75rem; color: var(--neon); letter-spacing: .1em; min-width: 80px; flex-shrink: 0; padding-top: 1px; }
+  .media-c { color: var(--muted); font-size: .9rem; }
+
+  /* FRUST */
+  .frust-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
+  @media (max-width: 640px) { .frust-list { grid-template-columns: 1fr; } }
+  .frust-list li { background: var(--panel); border: 1px solid var(--border); border-left: 2px solid var(--hot); padding: 10px 14px; font-size: .9rem; color: var(--muted); border-radius: 0 3px 3px 0; }
+
+  /* CAMPAIGN TABLE */
+  .c-table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+  .c-table thead { background: var(--neon); }
+  .c-table th { font-family: 'Bebas Neue', sans-serif; font-size: .8rem; letter-spacing: .1em; color: var(--bg); text-align: left; padding: 10px 16px; }
+  .c-table td { padding: 11px 16px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .c-table tr:nth-child(odd) td { background: var(--panel); }
+  .c-table td:first-child { font-family: 'Bebas Neue', sans-serif; font-size: .78rem; color: var(--neon); letter-spacing: .08em; white-space: nowrap; width: 120px; }
+
+  /* FOOTER */
+  footer { border-top: 1px solid var(--border); text-align: center; padding: 24px 40px; font-size: .68rem; color: var(--muted); letter-spacing: .1em; text-transform: uppercase; line-height: 2; }
+  footer span { color: var(--neon); }
+
+  /* ANIM */
+  @keyframes up { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+  main > section { animation: up .45s ease both; }
+  main > section:nth-child(1) { animation-delay: .04s; }
+  main > section:nth-child(2) { animation-delay: .09s; }
+  main > section:nth-child(3) { animation-delay: .14s; }
+  main > section:nth-child(4) { animation-delay: .19s; }
+  main > section:nth-child(5) { animation-delay: .24s; }
+  main > section:nth-child(6) { animation-delay: .29s; }
+  main > section:nth-child(7) { animation-delay: .34s; }
+  main > section:nth-child(8) { animation-delay: .39s; }
+
+  @media (max-width: 720px) {
+    .header-inner { grid-template-columns: 1fr; padding: 36px 20px; }
+    .motto { padding: 14px 20px; }
+    main { padding: 40px 20px 80px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div>
+      <div class="milieu-tag">Sinus 2021 · Konsum-Hedonistisch · 8 %</div>
+      <h1>Kevin<br><span class="h1-accent">Schuster</span></h1>
+      <p class="tagline">„Der Genießer von nebenan" — Essen-Altenessen, 23 J.</p>
+    </div>
+    <div class="steck">
+      <div class="steck-head">Steckbrief</div>
+      <div class="steck-body">
+        <div class="si"><div class="k">Alter</div><div class="v">23 Jahre</div></div>
+        <div class="si"><div class="k">Wohnort</div><div class="v">Essen-Altenessen</div></div>
+        <div class="si"><div class="k">Beruf</div><div class="v">Kfz-Mechatroniker (Geselle)</div></div>
+        <div class="si"><div class="k">Einkommen</div><div class="v">ca. 1.800 € netto</div></div>
+        <div class="si full"><div class="k">Bildung</div><div class="v">Hauptschulabschluss + Berufsausbildung</div></div>
+        <div class="si full"><div class="k">Wohnen</div><div class="v">1-Zi-Wohnung, 34 m², erste eigene Bude</div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="motto">„Das Leben ist zu kurz für schlechte Laune."</div>
+
+<main>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">01 /</span><span class="sec-title">Persönlichkeit & Werte</span></div>
+    <p>Kevin ist einer, bei dem man sich sofort wohlfühlt. Laut, herzlich, großzügig – wenn er Geld hat, gibt er's aus. Lieber eine Runde für alle als die Hälfte gespart. Er denkt nicht viel nach – nicht aus Dummheit, sondern weil er das Jetzt lebt.</p>
+    <p>Was ihn nervt: wenn Leute zu ernst werden. Wenn in seiner TikTok-Timeline wieder jemand erklärt, was er alles falsch macht. <em>„Ich hab nichts gegen Nachhaltigkeit – aber hört auf mich zu nerven."</em></p>
+    <ul class="val-list">
+      <li><strong>Spaß & Lebensfreude</strong><span>Das Leben ist jetzt. Heute. Nicht in 20 Jahren.</span></li>
+      <li><strong>Loyalität</strong><span>Für seine Freunde würde er alles tun – immer.</span></li>
+      <li><strong>Freiheit</strong><span>Niemand soll ihm reinreden was er kauft, isst oder tut.</span></li>
+      <li><strong>Anerkennung</strong><span>Gesehen werden – als Handwerker, als Typ, als einer der dazugehört.</span></li>
+      <li><strong>Genuss</strong><span>Gutes Essen, geile Autos, gute Musik. Das Schöne im Alltag.</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">02 /</span><span class="sec-title">Lebenswelt & Alltag</span></div>
+    <div class="two-col">
+      <div class="card">
+        <h3>Wohnen</h3>
+        <p>Gaming-PC am Fenster, großer Fernseher, PlayStation, Sofa von eBay Kleinanzeigen. Wenig Küche, viel Technik. Er kocht kaum – dafür gibt es Lieferando. Sauber wenn Besuch kommt.</p>
+      </div>
+      <div class="card">
+        <h3>Mobilität</h3>
+        <p>Herzstück: getunter VW Golf 4 – Leidenschaft und Statussymbol. Fährt gerne, fährt weit. E-Auto: kommt nicht in Frage, und er macht sich keine Mühe, das diplomatisch auszudrücken.</p>
+      </div>
+      <div class="card">
+        <h3>Ernährung</h3>
+        <p>Döner, Burger, Pizza, Energy Drinks. Restaurants nur mit Kumpels – dann Steakhouse oder Sushi. Kochen: wenn Freundin da ist und er imponieren will.</p>
+      </div>
+      <div class="card">
+        <h3>Freizeit</h3>
+        <div class="tags">
+          <span class="tag hi">Autoschrauben (Leidenschaft)</span>
+          <span class="tag hi">FIFA + GTA täglich</span>
+          <span class="tag bl">Clubs Essen & Dortmund</span>
+          <span class="tag hi">Sneaker-Sammlung (11 Paar)</span>
+          <span class="tag">Konzerte & Festivals</span>
+          <span class="tag bl">YouTube Autotuning-Kanäle</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">03 /</span><span class="sec-title">Weltanschauung & Politik</span></div>
+    <p>Kevin wählt nicht. Nicht aus Protest – es ist ihm schlicht egal. Politik ist eine Welt, die mit seinem Leben nichts zu tun hat. Wenn er direkt gefragt wird, hat er Meinungen: Spritpreise zu hoch, Straßen kaputt, zu viele Verbote.</p>
+    <div class="pull">
+      <p>„Ich fahr meinen Golf, und der CO₂-Ausstoß von einem Aktivisten-Flug ist mehr als ich im Jahr fahre. Ne."</p>
+      <cite>Kevin über Klimadebatte und persönliche Freiheit</cite>
+    </div>
+    <div class="pos-grid">
+      <div class="pos-card"><div class="topic">Verbote</div><p>Grundsätzliche Abwehrhaltung. „Lasst mich in Ruhe." – das ist sein politischer Grundsatz.</p></div>
+      <div class="pos-card"><div class="topic">Sprit</div><p>Konkreter Alltags-Schmerz. Das einzige politische Thema das er direkt spürt.</p></div>
+      <div class="pos-card"><div class="topic">Klima</div><p>Genervt vom moralischen Druck. Nicht Leugner – einfach kein Bock auf Predigt.</p></div>
+      <div class="pos-card"><div class="topic">Wahl</div><p>Nichtwähler. Nicht aus Radikalismus – es geht ihn schlicht nichts an.</p></div>
+      <div class="pos-card"><div class="topic">Migration</div><p>Kein Thema. Er kennt viele Leute mit Migrationshintergrund – ist normal.</p></div>
+      <div class="pos-card"><div class="topic">Staat</div><p>Misstrauisch, aber nicht systemkritisch. Denkt schlicht nicht oft daran.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">04 /</span><span class="sec-title">Konsumgewohnheiten</span></div>
+    <p>Kevin gibt sein Geld aus, bevor er es spart. Das ist kein Fehler – das ist das Ziel. Konsum ist Lebensqualität und soziale Zugehörigkeit zugleich.</p>
+    <div class="two-col">
+      <div>
+        <div class="card" style="margin-bottom:10px">
+          <h3>Kaufmuster</h3>
+          <div class="tags">
+            <span class="tag hi">Nike / Adidas / Jordan</span>
+            <span class="tag hi">Samsung Galaxy (Raten)</span>
+            <span class="tag bl">Autoteile online + selbst einbauen</span>
+            <span class="tag">Lieferando statt Kochen</span>
+            <span class="tag hi">Amazon + eBay Kleinanzeigen</span>
+            <span class="tag hot">Kein Sparplan</span>
+          </div>
+        </div>
+        <div class="pull" style="margin:0">
+          <p>„Lieber heute was Geiles als morgen was Langweiliges."</p>
+          <cite>Kevin über Konsum und Lebenseinstellung</cite>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Nachhaltigkeit</h3>
+        <p>Kein aktives Interesse. Das Thema ist für ihn mit Bevormundung verknüpft. Wenn es günstiger ist, nimmt er es – sucht aber nicht danach.</p>
+        <p style="margin-top:12px; color:var(--hot); font-size:.87rem">Nachhaltigkeits-Content in der Timeline: sofort wegschalten.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">05 /</span><span class="sec-title">Medien & Kommunikation</span></div>
+    <div class="two-col">
+      <div class="media-stack">
+        <div class="media-row"><div class="media-lbl">TikTok</div><div class="media-c">Hauptmedium. Stundenlang täglich – Autos, Humor, Rap, Sport, gelegentlich News-Clips</div></div>
+        <div class="media-row"><div class="media-lbl">Instagram</div><div class="media-c">Lifestyle, Autos, Sneaker, Freunde – passiv mehr als aktiv</div></div>
+        <div class="media-row"><div class="media-lbl">YouTube</div><div class="media-c">Autotuning, Rap-Battles, Reaction-Videos, Fußball-Analysen</div></div>
+        <div class="media-row"><div class="media-lbl">Spotify</div><div class="media-c">Deutschrap, Drill, internationale Hits</div></div>
+        <div class="media-row"><div class="media-lbl">Kein</div><div class="media-c">Zeitung, Radio, lineares TV</div></div>
+      </div>
+      <div class="card">
+        <h3>Kommunikationsstil</h3>
+        <p>Kurz, direkt, viel Humor. Ironie und Slang sind Standard. WhatsApp: Hauptkanal, viele Gruppen, viele Sprachnachrichten.</p>
+        <p style="margin-top:12px; color:var(--neon); font-size:.87rem">Influencer-Empfehlungen wirken wenn die Person authentisch wirkt. Marken die zu sehr auf „jung" machen ohne es zu sein: sofort durch.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">06 /</span><span class="sec-title">Bezug zum Ruhrgebiet</span></div>
+    <p>Essen-Altenessen ist Kevins Viertel. Er kennt es, er liebt es – auch wenn er weiß, dass es keinen guten Ruf hat. Das stört ihn nicht: <em>„Die denken alle, das Ruhrgebiet ist kaputt. Aber hier ist Leben."</em></p>
+    <div class="tags" style="margin-top:4px">
+      <span class="tag hi">Autokultur: Cruisen, Tuning-Events</span>
+      <span class="tag hi">Direktheit der Menschen</span>
+      <span class="tag bl">Clubs in Essen & Dortmund</span>
+      <span class="tag hot">Kein Bock auf Industriegeschichte</span>
+      <span class="tag hot">Zu viele Blitzer</span>
+      <span class="tag">Lebt in der Gegenwart, nicht der Reviergeschichte</span>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">07 /</span><span class="sec-title">Frustrationen & Reibungspunkte</span></div>
+    <ul class="frust-list">
+      <li>Spritpreise und Werkzeugkosten steigen</li>
+      <li>Dauernd belehrt werden, was er falsch macht</li>
+      <li>Miete höher als erwartet</li>
+      <li>Kein Puffer – Notfälle sind Krisen</li>
+      <li>Nachhaltigkeits-Content: sofort wegschalten</li>
+      <li>Das Gefühl, „die da oben" haben ihn eh nicht gemeint</li>
+      <li>Ratenkauf-Reuegefühl am Monatsende</li>
+      <li>Keine Lust auf Erwachsenenverantwortung, die keiner Spaß macht</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">08 /</span><span class="sec-title">Kampagnen-Empfehlungen</span></div>
+    <table class="c-table">
+      <thead><tr><th>Aspekt</th><th>Empfehlung</th></tr></thead>
+      <tbody>
+        <tr><td>TON</td><td>Authentisch, direkt, mit Humor – niemals belehrend oder moralisch aufgeladen</td></tr>
+        <tr><td>ARGUMENTE</td><td>Spaß, Anerkennung, Zugehörigkeit, konkreter Alltagsnutzen – sofort und spürbar</td></tr>
+        <tr><td>KANÄLE</td><td>TikTok, Instagram Reels, YouTube (Pre-Roll bei Auto/Rap-Kanälen), Spotify Ads</td></tr>
+        <tr><td>VERMEIDEN</td><td>Nachhaltigkeits-Framing, Belehrung, uncooler Markenauftritt, zu viel Text</td></tr>
+        <tr><td>MOBILISIERUNG</td><td>Über Influencer die er kennt und denen er vertraut – Peer-to-Peer wirkt</td></tr>
+        <tr><td>BOTSCHAFT</td><td>„Kein Drama. Einfach gut."</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+</main>
+
+<footer>
+  <span>Konsum-Hedonistisches Milieu · Sinus 2021</span> · Ruhrgebiet · Männliche Persona<br>
+  Kampagnenplanung & Zielgruppenanalyse · Auf Basis Sinus-Milieuforschung
+</footer>
+
+</body>
+</html>

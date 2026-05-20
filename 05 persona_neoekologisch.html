@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Persona · Neo-Ökologisches Milieu</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --lime:     #c8f23a;
+    --lime-dim: #9ec12a;
+    --dark:     #0f110d;
+    --charcoal: #1a1d17;
+    --panel:    #23271e;
+    --border:   #333830;
+    --muted:    #7a8070;
+    --text:     #dde0d6;
+    --white:    #f5f7f0;
+    --coral:    #ff6b4a;
+    --sky:      #6ee7f5;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--dark);
+    color: var(--text);
+    font-family: 'DM Sans', system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* ─── HEADER ─── */
+  header {
+    background: var(--charcoal);
+    border-bottom: 1px solid var(--border);
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header-grid {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 56px 40px 48px;
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 40px;
+    align-items: center;
+  }
+
+  .milieu-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--lime);
+    color: var(--dark);
+    font-family: 'Space Mono', monospace;
+    font-size: .7rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 2px;
+    margin-bottom: 20px;
+  }
+  .milieu-tag::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--dark);
+    border-radius: 50%;
+    display: block;
+  }
+
+  header h1 {
+    font-family: 'Space Mono', monospace;
+    font-size: clamp(2rem, 4.5vw, 3.2rem);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.05;
+    margin-bottom: 8px;
+    letter-spacing: -.02em;
+  }
+
+  .h1-accent { color: var(--lime); }
+
+  header .tagline {
+    font-size: 1.05rem;
+    color: var(--muted);
+    font-style: italic;
+    margin-top: 10px;
+  }
+
+  /* STATS BOX */
+  .stats-box {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+    overflow: hidden;
+  }
+  .stat {
+    background: var(--panel);
+    padding: 16px 18px;
+  }
+  .stat .label {
+    font-family: 'Space Mono', monospace;
+    font-size: .62rem;
+    color: var(--muted);
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .stat .value {
+    font-size: .92rem;
+    color: var(--white);
+    font-weight: 400;
+    line-height: 1.3;
+  }
+  .stat.full { grid-column: 1 / -1; }
+
+  /* MOTTO STRIPE */
+  .motto-stripe {
+    background: var(--lime);
+    overflow: hidden;
+    padding: 14px 0;
+    white-space: nowrap;
+  }
+  .motto-inner {
+    display: inline-flex;
+    animation: marquee 22s linear infinite;
+    gap: 0;
+  }
+  .motto-inner span {
+    font-family: 'Space Mono', monospace;
+    font-size: .82rem;
+    font-weight: 700;
+    color: var(--dark);
+    letter-spacing: .06em;
+    padding: 0 32px;
+  }
+  .motto-inner span.dot {
+    color: rgba(0,0,0,.35);
+    padding: 0 4px;
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  /* ─── MAIN ─── */
+  main {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 60px 40px 100px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 56px;
+  }
+
+  /* SECTION */
+  section { }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 28px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-num {
+    font-family: 'Space Mono', monospace;
+    font-size: .68rem;
+    color: var(--lime);
+    letter-spacing: .1em;
+    flex-shrink: 0;
+  }
+  .section-title {
+    font-family: 'Space Mono', monospace;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: -.01em;
+  }
+
+  p {
+    color: #b8bdb0;
+    font-size: .95rem;
+    margin-bottom: 14px;
+  }
+  p:last-child { margin-bottom: 0; }
+
+  /* VALUES */
+  .value-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 12px;
+    list-style: none;
+    counter-reset: vals;
+  }
+  .value-list li {
+    counter-increment: vals;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-top: 2px solid var(--lime);
+    padding: 18px 20px;
+    border-radius: 4px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    transition: border-color .2s;
+  }
+  .value-list li:hover { border-top-color: var(--coral); }
+  .value-list li::before {
+    content: counter(vals, decimal-leading-zero);
+    font-family: 'Space Mono', monospace;
+    font-size: .72rem;
+    color: var(--lime);
+    flex-shrink: 0;
+    padding-top: 3px;
+  }
+  .value-list li strong {
+    display: block;
+    color: var(--white);
+    font-weight: 600;
+    font-size: .9rem;
+    margin-bottom: 4px;
+  }
+  .value-list li span { font-size: .87rem; color: var(--muted); }
+
+  /* TWO COL */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } }
+
+  .card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 22px 24px;
+  }
+  .card h3 {
+    font-family: 'Space Mono', monospace;
+    font-size: .78rem;
+    color: var(--lime);
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  /* TAGS */
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+  }
+  .tag {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-family: 'Space Mono', monospace;
+    font-size: .68rem;
+    padding: 4px 11px;
+    border-radius: 100px;
+    letter-spacing: .05em;
+    transition: all .15s;
+  }
+  .tag:hover { border-color: var(--lime); color: var(--lime); }
+  .tag.hi { background: rgba(200,242,58,.08); border-color: var(--lime-dim); color: var(--lime); }
+  .tag.coral { background: rgba(255,107,74,.08); border-color: rgba(255,107,74,.4); color: var(--coral); }
+  .tag.sky { background: rgba(110,231,245,.08); border-color: rgba(110,231,245,.4); color: var(--sky); }
+
+  /* PULL QUOTE */
+  .pull {
+    background: var(--panel);
+    border-left: 3px solid var(--lime);
+    padding: 20px 28px;
+    border-radius: 0 6px 6px 0;
+    margin: 20px 0;
+  }
+  .pull p {
+    font-size: 1.05rem;
+    font-style: italic;
+    color: var(--white);
+    margin: 0 0 8px;
+  }
+  .pull cite {
+    font-family: 'Space Mono', monospace;
+    font-size: .65rem;
+    color: var(--muted);
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    font-style: normal;
+  }
+
+  /* POSITION GRID */
+  .pos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+  }
+  .pos-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 16px 18px;
+    position: relative;
+    overflow: hidden;
+  }
+  .pos-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--lime), var(--sky));
+  }
+  .pos-card .topic {
+    font-family: 'Space Mono', monospace;
+    font-size: .65rem;
+    color: var(--lime);
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .pos-card p { font-size: .87rem; margin: 0; color: var(--muted); }
+
+  /* MEDIA LIST */
+  .media-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .media-row {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    padding: 12px 16px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-size: .87rem;
+  }
+  .media-label {
+    font-family: 'Space Mono', monospace;
+    font-size: .65rem;
+    color: var(--lime);
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    min-width: 80px;
+    padding-top: 2px;
+    flex-shrink: 0;
+  }
+  .media-content { color: var(--muted); }
+
+  /* FRUSTRATIONS */
+  .frust-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  @media (max-width: 640px) { .frust-list { grid-template-columns: 1fr; } }
+  .frust-list li {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-left: 2px solid var(--coral);
+    padding: 12px 16px;
+    font-size: .88rem;
+    color: var(--muted);
+    border-radius: 0 4px 4px 0;
+  }
+
+  /* CAMPAIGN TABLE */
+  .c-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .88rem;
+  }
+  .c-table thead tr {
+    background: var(--lime);
+  }
+  .c-table th {
+    font-family: 'Space Mono', monospace;
+    font-size: .65rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--dark);
+    text-align: left;
+    padding: 10px 16px;
+    font-weight: 700;
+  }
+  .c-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  .c-table tr:nth-child(odd) td { background: var(--panel); }
+  .c-table td:first-child {
+    font-family: 'Space Mono', monospace;
+    font-size: .7rem;
+    color: var(--lime);
+    letter-spacing: .06em;
+    white-space: nowrap;
+    width: 120px;
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    text-align: center;
+    padding: 28px 40px;
+    font-family: 'Space Mono', monospace;
+    font-size: .7rem;
+    color: var(--muted);
+    letter-spacing: .08em;
+    line-height: 2;
+  }
+  footer span { color: var(--lime); }
+
+  /* ENTRY ANIMATION */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  main > section {
+    animation: fadeIn .5s ease both;
+  }
+  main > section:nth-child(1) { animation-delay: .05s; }
+  main > section:nth-child(2) { animation-delay: .1s; }
+  main > section:nth-child(3) { animation-delay: .15s; }
+  main > section:nth-child(4) { animation-delay: .2s; }
+  main > section:nth-child(5) { animation-delay: .25s; }
+  main > section:nth-child(6) { animation-delay: .3s; }
+  main > section:nth-child(7) { animation-delay: .35s; }
+  main > section:nth-child(8) { animation-delay: .4s; }
+
+  @media (max-width: 700px) {
+    .header-grid { grid-template-columns: 1fr; padding: 40px 20px; }
+    main { padding: 40px 20px 80px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-grid">
+    <div>
+      <div class="milieu-tag">Sinus 2021 · Neo-Ökologisches Milieu · Zukunftsmilieu</div>
+      <h1>Levin<br><span class="h1-accent">Okafor-Scholz</span></h1>
+      <p class="tagline">„Der pragmatische Weltverbesserer" — Bochum, 29 J.</p>
+    </div>
+    <div class="stats-box">
+      <div class="stat"><div class="label">Alter</div><div class="value">29 Jahre</div></div>
+      <div class="stat"><div class="label">Wohnort</div><div class="value">Bochum-Ehrenfeld</div></div>
+      <div class="stat"><div class="label">Beruf</div><div class="value">UX Designer, Impact Startup</div></div>
+      <div class="stat"><div class="label">Einkommen</div><div class="value">ca. 2.600 € netto</div></div>
+      <div class="stat full"><div class="label">Bildung</div><div class="value">B.A. Kommunikationsdesign + berufsbegl. Sustainable Business</div></div>
+    </div>
+  </div>
+</header>
+
+<div class="motto-stripe">
+  <div class="motto-inner">
+    <span>Disruption &amp; Pragmatismus</span><span class="dot">✦</span>
+    <span>Party &amp; Protest</span><span class="dot">✦</span>
+    <span>Erfolg &amp; Nachhaltigkeit</span><span class="dot">✦</span>
+    <span>Progressiver Realist</span><span class="dot">✦</span>
+    <span>Globale Vernetzung</span><span class="dot">✦</span>
+    <span>Kein erhobener Zeigefinger</span><span class="dot">✦</span>
+    <span>Disruption &amp; Pragmatismus</span><span class="dot">✦</span>
+    <span>Party &amp; Protest</span><span class="dot">✦</span>
+    <span>Erfolg &amp; Nachhaltigkeit</span><span class="dot">✦</span>
+    <span>Progressiver Realist</span><span class="dot">✦</span>
+    <span>Globale Vernetzung</span><span class="dot">✦</span>
+    <span>Kein erhobener Zeigefinger</span><span class="dot">✦</span>
+  </div>
+</div>
+
+<main>
+
+  <!-- 01 PERSÖNLICHKEIT -->
+  <section>
+    <div class="section-header">
+      <span class="section-num">01 /</span>
+      <span class="section-title">Persönlichkeit & Werte</span>
+    </div>
+    <p>Levin ist kein Ideologe, sondern ein Macher. Er glaubt an Systemveränderung – durch smarte Lösungen, nicht durch Verbote oder Schuldzuweisungen. Greenwashing nervt ihn genauso wie dogmatischer Aktivismus. Sein Selbstbild: <em style="color:var(--lime)">progressiver Realist</em>. Er denkt global, handelt lokal und feiert dazwischen ausgiebig.</p>
+    <p>Der Sinus-typische „Wertecocktail" ist bei Levin deutlich spürbar: Er kauft Second-Hand <em>und</em> neue AirPods. Er fährt zum Festival mit dem Zug <em>und</em> fliegt einmal im Jahr nach Lissabon. Er hält das für keine Heuchelei, sondern für ehrliche Komplexität.</p>
+    <ul class="value-list">
+      <li><strong>Postwachstum & Sozialer Mehrwert</strong><span>Wirtschaft soll Menschen und Erde dienen, nicht umgekehrt.</span></li>
+      <li><strong>Globale Vernetzung</strong><span>Weltoffenheit als Grundhaltung, nicht als Urlaubsattitüde.</span></li>
+      <li><strong>Pragmatismus</strong><span>Lösungen jetzt, nicht erst wenn alles perfekt ist.</span></li>
+      <li><strong>Authentizität</strong><span>Keine Performance, keine Heuchelei – von sich und anderen.</span></li>
+      <li><strong>Lebensfreude</strong><span>Nachhaltigkeit darf Spaß machen und gut aussehen.</span></li>
+    </ul>
+  </section>
+
+  <!-- 02 LEBENSWELT -->
+  <section>
+    <div class="section-header">
+      <span class="section-num">02 /</span>
+      <span class="section-title">Lebenswelt & Alltag</span>
+    </div>
+    <div class="two-col">
+      <div class="card">
+        <h3>Wohnen</h3>
+        <p>Altbauwohnung 58 m², Hinterhof mit Urban-Gardening-Gemeinschaft. Ikea-Hacks neben Vintage-Möbeln, Wände voller Prints befreundeter Illustratorinnen. Keine Klimaanlage: Fenster und Ventilator reichen.</p>
+      </div>
+      <div class="card">
+        <h3>Mobilität</h3>
+        <p>Deutschlandticket + Lastenrad (geteilt). Kein Auto, kein Führerschein. Für Reisen Bahn oder Fernbus. Gelegentlich Flug – ohne großes Schuldgefühl, aber mit Bewusstsein dafür.</p>
+      </div>
+      <div class="card">
+        <h3>Ernährung</h3>
+        <p>Größtenteils pflanzenbasiert, nicht dogmatisch vegan. Meal Prep am Sonntag ist Ritual. Kauft bei Aldi und beim türkischen Supermarkt – pragmatisch, nicht aus Überzeugung gegen Bio-Läden.</p>
+      </div>
+      <div class="card">
+        <h3>Freizeit</h3>
+        <div class="tags" style="margin-top:4px">
+          <span class="tag hi">Bouldern 2×/Woche</span>
+          <span class="tag hi">Elektronische Musik</span>
+          <span class="tag">Clubs Bochum/Dortmund</span>
+          <span class="tag hi">Repair-Café Co-Founder</span>
+          <span class="tag">Indie-Gaming</span>
+          <span class="tag">Städtetrips per Bahn</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 WELTANSCHAUUNG -->
+  <section>
+    <div class="section-header">
+      <span class="section-num">03 /</span>
+      <span class="section-title">Weltanschauung & Politik</span>
+    </div>
+    <p>Levin wählt Grüne – mit zunehmendem Frust. Er findet sie zu verbotsorientiert und zu wenig zukunftsgestalterisch. Er sucht eine Partei, die Innovation und Ökologie zusammendenkt, ohne bürgerlich-spießig zu klingen.</p>
+    <div class="pull">
+      <p>„Wokeness ohne Pragmatismus nervt mich genauso wie Reaktionäre."</p>
+      <cite>Levin über gesellschaftliche Diskurse</cite>
+    </div>
+    <div class="pos-grid">
+      <div class="pos-card"><div class="topic">Klima</div><p>Höchste Dringlichkeit – Lösung durch Technologie + Systemwandel, nicht nur individuellen Verzicht.</p></div>
+      <div class="pos-card"><div class="topic">Migration</div><p>Klar pro-Migration. Multikulturalismus als gesellschaftliche Stärke, nicht als Problem.</p></div>
+      <div class="pos-card"><div class="topic">Wirtschaft</div><p>Kapitalismuskritisch, aber nicht antikapitalistisch. Impact-Startups als Modell.</p></div>
+      <div class="pos-card"><div class="topic">Digital</div><p>Chancenperspektive dominant. Datenschutz wichtig, aber kein Fetisch.</p></div>
+      <div class="pos-card"><div class="topic">Protest</div><p>Sympathie für FFF, Distanz zu „Letzter Generation": „Das polarisiert, überzeugt nicht."</p></div>
+      <div class="pos-card"><div class="topic">Aktivismus</div><p>Sein Kanal: Gestaltung durch Arbeit, Netzwerk und Projekte – nicht Blockaden.</p></div>
+    </div>
+  </section>
+
+  <!-- 04 KONSUM -->
+  <section>
+    <div class="section-header">
+      <span class="section-num">04 /</span>
+      <span class="section-title">Konsumgewohnheiten</span>
+    </div>
+    <p>Levin konsumiert reflektiert – aber nicht asketisch. Er unterscheidet klar nach Kategorien und setzt Prioritäten.</p>
+    <div class="two-col">
+      <div>
+        <div class="card" style="margin-bottom:12px">
+          <h3>Nach Kategorie</h3>
+          <div class="tags">
+            <span class="tag hi">Second-Hand 70 % Kleidung</span>
+            <span class="tag coral">Fairphone / Refurbished</span>
+            <span class="tag">Armedangels</span>
+            <span class="tag">Patagonia Outdoor</span>
+            <span class="tag hi">Konzerte & Reisen</span>
+            <span class="tag sky">Steady (unabh. Medien)</span>
+            <span class="tag">Aldi + türk. Supermarkt</span>
+          </div>
+        </div>
+        <div class="pull" style="margin:0">
+          <p>„Ich kaufe keine Second-Hand-Jeans, weil ich es muss. Ich tue es, weil es besser aussieht und sich besser anfühlt."</p>
+          <cite>Levin über Konsum-Authentizität</cite>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Markenhaltung</h3>
+        <p>Keine Markentreue im klassischen Sinn. Entscheidungen nach Impact + Ästhetik + Preis. Kauft nie bei Firmen, die aktiv klimaschädlich agieren.</p>
+        <p style="margin-top:12px">Kritisch gegenüber großen Plattformen – nutzt sie aber: Instagram, TikTok selektiv, Discord aktiv.</p>
+        <p style="margin-top:12px; color: var(--coral); font-size:.87rem">Reagiert sensibel auf Greenwashing. Einmal erkannt → Marke dauerhaft disqualifiziert.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 MEDIEN -->
+  <section>
+    <div class="section-header">
+      <span class="section-num">05 /</span>
+      <span class="section-title">Medien & Kommunikation</span>
+    </div>
+    <div class="two-col">
+      <div class="media-stack">
+        <div class="media-row"><div class="media-label">Podcasts</div><div class="media-content">Doppelgänger Tech Talk, Fest &amp; Flauschig, Klimawandel: Was jetzt?, Geschichten aus der Geschichte</div></div>
+        <div class="media-row"><div class="media-label">Newsletter</div><div class="media-content">Perspective Daily, The Correspondent, Grist (EN), lokale Initiative-Newsletter</div></div>
+        <div class="media-row"><div class="media-label">Social</div><div class="media-content">Instagram (Inspiration), TikTok (kurz), LinkedIn (Job), Discord (Gaming + Repair-Café)</div></div>
+        <div class="media-row"><div class="media-label">Online</div><div class="media-content">Spiegel Online tägl., Zeit Online für lange Stücke, YouTube (Kurzgesagt, Wendover)</div></div>
+        <div class="media-row"><div class="media-label">Kein TV</div><div class="media-content">Kein lineares Fernsehen. Kein Print-Abo. Kein Twitter/X.</div></div>
+      </div>
+      <div class="card">
+        <h3>Kommunikationsstil</h3>
+        <p>Digital-first, asynchron bevorzugt. Schreibt kurz und präzise – Ironie und Selbstironie sind wichtig.</p>
+        <p style="margin-top:12px">WhatsApp für Freunde · Slack für Arbeit · E-Mail für Offizielles</p>
+        <p style="margin-top:12px; color: var(--coral); font-size:.87rem">Reagiert auf lange, formale Kommunikation mit stillem Genervtsein. Postet selektiv auf Instagram: Ästhetik &gt; Frequenz.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 RUHRGEBIET -->
+  <section>
+    <div class="section-header">
+      <span class="section-num">06 /</span>
+      <span class="section-title">Bezug zum Ruhrgebiet</span>
+    </div>
+    <p>Vater nigerianisch-stämmig (Arzt, Essen), Mutter deutsch (Lehrerin, Herne). Levin ist in Herne aufgewachsen. Die Mischung aus Direktheit, Internationalität und Underdog-Stolz ist ihm wichtig – das Ruhrgebiet ist kein Nachteil, sondern ein Identitätsmerkmal.</p>
+    <div class="pull">
+      <p>„Das Ruhrgebiet hat schon einmal einen Strukturwandel gemacht – das kann es nochmal."</p>
+      <cite>Levin über Transformation im Revier</cite>
+    </div>
+    <div class="tags" style="margin-top: 4px">
+      <span class="tag hi">Transformationsoptimismus</span>
+      <span class="tag">Clubkultur Bochum/Dortmund</span>
+      <span class="tag hi">Erschwinglichkeit schätzen</span>
+      <span class="tag coral">ÖPNV zu lückenhaft</span>
+      <span class="tag coral">Radwege mangelhaft</span>
+      <span class="tag coral">Digitale Verwaltung fehlt</span>
+      <span class="tag">Repair-Café Ehrenfeld</span>
+      <span class="tag hi">Impact-Startup-Traum Ruhrgebiet</span>
+    </div>
+  </section>
+
+  <!-- 07 FRUSTRATIONEN -->
+  <section>
+    <div class="section-header">
+      <span class="section-num">07 /</span>
+      <span class="section-title">Frustrationen & Reibungspunkte</span>
+    </div>
+    <ul class="frust-list">
+      <li>Greenwashing als Marketing-Tool</li>
+      <li>Moralisierende Nachhaltigkeitsdiskurse</li>
+      <li>ÖPNV-Takt &amp; Radwege im Ruhrgebiet</li>
+      <li>Politische Langsamkeit vs. Dringlichkeit</li>
+      <li>Individuelle Schuld statt Systemverantwortung</li>
+      <li>Kita-Streiks, Behördenchaos, fehlende Digitalisierung</li>
+      <li>Fehlende Startup-Infrastruktur außerhalb Berlins</li>
+      <li>„Warum ist das in Dänemark so einfach?"</li>
+    </ul>
+  </section>
+
+  <!-- 08 KAMPAGNE -->
+  <section>
+    <div class="section-header">
+      <span class="section-num">08 /</span>
+      <span class="section-title">Kampagnen-Empfehlungen</span>
+    </div>
+    <table class="c-table">
+      <thead>
+        <tr><th>Aspekt</th><th>Empfehlung</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>TON</td><td>Peer-to-peer, direkt, mit Witz – kein Lehrmeister-Ton, keine Verbotsrhetorik</td></tr>
+        <tr><td>ARGUMENTE</td><td>Lösungsorientiert, systemisch, mit echtem Impact – keine Symbolpolitik</td></tr>
+        <tr><td>KANÄLE</td><td>Instagram Reels, TikTok, Podcasts (Pre-Roll/Host-Read), Newsletter, Discord-Communities</td></tr>
+        <tr><td>VERMEIDEN</td><td>Moralischer Zeigefinger, Bürokratensprache, Corporate Sustainability-Ästhetik</td></tr>
+        <tr><td>MOBILISIERUNG</td><td>Über konkrete Projekte und Mitgestaltung, nicht über abstrakte Appelle</td></tr>
+        <tr><td>BOTSCHAFT</td><td>„Das geht – und es muss nicht uncool sein."</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+</main>
+
+<footer>
+  <span>Neo-Ökologisches Milieu · Sinus 2021</span> · Ruhrgebiet · Persona-Profil<br>
+  Kampagnenplanung & Zielgruppenanalyse · Auf Basis Sinus-Milieuforschung
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Persona · Adaptiv-Pragmatisches Milieu · Nicole Hartwig</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Barlow+Condensed:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rust:     #c4421a;
+    --rust-l:   #e06840;
+    --teal:     #1a5c58;
+    --teal-l:   #267a74;
+    --warm:     #f7f2eb;
+    --cream:    #faf7f3;
+    --mid:      #ece6dc;
+    --stone:    #b5ada3;
+    --ink:      #1e1b18;
+    --muted:    #7a7068;
+    --rule:     #ddd6cc;
+    --white:    #ffffff;
+    --alert:    #9e2020;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Barlow', system-ui, sans-serif;
+    font-size: 15.5px;
+    line-height: 1.72;
+    font-weight: 300;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--teal);
+    position: relative;
+    overflow: hidden;
+  }
+  header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 5px;
+    background: var(--rust);
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    bottom: -120px; left: -80px;
+    width: 460px; height: 460px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(196,66,26,.14) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .header-inner {
+    max-width: 1060px;
+    margin: 0 auto;
+    padding: 52px 40px 48px;
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 48px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+  .badge {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 2px;
+  }
+  .badge.primary { background: var(--rust); color: var(--white); }
+  .badge.outline { border: 1px solid rgba(255,255,255,.28); color: rgba(255,255,255,.65); }
+
+  header h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(2.6rem, 5vw, 4rem);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.0;
+    letter-spacing: -.01em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .h1-accent { color: var(--rust-l); }
+
+  header .tagline { font-size: 1rem; color: rgba(255,255,255,.55); font-style: italic; margin-top: 8px; }
+
+  /* STECKBRIEF */
+  .steck { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); border-radius: 6px; overflow: hidden; }
+  .steck-head { background: var(--rust); padding: 8px 18px; font-family: 'Barlow Condensed', sans-serif; font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--white); }
+  .steck-body { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(255,255,255,.08); }
+  .si { background: rgba(26,92,88,.65); padding: 12px 16px; }
+  .si.full { grid-column: 1 / -1; }
+  .si .k { font-family: 'Barlow Condensed', sans-serif; font-size: .65rem; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: var(--rust-l); margin-bottom: 2px; }
+  .si .v { font-size: .9rem; color: rgba(255,255,255,.85); }
+
+  /* MOTTO STRIPE */
+  .stripe {
+    background: var(--rust);
+    padding: 14px 40px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+  .stripe-motto { font-family: 'Barlow Condensed', sans-serif; font-size: 1.1rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--white); flex: 1; }
+  .stripe-detail { font-family: 'Barlow Condensed', sans-serif; font-size: .7rem; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.6); border-left: 2px solid rgba(255,255,255,.28); padding-left: 16px; white-space: nowrap; }
+
+  /* ── MAIN ── */
+  main { max-width: 1060px; margin: 0 auto; padding: 60px 40px 100px; display: grid; gap: 56px; }
+
+  .sec-head { display: flex; align-items: center; gap: 14px; margin-bottom: 26px; padding-bottom: 10px; border-bottom: 2px solid var(--rule); }
+  .sec-num { font-family: 'Barlow Condensed', sans-serif; font-size: .7rem; font-weight: 700; color: var(--rust); letter-spacing: .12em; text-transform: uppercase; }
+  .sec-title { font-family: 'Barlow Condensed', sans-serif; font-size: 1.2rem; font-weight: 700; color: var(--teal); letter-spacing: .04em; text-transform: uppercase; }
+
+  p { color: var(--muted); font-size: .96rem; margin-bottom: 13px; }
+  p:last-child { margin-bottom: 0; }
+  em { font-style: italic; color: var(--rust); }
+
+  /* VALUES */
+  .val-list { list-style: none; counter-reset: vv; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
+  .val-list li {
+    counter-increment: vv;
+    background: var(--white);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--rust);
+    padding: 16px 20px;
+    border-radius: 2px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    transition: border-left-color .2s, box-shadow .2s;
+  }
+  .val-list li:hover { border-left-color: var(--teal); box-shadow: 0 2px 12px rgba(0,0,0,.05); }
+  .val-list li::before { content: counter(vv, decimal-leading-zero); font-family: 'Barlow Condensed', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--rust); flex-shrink: 0; line-height: 1.2; }
+  .val-list li strong { display: block; color: var(--teal); font-weight: 600; margin-bottom: 3px; }
+  .val-list li span { font-size: .88rem; color: var(--muted); }
+
+  /* TWO COL */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } }
+
+  .card { background: var(--white); border: 1px solid var(--rule); border-radius: 4px; padding: 22px 24px; }
+  .card h3 { font-family: 'Barlow Condensed', sans-serif; font-size: .78rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--rust); margin-bottom: 12px; }
+
+  /* TAGS */
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+  .tag { background: transparent; border: 1px solid var(--rule); color: var(--muted); font-family: 'Barlow Condensed', sans-serif; font-size: .72rem; font-weight: 500; padding: 4px 12px; border-radius: 2px; letter-spacing: .06em; text-transform: uppercase; transition: all .15s; cursor: default; }
+  .tag:hover { border-color: var(--rust); color: var(--rust); }
+  .tag.hi { background: rgba(196,66,26,.07); border-color: rgba(196,66,26,.28); color: var(--rust); }
+  .tag.tea { background: rgba(26,92,88,.06); border-color: rgba(26,92,88,.2); color: var(--teal-l); }
+  .tag.hot { background: rgba(158,32,32,.05); border-color: rgba(158,32,32,.2); color: var(--alert); }
+
+  /* PULL QUOTE */
+  .pull { background: var(--warm); border-left: 4px solid var(--rust); padding: 20px 28px; margin: 18px 0; border-radius: 0 4px 4px 0; }
+  .pull p { font-size: 1.04rem; font-style: italic; color: var(--teal); font-weight: 400; margin: 0 0 8px; }
+  .pull cite { font-family: 'Barlow Condensed', sans-serif; font-size: .68rem; font-weight: 500; color: var(--stone); letter-spacing: .12em; text-transform: uppercase; font-style: normal; }
+
+  /* POSITION GRID */
+  .pos-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 12px; }
+  .pos-card { background: var(--white); border: 1px solid var(--rule); border-top: 3px solid var(--teal); border-radius: 2px; padding: 16px 18px; }
+  .pos-card .topic { font-family: 'Barlow Condensed', sans-serif; font-size: .7rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--teal); margin-bottom: 7px; }
+  .pos-card p { font-size: .88rem; margin: 0; }
+
+  /* MEDIA */
+  .media-stack { display: flex; flex-direction: column; gap: 10px; }
+  .media-row { display: flex; gap: 14px; align-items: flex-start; padding: 12px 16px; background: var(--white); border: 1px solid var(--rule); border-radius: 4px; }
+  .media-lbl { font-family: 'Barlow Condensed', sans-serif; font-size: .68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--rust); min-width: 90px; flex-shrink: 0; padding-top: 1px; }
+  .media-c { color: var(--muted); font-size: .9rem; }
+
+  /* REAL-TALK BOX */
+  .realbox {
+    background: var(--warm);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 24px 28px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    margin-top: 8px;
+  }
+  .realbox-side h4 { font-family: 'Barlow Condensed', sans-serif; font-size: .75rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 14px; }
+  .realbox-side.yes h4 { color: var(--rust); }
+  .realbox-side.no  h4 { color: var(--alert); }
+  .realbox-side ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .realbox-side ul li { font-size: .9rem; color: var(--muted); padding-left: 18px; position: relative; }
+  .realbox-side.yes ul li::before { content: '→'; position: absolute; left: 0; color: var(--rust); }
+  .realbox-side.no  ul li::before { content: '✕'; position: absolute; left: 0; color: var(--alert); font-size: .7rem; top: 3px; }
+  @media (max-width: 640px) { .realbox { grid-template-columns: 1fr; } }
+
+  /* FRUST */
+  .frust-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media (max-width: 640px) { .frust-list { grid-template-columns: 1fr; } }
+  .frust-list li { background: var(--white); border: 1px solid var(--rule); border-left: 3px solid var(--alert); padding: 12px 16px; font-size: .9rem; color: var(--muted); border-radius: 0 4px 4px 0; }
+
+  /* CAMPAIGN TABLE */
+  .c-table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+  .c-table thead { background: var(--teal); }
+  .c-table th { font-family: 'Barlow Condensed', sans-serif; font-size: .7rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--white); text-align: left; padding: 11px 16px; }
+  .c-table td { padding: 12px 16px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  .c-table tr:nth-child(even) td { background: var(--warm); }
+  .c-table td:first-child { font-family: 'Barlow Condensed', sans-serif; font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--rust); white-space: nowrap; width: 130px; }
+
+  /* FOOTER */
+  footer { background: var(--teal); color: rgba(255,255,255,.5); text-align: center; padding: 28px 40px; font-family: 'Barlow Condensed', sans-serif; font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; line-height: 2; }
+  footer span { color: var(--rust-l); }
+
+  /* ANIM */
+  @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+  main > section { animation: rise .45s ease both; }
+  main > section:nth-child(1) { animation-delay: .04s; }
+  main > section:nth-child(2) { animation-delay: .09s; }
+  main > section:nth-child(3) { animation-delay: .14s; }
+  main > section:nth-child(4) { animation-delay: .19s; }
+  main > section:nth-child(5) { animation-delay: .24s; }
+  main > section:nth-child(6) { animation-delay: .29s; }
+  main > section:nth-child(7) { animation-delay: .34s; }
+  main > section:nth-child(8) { animation-delay: .39s; }
+
+  @media (max-width: 720px) {
+    .header-inner { grid-template-columns: 1fr; padding: 36px 20px; }
+    .stripe { padding: 13px 20px; flex-direction: column; gap: 8px; align-items: flex-start; }
+    .stripe-detail { border-left: none; padding-left: 0; border-top: 1px solid rgba(255,255,255,.28); padding-top: 8px; }
+    main { padding: 40px 20px 80px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div>
+      <div class="badge-row">
+        <span class="badge primary">Sinus 2021</span>
+        <span class="badge outline">Adaptiv-Pragmatisches Milieu</span>
+        <span class="badge outline">12 % · Neue gesellsch. Mitte</span>
+      </div>
+      <h1>Nicole<br><span class="h1-accent">Hartwig</span></h1>
+      <p class="tagline">„Die verlässliche Macherin" — Bochum-Langendreer, 38 J.</p>
+    </div>
+    <div class="steck">
+      <div class="steck-head">Steckbrief</div>
+      <div class="steck-body">
+        <div class="si"><div class="k">Alter</div><div class="v">38 Jahre</div></div>
+        <div class="si"><div class="k">Wohnort</div><div class="v">Bochum-Langendreer</div></div>
+        <div class="si"><div class="k">Beruf</div><div class="v">Teamleiterin Kundenservice, Energieversorger</div></div>
+        <div class="si"><div class="k">Nettoeinkommen</div><div class="v">ca. 2.650 € + Unterhalt</div></div>
+        <div class="si full"><div class="k">Familie</div><div class="v">Getrennt lebend, 2 Kinder (8 + 11 J.), gemeins. Sorgerecht</div></div>
+        <div class="si full"><div class="k">Bildung</div><div class="v">Kfm. Ausbildung + BWL-Weiterbildung (Fernkurs)</div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="stripe">
+  <div class="stripe-motto">„Ich reg mich nicht auf. Ich mach's einfach."</div>
+  <div class="stripe-detail">Bochum · Reihenhaus · 2 Kinder · Vollzeit</div>
+</div>
+
+<main>
+
+  <!-- 01 -->
+  <section>
+    <div class="sec-head"><span class="sec-num">01 /</span><span class="sec-title">Persönlichkeit & Werte</span></div>
+    <p>Nicole ist jemand, der funktioniert – und das nicht als Defizit, sondern als Stärke begreift. Sie managt Arbeit, Kinder, Haushalt und ein soziales Leben mit einer Effizienz, die andere beeindruckt und sie selbst bisweilen erschöpft. Trotzdem klagt sie selten.</p>
+    <p>Sie ist herzlich und direkt, hat wenig Geduld für Geschwätz, aber viel für Menschen, die anpacken. Ihr Selbstbild ist das einer Frau, die ohne großes Netz das Leben geregelt hat – und das verdient Respekt. Den fordert sie nicht laut ein, aber sie besteht darauf.</p>
+    <ul class="val-list">
+      <li><strong>Verlässlichkeit</strong><span>Wer sagt, er macht's, soll's auch machen.</span></li>
+      <li><strong>Eigenverantwortung</strong><span>Sie vertraut auf sich. Erwartungen ans System hält sie gering.</span></li>
+      <li><strong>Gerechtigkeit</strong><span>Chancen sollen fair sein – aber Ergebnisse hängen vom Einsatz ab.</span></li>
+      <li><strong>Familie & Stabilität</strong><span>Die Kinder sollen Halt haben. Das ist ihr wichtigstes Projekt.</span></li>
+      <li><strong>Flexibilität</strong><span>Sie passt sich an, wenn sie muss – und macht das Beste draus.</span></li>
+    </ul>
+  </section>
+
+  <!-- 02 -->
+  <section>
+    <div class="sec-head"><span class="sec-num">02 /</span><span class="sec-title">Lebenswelt & Alltag</span></div>
+    <div class="two-col">
+      <div class="card">
+        <h3>Wohnen</h3>
+        <p>Reihenhaus-Endstück in Langendreer: nicht perfekt renoviert, aber bewohnt und lebendig. Die Küche ist das Zentrum. Der Garten ihr Ausgleich – Tomaten, Kräuter, Rasen für die Kinder. Wärmepumpe: nach dem Angebot erst mal auf Eis gelegt. <em>„Im Moment zu teuer und zu viel Stress."</em></p>
+      </div>
+      <div class="card">
+        <h3>Mobilität</h3>
+        <p>Seat Leon (Benziner, 2018) – unverzichtbar mit zwei Kindern. ÖPNV wenn das Timing passt. E-Auto theoretisch ja, praktisch: abwarten. Kein Prinzip – nur Alltagsrealität.</p>
+      </div>
+      <div class="card">
+        <h3>Ernährung</h3>
+        <p>Kochen ist Routine, kein Hobby. Kriterien: schnell, sättigend, von Kindern nicht verweigert. Aldi + Lidl für den Großeinkauf. Bio für Milch und Joghurt – da zahlt sie's gerne. Wenn die Kinder beim Vater sind: einmal pro Woche aufwendigeres Kochen.</p>
+      </div>
+      <div class="card">
+        <h3>Freizeit</h3>
+        <div class="tags">
+          <span class="tag hi">Laufen 3×/Wo (morgens)</span>
+          <span class="tag hi">True-Crime-Podcasts</span>
+          <span class="tag">Netflix abends</span>
+          <span class="tag tea">Gartenarbeit</span>
+          <span class="tag hi">Freundinnen-Abende</span>
+          <span class="tag">Nordsee Familienurlaub</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 -->
+  <section>
+    <div class="sec-head"><span class="sec-num">03 /</span><span class="sec-title">Weltanschauung & Politik</span></div>
+    <p>Nicole wählt – mit wachsender Gleichgültigkeit. Früher SPD ohne Zögern. Heute fragt sie sich, ob irgendjemand die normalen Leute noch auf dem Schirm hat. AfD: für sie eine klare moralische Grenze. Aber das Feld links davon überzeugt sie auch nicht vollständig.</p>
+    <div class="pull">
+      <p>„Ich arbeite Vollzeit, erziehe zwei Kinder allein – und komme in keiner Kampagne vor."</p>
+      <cite>Nicole über politische Sichtbarkeit</cite>
+    </div>
+    <div class="pos-grid">
+      <div class="pos-card"><div class="topic">Soziales</div><p>Wer arbeitet, muss spürbar besser dastehen als wer nicht arbeitet. Keine ideologische Frage.</p></div>
+      <div class="pos-card"><div class="topic">Klima</div><p>Sie glaubt daran. Aber die Last muss gerecht verteilt sein – nicht immer auf die mittlere Schicht.</p></div>
+      <div class="pos-card"><div class="topic">Kita & Schule</div><p>Ihr persönlichstes Politikfeld. Streiks, Öffnungszeiten, marode Gebäude – das ist ihr Alltag.</p></div>
+      <div class="pos-card"><div class="topic">Migration</div><p>Pragmatisch: Integration braucht Ressourcen, die vorhanden sein müssen.</p></div>
+      <div class="pos-card"><div class="topic">Digitalisierung</div><p>Das Schulportal läuft auf Internet Explorer. Mehr muss sie nicht sagen.</p></div>
+      <div class="pos-card"><div class="topic">Feminismus</div><p>Ja – aber pragmatisch: gleiche Bezahlung, Kitazeiten, Respekt für Teilzeit. Keine Sprachdebatten.</p></div>
+    </div>
+  </section>
+
+  <!-- 04 -->
+  <section>
+    <div class="sec-head"><span class="sec-num">04 /</span><span class="sec-title">Konsumgewohnheiten</span></div>
+    <p>Nicole kauft mit Plan. Sie hat kein Geld zu verschenken und weiß das. Gleichzeitig kauft sie bewusst – nicht aus Überzeugung für Werte, sondern weil Qualität günstiger ist als ständig nachkaufen.</p>
+    <div class="two-col">
+      <div>
+        <div class="card" style="margin-bottom:12px">
+          <h3>Marken & Orte</h3>
+          <div class="tags">
+            <span class="tag hi">Aldi + Lidl (Basis)</span>
+            <span class="tag">Rewe (Spontankauf)</span>
+            <span class="tag tea">Miele (Geräte – hält)</span>
+            <span class="tag">Zara / H&M (Kleidung)</span>
+            <span class="tag hi">Vinted für Kindersachen</span>
+            <span class="tag">Amazon (Zeitmangel)</span>
+            <span class="tag">Vergleichsportale</span>
+          </div>
+        </div>
+        <div class="pull" style="margin:0">
+          <p>„Ich kauf keine billigen Geräte. Die sind am Ende teurer."</p>
+          <cite>Nicole über ihre Kauflogik</cite>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Nachhaltigkeit</h3>
+        <p>Mülltrennung: selbstverständlich, machen die Kinder mit. Einwegplastik nervt sie. Große Systemumstellungen: wenn Förderung klar und Prozess einfach ist, wäre sie dabei.</p>
+        <p style="margin-top:12px">Bisher war beides nicht so. Solaranlage, Wärmepumpe: im Kopf – im Alltag nicht umsetzbar.</p>
+        <p style="margin-top:12px; color:var(--alert); font-size:.88rem">Komplexe Förderprogramme schließen sie aus – nicht wegen Desinteresse, sondern wegen fehlender Zeit.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 -->
+  <section>
+    <div class="sec-head"><span class="sec-num">05 /</span><span class="sec-title">Medien & Kommunikation</span></div>
+    <div class="two-col">
+      <div class="media-stack">
+        <div class="media-row"><div class="media-lbl">Podcasts</div><div class="media-c">Mordlust, Zeit Verbrechen (True Crime), LAGE der NATION, ZEIT-Familienkolumne</div></div>
+        <div class="media-row"><div class="media-lbl">Streaming</div><div class="media-c">Netflix (abends), ARD-Mediathek für Dokus – kein lineares TV</div></div>
+        <div class="media-row"><div class="media-lbl">Social</div><div class="media-c">Facebook (Schulgruppen, Tauschgruppen), Instagram (passiv) – kein TikTok, kein Twitter</div></div>
+        <div class="media-row"><div class="media-lbl">News</div><div class="media-c">WDR-App, WAZ für Lokales, Google News als Aggregator</div></div>
+        <div class="media-row"><div class="media-lbl">Werbung</div><div class="media-c">Banner ignoriert, YouTube überspringt sie – Empfehlungen aus persönlichem Netz wirken</div></div>
+      </div>
+      <div class="card">
+        <h3>Kommunikationsstil</h3>
+        <p>Direkt, klar, kein Umschweif – Zeit ist ihr knappstes Gut. WhatsApp ist ihr Alltagsmedium: Kinder-Koordination, Freundinnen, Arbeit.</p>
+        <p style="margin-top:12px">Hört lieber zu als zu reden – aber wenn sie redet, hat es Gewicht.</p>
+        <p style="margin-top:12px; color:var(--rust); font-size:.88rem">E-Mail für Schule und Behörden: mit wachsender Ungeduld gegenüber dem Aufwand.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 -->
+  <section>
+    <div class="sec-head"><span class="sec-num">06 /</span><span class="sec-title">Bezug zum Ruhrgebiet</span></div>
+    <p>Nicole ist in Bochum aufgewachsen und geblieben. Nicht weil sie nicht weg konnte – sondern weil hier ihr Leben ist. Langendreer ist kein Imageträger, aber es ist ihr Ort: bezahlbar, ruhig, gute Schule nebenan.</p>
+    <div class="pull">
+      <p>„Neubau im Zentrum, aber die Schulen in Langendreer sind undicht. Das sagt alles."</p>
+      <cite>Nicole über Stadtentwicklung in Bochum</cite>
+    </div>
+    <div class="realbox">
+      <div class="realbox-side yes">
+        <h4>Was sie schätzt</h4>
+        <ul>
+          <li>Bezahlbares Wohneigentum für Familien</li>
+          <li>Niemand schaut auf sie herab, weil sie in Bochum wohnt</li>
+          <li>Kurze Wege, keine anonyme Großstadtatmo</li>
+          <li>Direktheit und Verlässlichkeit der Menschen</li>
+          <li>Netz aus Familie und Freundinnen vor Ort</li>
+        </ul>
+      </div>
+      <div class="realbox-side no">
+        <h4>Was sie vermisst / kritisiert</h4>
+        <ul>
+          <li>Verlässlicher ÖPNV-Takt</li>
+          <li>Schulen: Ausstattung, Gebäude, Öffnungszeiten</li>
+          <li>Digitale Verwaltung: kaum vorhanden</li>
+          <li>Investitionen landen sichtbar woanders</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 -->
+  <section>
+    <div class="sec-head"><span class="sec-num">07 /</span><span class="sec-title">Frustrationen & Reibungspunkte</span></div>
+    <ul class="frust-list">
+      <li>Vollzeit + Alleinerziehen wird politisch kaum anerkannt</li>
+      <li>Kita- und Schulstreiks: trifft immer sie, nicht die Entscheidenden</li>
+      <li>Behörden, die sie behandeln, als hätte sie nichts Besseres zu tun</li>
+      <li>Wer sich anstrengt und nicht vorankommt, ist unsichtbar</li>
+      <li>Klimapolitik als Luxusdebatte – sie will, aber braucht einfache Lösungen</li>
+      <li>Förderprogramme in unverständlicher Sprache – keine Zeit zum Entschlüsseln</li>
+      <li>Das Gefühl: immer funktionieren, nie wirklich Anerkennung erhalten</li>
+      <li>Steigende Kosten, die ihre sorgfältige Planung immer wieder aushebeln</li>
+    </ul>
+  </section>
+
+  <!-- 08 -->
+  <section>
+    <div class="sec-head"><span class="sec-num">08 /</span><span class="sec-title">Kampagnen-Empfehlungen</span></div>
+    <table class="c-table">
+      <thead>
+        <tr><th>Aspekt</th><th>Empfehlung</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>TON</td><td>Ehrlich, praktisch – ohne Romantisierung und ohne Mitleid. Sie ist keine Heldin, sie ist eine Person.</td></tr>
+        <tr><td>ARGUMENTE</td><td>Zeitersparnis, Kostenentlastung, Verlässlichkeit, Alltagstauglichkeit – in dieser Reihenfolge</td></tr>
+        <tr><td>KANÄLE</td><td>Facebook (lokale Gruppen), WhatsApp-Empfehlungsketten, WAZ, WDR-App, Podcast-Pre-Roll (True Crime)</td></tr>
+        <tr><td>VERMEIDEN</td><td>Musterfamilien-Bilder, Fachsprache in Förderinformationen, Belehrung, abstrakte Transformationsversprechen</td></tr>
+        <tr><td>MOBILISIERUNG</td><td>Über Schule, Energie, ÖPNV, Kosten – konkret, nah, direkt wirksam</td></tr>
+        <tr><td>BOTSCHAFT</td><td>„Einfacher. Günstiger. Einfach funktioniert."</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+</main>
+
+<footer>
+  <span>Adaptiv-Pragmatisches Milieu · Sinus 2021</span> · Ruhrgebiet · Weibliche Persona<br>
+  Kampagnenplanung & Zielgruppenanalyse · Auf Basis Sinus-Milieuforschung
+</footer>
+
+</body>
+</html>

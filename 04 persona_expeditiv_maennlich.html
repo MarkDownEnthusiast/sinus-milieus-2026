@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Persona · Expeditives Milieu · Finn Aderhold</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Syne+Mono&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black:   #0a0a0a;
+    --white:   #f5f5f0;
+    --orange:  #e85d00;
+    --orange-l:#ff7820;
+    --grey:    #1a1a1a;
+    --mid:     #888;
+    --light:   #ccc;
+    --rule:    #222;
+    --panel:   #111;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'DM Sans', system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.72;
+    font-weight: 300;
+  }
+
+  /* ── HEADER: editorial split ── */
+  header {
+    background: var(--black);
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header-top {
+    background: var(--orange);
+    padding: 10px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .header-top span {
+    font-family: 'Syne Mono', monospace;
+    font-size: .68rem;
+    color: var(--black);
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+
+  .header-body {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 56px 40px 52px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+
+  .header-left {
+    padding-right: 40px;
+    border-right: 1px solid var(--rule);
+  }
+
+  header h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(3.5rem, 7vw, 6rem);
+    font-weight: 800;
+    color: var(--white);
+    line-height: 0.88;
+    letter-spacing: -.04em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .h1-accent { color: var(--orange); display: block; }
+
+  .header-desc {
+    font-style: italic;
+    color: var(--mid);
+    font-size: .95rem;
+    margin-top: 16px;
+    line-height: 1.5;
+  }
+
+  .header-right {
+    padding-left: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .milieu-label {
+    font-family: 'Syne', sans-serif;
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 20px;
+  }
+
+  .steck { display: flex; flex-direction: column; gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+  .si { display: grid; grid-template-columns: 90px 1fr; gap: 12px; padding: 9px 14px; background: var(--panel); font-size: .87rem; }
+  .si .k { font-family: 'Syne Mono', monospace; font-size: .62rem; color: var(--orange); letter-spacing: .1em; text-transform: uppercase; padding-top: 2px; }
+  .si .v { color: var(--white); }
+
+  /* MOTTO */
+  .motto { background: var(--white); padding: 18px 40px; font-family: 'Syne', sans-serif; font-size: 1.05rem; font-weight: 700; color: var(--black); letter-spacing: .02em; text-transform: uppercase; }
+  .motto::before { content: '— '; color: var(--orange); }
+
+  /* ── MAIN ── */
+  main { max-width: 1040px; margin: 0 auto; padding: 60px 40px 100px; display: grid; gap: 56px; }
+
+  .sec-head { display: flex; align-items: center; gap: 16px; margin-bottom: 26px; }
+  .sec-num { font-family: 'Syne Mono', monospace; font-size: .68rem; color: var(--orange); letter-spacing: .1em; }
+  .sec-rule { flex: 1; height: 1px; background: var(--rule); }
+  .sec-title { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; color: var(--white); letter-spacing: .04em; text-transform: uppercase; }
+
+  p { color: var(--mid); font-size: .94rem; margin-bottom: 12px; }
+  p:last-child { margin-bottom: 0; }
+  em { font-style: italic; color: var(--orange); }
+
+  /* VALUES */
+  .val-list { list-style: none; counter-reset: vv; display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 10px; }
+  .val-list li { counter-increment: vv; background: var(--panel); border: 1px solid var(--rule); border-left: 3px solid var(--orange); padding: 14px 18px; display: flex; gap: 12px; align-items: flex-start; transition: border-left-color .15s; }
+  .val-list li:hover { border-left-color: var(--white); }
+  .val-list li::before { content: counter(vv); font-family: 'Syne', sans-serif; font-size: 1.4rem; font-weight: 800; color: var(--orange); flex-shrink: 0; line-height: 1; }
+  .val-list li strong { display: block; color: var(--white); font-weight: 600; font-size: .9rem; margin-bottom: 3px; }
+  .val-list li span { font-size: .86rem; color: var(--mid); }
+
+  /* TWO COL */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } }
+
+  .card { background: var(--panel); border: 1px solid var(--rule); padding: 20px 22px; }
+  .card h3 { font-family: 'Syne', sans-serif; font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--orange); margin-bottom: 10px; padding-bottom: 8px; border-bottom: 1px solid var(--rule); }
+
+  .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 6px; }
+  .tag { background: transparent; border: 1px solid var(--rule); color: var(--mid); font-family: 'Syne Mono', monospace; font-size: .65rem; padding: 3px 10px; letter-spacing: .04em; transition: all .13s; cursor: default; }
+  .tag:hover { border-color: var(--orange); color: var(--orange); }
+  .tag.hi { background: rgba(232,93,0,.08); border-color: rgba(232,93,0,.3); color: var(--orange); }
+  .tag.wh { background: rgba(245,245,240,.05); border-color: rgba(245,245,240,.15); color: var(--light); }
+
+  .pull { background: var(--panel); border-left: 3px solid var(--orange); padding: 18px 24px; margin: 16px 0; }
+  .pull p { font-family: 'Syne', sans-serif; font-size: 1.05rem; font-style: normal; font-weight: 600; color: var(--white); margin: 0 0 8px; line-height: 1.3; }
+  .pull cite { font-family: 'Syne Mono', monospace; font-size: .62rem; color: var(--mid); letter-spacing: .1em; text-transform: uppercase; font-style: normal; }
+
+  .pos-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
+  .pos-card { background: var(--panel); border: 1px solid var(--rule); border-top: 2px solid var(--white); padding: 14px 16px; }
+  .pos-card .topic { font-family: 'Syne', sans-serif; font-size: .68rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--white); margin-bottom: 6px; }
+  .pos-card p { font-size: .87rem; margin: 0; }
+
+  .media-stack { display: flex; flex-direction: column; gap: 8px; }
+  .media-row { display: flex; gap: 12px; align-items: flex-start; padding: 10px 14px; background: var(--panel); border: 1px solid var(--rule); }
+  .media-lbl { font-family: 'Syne Mono', monospace; font-size: .62rem; color: var(--orange); letter-spacing: .1em; text-transform: uppercase; min-width: 80px; flex-shrink: 0; padding-top: 1px; }
+  .media-c { color: var(--mid); font-size: .9rem; }
+
+  .frust-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
+  @media (max-width: 640px) { .frust-list { grid-template-columns: 1fr; } }
+  .frust-list li { background: var(--panel); border: 1px solid var(--rule); border-left: 2px solid var(--mid); padding: 10px 14px; font-size: .9rem; color: var(--mid); }
+
+  .c-table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+  .c-table thead { background: var(--white); }
+  .c-table th { font-family: 'Syne', sans-serif; font-size: .7rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--black); text-align: left; padding: 10px 16px; }
+  .c-table td { padding: 11px 16px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  .c-table tr:nth-child(odd) td { background: var(--panel); }
+  .c-table td:first-child { font-family: 'Syne Mono', monospace; font-size: .68rem; color: var(--orange); letter-spacing: .06em; white-space: nowrap; width: 120px; }
+
+  footer { border-top: 1px solid var(--rule); background: var(--panel); text-align: center; padding: 24px 40px; font-family: 'Syne Mono', monospace; font-size: .65rem; color: var(--mid); letter-spacing: .08em; text-transform: uppercase; line-height: 2; }
+  footer span { color: var(--orange); }
+
+  @keyframes up { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+  main > section { animation: up .45s ease both; }
+  main > section:nth-child(1) { animation-delay: .04s; }
+  main > section:nth-child(2) { animation-delay: .09s; }
+  main > section:nth-child(3) { animation-delay: .14s; }
+  main > section:nth-child(4) { animation-delay: .19s; }
+  main > section:nth-child(5) { animation-delay: .24s; }
+  main > section:nth-child(6) { animation-delay: .29s; }
+  main > section:nth-child(7) { animation-delay: .34s; }
+  main > section:nth-child(8) { animation-delay: .39s; }
+
+  @media (max-width: 720px) {
+    .header-body { grid-template-columns: 1fr; }
+    .header-left { border-right: none; border-bottom: 1px solid var(--rule); padding-right: 0; padding-bottom: 32px; margin-bottom: 32px; }
+    .header-right { padding-left: 0; }
+    .header-top, .motto { padding-left: 20px; padding-right: 20px; }
+    main { padding: 40px 20px 80px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-top">
+    <span>Sinus-Milieus® 2021 · Expeditives Milieu · 10 % · Zukunftsmilieu</span>
+    <span>Ruhrgebiet · Männlich</span>
+  </div>
+  <div class="header-body">
+    <div class="header-left">
+      <h1>Finn<span class="h1-accent">Aderhold</span></h1>
+      <p class="header-desc">„Der kreative Grenzgänger" — Essen-Nordviertel, 29 J.<br>Art Director & Fotograf · Ateliergemeinschaft · Fabrikhalle</p>
+    </div>
+    <div class="header-right">
+      <div class="milieu-label">Expeditives Milieu · Zukunftsmilieu</div>
+      <div class="steck">
+        <div class="si"><span class="k">Alter</span><span class="v">29 Jahre</span></div>
+        <div class="si"><span class="k">Wohnort</span><span class="v">Essen-Nordviertel</span></div>
+        <div class="si"><span class="k">Beruf</span><span class="v">Freier Art Director & Fotograf</span></div>
+        <div class="si"><span class="k">Einkommen</span><span class="v">ca. 2.800 € (projektabhängig)</span></div>
+        <div class="si"><span class="k">Bildung</span><span class="v">B.A. Komm.design + Semester Barcelona</span></div>
+        <div class="si"><span class="k">Wohnen</span><span class="v">Ateliergemeinschaft, Loft 120 m²</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="motto">„Wer Grenzen nicht testet, weiß nicht, wo sie sind."</div>
+
+<main>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">01</span><div class="sec-rule"></div><span class="sec-title">Persönlichkeit & Werte</span></div>
+    <p>Finn lebt in Bewegung. Nicht rastlos – sondern bewusst nomadisch. Er hat in vier Jahren in Essen, Barcelona, Berlin und Porto gelebt. Er denkt in Bildern, in Stimmungen, in Kontrasten. Seine Arbeit und sein Leben sind nicht getrennt – das ist für ihn kein Problem, sondern das Ziel.</p>
+    <p>Er ist politisch wach und gesellschaftlich engagiert – und gleichzeitig tief misstrauisch gegenüber jeder Form von Dogma. Er denkt selbst. Das ist seine wichtigste Identität.</p>
+    <ul class="val-list">
+      <li><strong>Individualismus</strong><span>Keine vorgefertigte Schublade. Er definiert sich selbst.</span></li>
+      <li><strong>Kreative Freiheit</strong><span>Die Fähigkeit zu gestalten ist sein Grundrecht.</span></li>
+      <li><strong>Kosmopolitismus</strong><span>Grenzen – nationale wie mentale – sind Konstrukte.</span></li>
+      <li><strong>Authentizität</strong><span>Alles was er tut, muss ehrlich sein. Performance erkennt er sofort.</span></li>
+      <li><strong>Neugier</strong><span>Das Unbekannte ist interessanter als das Vertraute.</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">02</span><div class="sec-rule"></div><span class="sec-title">Lebenswelt & Alltag</span></div>
+    <div class="two-col">
+      <div class="card">
+        <h3>Wohnen</h3>
+        <p>Riesige Fenster, Betonböden, selbst gebaute Regale, überall Bücher und Equipment. Die Küche ist das soziale Zentrum der Ateliergemeinschaft. Er besitzt wenig, aber das wenige ist mit Bedacht gewählt.</p>
+      </div>
+      <div class="card">
+        <h3>Mobilität</h3>
+        <p>Fixie-Fahrrad für die Stadt. Bahn für alles andere – kein Führerschein, kein Interesse daran. Fliegt selten – nicht aus Moral, sondern weil er Züge schöner findet.</p>
+      </div>
+      <div class="card">
+        <h3>Ernährung</h3>
+        <p>Kocht gerne und intuitiv – kein Rezept, aber Ergebnis meist gut. Stark pflanzenbasiert, ohne Dogma. Wochenmarkt, türkischer Händler, kleine Lokale mit Charakter.</p>
+      </div>
+      <div class="card">
+        <h3>Freizeit</h3>
+        <div class="tags">
+          <span class="tag hi">Analogfotografie (eigene Serie)</span>
+          <span class="tag hi">Byung-Chul Han & Sontag</span>
+          <span class="tag wh">Konzerte & Ausstellungen wöchentl.</span>
+          <span class="tag hi">Zug-Reisen ohne festes Ziel</span>
+          <span class="tag">Klettern (indoor)</span>
+          <span class="tag wh">Stummfilm-Club monatlich</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">03</span><div class="sec-rule"></div><span class="sec-title">Weltanschauung & Politik</span></div>
+    <p>Finn wählt Grüne oder gibt ungültig ab. Er ist politisch engagiert im Denken, aber skeptisch gegenüber institutioneller Politik. Er glaubt an systemischen Wandel, bezweifelt aber, dass der über Parteien kommt.</p>
+    <div class="pull">
+      <p>„Blasen – jeder Art – finde ich intellektuell langweilig."</p>
+      <cite>Finn über Diskurse und Echokammern</cite>
+    </div>
+    <div class="pos-grid">
+      <div class="pos-card"><div class="topic">Klima</div><p>Klar und dringend. Aber er misstraut Nachhaltigkeits-Marketing genauso wie Leugnung.</p></div>
+      <div class="pos-card"><div class="topic">Gesellschaft</div><p>Radikal offen. Diversität, Queerness, Postkolonialismus – gelebte Realität, keine Konzepte.</p></div>
+      <div class="pos-card"><div class="topic">Wirtschaft</div><p>Kapitalismuskritisch. Er verdient Geld – aber denkt darüber nach, was das bedeutet.</p></div>
+      <div class="pos-card"><div class="topic">Europa</div><p>Befürworter – aber kritisch gegenüber EU-Bürokratie und institutioneller Trägheit.</p></div>
+      <div class="pos-card"><div class="topic">Lokal</div><p>Engagiert für Erhalt von Kulturräumen und bezahlbaren Ateliers im Ruhrgebiet.</p></div>
+      <div class="pos-card"><div class="topic">Debatten</div><p>Redet lieber mit andersdenkenden als bestätigenden Menschen. Guter Glaube ist Voraussetzung.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">04</span><div class="sec-rule"></div><span class="sec-title">Konsumgewohnheiten</span></div>
+    <p>Finn kauft wenig und selten – aber wenn, dann gezielt und mit Haltung. Vintage und Handwerk sind attraktiver als Neues. Seine größte Einzelinvestition: eine gebrauchte Leica-Kamera.</p>
+    <div class="two-col">
+      <div>
+        <div class="card" style="margin-bottom:10px">
+          <h3>Kaufmuster</h3>
+          <div class="tags">
+            <span class="tag hi">Vintage + Second Hand Kleidung</span>
+            <span class="tag hi">Leica (gebraucht, größte Investition)</span>
+            <span class="tag wh">Refurbished MacBook</span>
+            <span class="tag hi">Buchhandlung statt Amazon</span>
+            <span class="tag">Vinyl-Sammlung</span>
+            <span class="tag wh">Kein Sparplan, lebt im Jetzt</span>
+          </div>
+        </div>
+        <div class="pull" style="margin:0">
+          <p>„Ich kaufe lieber wenig Richtiges als viel Falsches."</p>
+          <cite>Finn über Konsum und Haltung</cite>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Nachhaltigkeit</h3>
+        <p>Gelebte Praxis, kein Label. Er kauft wenig, repariert, meidet Flüge, isst kaum Fleisch. Er braucht keine Kampagne dafür.</p>
+        <p style="margin-top:12px; color:var(--orange); font-size:.88rem">Was ihn nervt: Unternehmen die Nachhaltigkeit als Marketingstrategie nutzen – er erkennt es sofort.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">05</span><div class="sec-rule"></div><span class="sec-title">Medien & Kommunikation</span></div>
+    <div class="two-col">
+      <div class="media-stack">
+        <div class="media-row"><div class="media-lbl">Instagram</div><div class="media-c">Berufliches Schaufenster – kuratiert, ästhetisch, selektiv. Kein Lifestyle-Account.</div></div>
+        <div class="media-row"><div class="media-lbl">Are.na</div><div class="media-c">Digitales Archiv und Inspirationssystem (Boards zu Projekten und Themen)</div></div>
+        <div class="media-row"><div class="media-lbl">Newsletter</div><div class="media-c">Substack (Essayisten, Kulturkritik, Design), The Browser</div></div>
+        <div class="media-row"><div class="media-lbl">Podcasts</div><div class="media-c">99% Invisible, Philosophize This!, Zeit-Podcast, Radio Open Source</div></div>
+        <div class="media-row"><div class="media-lbl">Kein</div><div class="media-c">Facebook, TikTok, LinkedIn, lineares TV – bewusste Entscheidungen, keine Lücken</div></div>
+      </div>
+      <div class="card">
+        <h3>Kommunikationsstil</h3>
+        <p>Schreibt lang und sorgfältig – E-Mails sind bei ihm Mini-Essays. WhatsApp selektiv, Sprachnachrichten für Freunde.</p>
+        <p style="margin-top:12px; color:var(--orange); font-size:.88rem">Hasst: Corporate-Sprech, Buzzwords, vorgetäuschte Verbindlichkeit, jede Form von Fake.</p>
+        <p style="margin-top:10px">Erreichbar über Instagram DM – aber er filtert. Persönliche Empfehlung wirkt am stärksten.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">06</span><div class="sec-rule"></div><span class="sec-title">Bezug zum Ruhrgebiet</span></div>
+    <p>Finn ist in Münster aufgewachsen, lebt seit drei Jahren in Essen. Das Ruhrgebiet hat ihn überrascht: Es ist rauer, ehrlicher und kreativer als sein Ruf. Er dokumentiert es – seine Analogfotografie-Serie über Arbeiteridentität und Wandel ist sein persönlichstes Projekt.</p>
+    <div class="pull">
+      <p>„Das Ruhrgebiet ist ein Ort authentischer Transformation. Genau das macht es interessant."</p>
+      <cite>Finn über sein künstlerisches Verhältnis zum Revier</cite>
+    </div>
+    <div class="tags" style="margin-top:4px">
+      <span class="tag hi">Bezahlbare Atelierräume</span>
+      <span class="tag hi">Wachsende Kreativszene</span>
+      <span class="tag wh">Direktheit der Menschen</span>
+      <span class="tag">Vermisst: internationale Galeriepräsenz</span>
+      <span class="tag hi">Analogfotoprojekt: Arbeit & Wandel</span>
+      <span class="tag">Ärgert sich: Industrienostalgie als Identität</span>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">07</span><div class="sec-rule"></div><span class="sec-title">Frustrationen & Reibungspunkte</span></div>
+    <ul class="frust-list">
+      <li>Einkommensunsicherheit: gute und schlechte Monate ohne Puffer</li>
+      <li>Bürokratie für Freelancer: Steuer, KV, GEZ</li>
+      <li>Verdrängung kreativer Räume durch Mietanstieg</li>
+      <li>Gesellschaftliche Debatten im Kreis ohne Konsequenzen</li>
+      <li>Kunden die Kreativität wollen, aber konservative Ergebnisse erwarten</li>
+      <li>Algorithmen machen ihn unsichtbar wenn er nicht ständig postet</li>
+      <li>Einkommensunsicherheit macht langfristige Planung unmöglich</li>
+      <li>Das Spannungsfeld zwischen Kunstanspruch und Marktanforderung</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">08</span><div class="sec-rule"></div><span class="sec-title">Kampagnen-Empfehlungen</span></div>
+    <table class="c-table">
+      <thead><tr><th>Aspekt</th><th>Empfehlung</th></tr></thead>
+      <tbody>
+        <tr><td>TON</td><td>Authentisch, visuell stark, keine Floskeln – er erkennt jede Form von Fake sofort</td></tr>
+        <tr><td>ARGUMENTE</td><td>Ästhetik, Haltung, Originalität, Ermöglichung von Kreativität</td></tr>
+        <tr><td>KANÄLE</td><td>Instagram (visuell!), Are.na, Substack, Printmagazine (032c, Camera Austria), Szene-Empfehlung</td></tr>
+        <tr><td>VERMEIDEN</td><td>Corporate Sustainability-Ästhetik, Buzzwords, Massenmedien, TikTok-Formate, gekaufte Reichweite</td></tr>
+        <tr><td>MOBILISIERUNG</td><td>Über Community-Aufbau, Residencies, gemeinsame Projekte – nicht über klassische Werbung</td></tr>
+        <tr><td>BOTSCHAFT</td><td>„Gemacht für Leute, die eigene Wege gehen."</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+</main>
+
+<footer>
+  <span>Expeditives Milieu · Sinus 2021</span> · Ruhrgebiet · Männliche Persona<br>
+  Kampagnenplanung & Zielgruppenanalyse · Auf Basis Sinus-Milieuforschung
+</footer>
+
+</body>
+</html>

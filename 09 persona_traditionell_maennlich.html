@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Persona · Traditionelles Milieu · Heinz Potthoff</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sepia:   #f4edd8;
+    --parch:   #ede4cc;
+    --warm:    #e6dbc4;
+    --rule:    #c8bca0;
+    --stone:   #9a8e78;
+    --ink:     #2a2218;
+    --muted:   #6a5e4a;
+    --mid:     #8a7e68;
+    --brown:   #5c3d1e;
+    --brown-l: #7a5530;
+    --coal:    #3a3028;
+    --white:   #faf7f0;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--sepia);
+    color: var(--ink);
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 16px;
+    line-height: 1.8;
+    font-weight: 400;
+  }
+
+  /* ── TOP RULE ── */
+  .top-rule {
+    background: var(--coal);
+    padding: 10px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .top-rule span {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: .68rem;
+    color: var(--warm);
+    letter-spacing: .18em;
+    text-transform: uppercase;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--white);
+    border-bottom: 3px double var(--rule);
+    padding: 52px 40px 44px;
+  }
+  .header-inner {
+    max-width: 1020px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 52px;
+    align-items: start;
+  }
+
+  .ornament {
+    color: var(--brown);
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+    letter-spacing: .2em;
+  }
+
+  header h1 {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    font-weight: 700;
+    color: var(--coal);
+    line-height: 1.0;
+    margin-bottom: 6px;
+  }
+
+  .h1-rule {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 12px 0 10px;
+  }
+
+  .tagline {
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--muted);
+  }
+
+  /* STECKBRIEF */
+  .steck {
+    border: 1px solid var(--rule);
+    border-top: 3px solid var(--coal);
+    background: var(--parch);
+  }
+  .steck-head {
+    background: var(--coal);
+    padding: 7px 16px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: .65rem;
+    font-weight: 600;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--warm);
+  }
+  .si { display: grid; grid-template-columns: 80px 1fr; gap: 8px; padding: 8px 14px; border-bottom: 1px solid var(--rule); font-size: .88rem; }
+  .si:last-child { border-bottom: none; }
+  .si .k { font-family: 'Source Sans 3', sans-serif; font-weight: 600; color: var(--mid); font-size: .72rem; padding-top: 2px; text-transform: uppercase; letter-spacing: .06em; }
+  .si .v { color: var(--ink); font-family: 'EB Garamond', serif; }
+
+  /* MOTTO */
+  .motto-band {
+    background: var(--coal);
+    color: var(--warm);
+    padding: 16px 40px;
+    font-family: 'EB Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    text-align: center;
+    letter-spacing: .03em;
+  }
+  .motto-band::before { content: '❧  '; }
+  .motto-band::after  { content: '  ❧'; }
+
+  /* ── MAIN ── */
+  main {
+    max-width: 1020px;
+    margin: 0 auto;
+    padding: 56px 40px 100px;
+    display: grid;
+    gap: 52px;
+  }
+
+  .sec-head {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 22px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--coal);
+  }
+  .sec-num { font-family: 'Source Sans 3', sans-serif; font-size: .68rem; color: var(--brown); letter-spacing: .14em; text-transform: uppercase; }
+  .sec-title { font-family: 'EB Garamond', Georgia, serif; font-size: 1.5rem; font-weight: 700; color: var(--coal); }
+
+  p { color: var(--muted); font-size: .97rem; margin-bottom: 13px; font-family: 'EB Garamond', serif; }
+  p:last-child { margin-bottom: 0; }
+  em { font-style: italic; color: var(--brown); }
+
+  /* VALUES */
+  .val-list { list-style: none; counter-reset: vv; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 10px; }
+  .val-list li { counter-increment: vv; background: var(--white); border: 1px solid var(--rule); border-left: 3px solid var(--brown); padding: 14px 18px; display: flex; gap: 14px; align-items: flex-start; }
+  .val-list li::before { content: counter(vv, upper-roman); font-family: 'EB Garamond', serif; font-size: .9rem; color: var(--brown); flex-shrink: 0; min-width: 24px; padding-top: 1px; }
+  .val-list li strong { display: block; color: var(--coal); font-weight: 500; font-size: .97rem; margin-bottom: 2px; }
+  .val-list li span { font-size: .88rem; color: var(--muted); }
+
+  /* TWO COL */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } }
+
+  .card { background: var(--white); border: 1px solid var(--rule); padding: 20px 22px; }
+  .card h3 { font-family: 'Source Sans 3', sans-serif; font-size: .7rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--brown); margin-bottom: 10px; padding-bottom: 6px; border-bottom: 1px solid var(--rule); }
+
+  /* TAGS */
+  .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 6px; }
+  .tag { background: transparent; border: 1px solid var(--rule); color: var(--mid); font-family: 'Source Sans 3', sans-serif; font-size: .72rem; padding: 3px 10px; letter-spacing: .04em; transition: all .15s; cursor: default; }
+  .tag:hover { border-color: var(--brown); color: var(--brown); }
+  .tag.hi { background: rgba(92,61,30,.06); border-color: rgba(92,61,30,.22); color: var(--brown); }
+  .tag.co { background: rgba(58,48,40,.06); border-color: rgba(58,48,40,.22); color: var(--coal); }
+
+  /* PULL */
+  .pull { background: var(--parch); border-left: 4px solid var(--coal); padding: 18px 26px; margin: 14px 0; }
+  .pull p { font-size: 1.08rem; font-style: italic; color: var(--coal); margin: 0 0 8px; }
+  .pull cite { font-family: 'Source Sans 3', sans-serif; font-size: .65rem; color: var(--stone); letter-spacing: .14em; text-transform: uppercase; font-style: normal; font-weight: 600; }
+
+  /* POS GRID */
+  .pos-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
+  .pos-card { background: var(--white); border: 1px solid var(--rule); border-top: 2px solid var(--coal); padding: 14px 16px; }
+  .pos-card .topic { font-family: 'Source Sans 3', sans-serif; font-size: .68rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--coal); margin-bottom: 6px; }
+  .pos-card p { font-size: .88rem; margin: 0; }
+
+  /* MEDIA */
+  .media-stack { display: flex; flex-direction: column; gap: 8px; }
+  .media-row { display: flex; gap: 12px; align-items: flex-start; padding: 10px 14px; background: var(--white); border: 1px solid var(--rule); }
+  .media-lbl { font-family: 'Source Sans 3', sans-serif; font-size: .65rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--brown); min-width: 80px; flex-shrink: 0; padding-top: 2px; }
+  .media-c { color: var(--muted); font-size: .9rem; font-family: 'EB Garamond', serif; }
+
+  /* CONTRAST */
+  .contrast { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .contrast-side { background: var(--white); border: 1px solid var(--rule); padding: 18px 20px; }
+  .contrast-side h4 { font-family: 'Source Sans 3', sans-serif; font-size: .7rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 12px; padding-bottom: 6px; border-bottom: 1px solid var(--rule); }
+  .contrast-side.pos h4 { color: var(--coal); }
+  .contrast-side.neg h4 { color: var(--brown-l); }
+  .contrast-side ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+  .contrast-side ul li { font-size: .9rem; color: var(--muted); padding-left: 16px; position: relative; font-family: 'EB Garamond', serif; }
+  .contrast-side.pos ul li::before { content: '+'; position: absolute; left: 0; color: var(--coal); font-family: 'Source Sans 3', sans-serif; font-weight: 600; }
+  .contrast-side.neg ul li::before { content: '–'; position: absolute; left: 0; color: var(--brown-l); font-family: 'Source Sans 3', sans-serif; font-weight: 600; }
+  @media (max-width: 640px) { .contrast { grid-template-columns: 1fr; } }
+
+  /* FRUST */
+  .frust-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
+  @media (max-width: 640px) { .frust-list { grid-template-columns: 1fr; } }
+  .frust-list li { background: var(--white); border: 1px solid var(--rule); border-left: 3px solid var(--brown-l); padding: 10px 14px; font-size: .92rem; color: var(--muted); font-family: 'EB Garamond', serif; }
+
+  /* CAMPAIGN TABLE */
+  .c-table { width: 100%; border-collapse: collapse; font-size: .92rem; }
+  .c-table thead { background: var(--coal); }
+  .c-table th { font-family: 'Source Sans 3', sans-serif; font-size: .66rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--warm); text-align: left; padding: 10px 16px; }
+  .c-table td { padding: 11px 16px; border-bottom: 1px solid var(--rule); vertical-align: top; font-family: 'EB Garamond', serif; }
+  .c-table tr:nth-child(even) td { background: var(--parch); }
+  .c-table td:first-child { font-family: 'Source Sans 3', sans-serif; font-size: .68rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--brown); white-space: nowrap; width: 130px; }
+
+  /* FOOTER */
+  footer { background: var(--coal); color: var(--stone); text-align: center; padding: 24px 40px; font-family: 'EB Garamond', serif; font-size: .82rem; font-style: italic; line-height: 2; }
+  footer span { color: var(--warm); font-style: normal; font-family: 'Source Sans 3', sans-serif; font-size: .7rem; letter-spacing: .1em; }
+
+  /* ANIM */
+  @keyframes fade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+  main > section { animation: fade .5s ease both; }
+  main > section:nth-child(1) { animation-delay: .04s; }
+  main > section:nth-child(2) { animation-delay: .09s; }
+  main > section:nth-child(3) { animation-delay: .14s; }
+  main > section:nth-child(4) { animation-delay: .19s; }
+  main > section:nth-child(5) { animation-delay: .24s; }
+  main > section:nth-child(6) { animation-delay: .29s; }
+  main > section:nth-child(7) { animation-delay: .34s; }
+  main > section:nth-child(8) { animation-delay: .39s; }
+
+  @media (max-width: 720px) {
+    header { padding: 36px 20px; }
+    .header-inner { grid-template-columns: 1fr; }
+    .motto-band { padding: 14px 20px; }
+    .top-rule { flex-direction: column; gap: 4px; padding: 10px 20px; }
+    main { padding: 40px 20px 80px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="top-rule">
+  <span>Sinus-Milieus® 2021 · Persona-Profil</span>
+  <span>Traditionelles Milieu · 10 % · Traditioneller Mainstream</span>
+</div>
+
+<header>
+  <div class="header-inner">
+    <div>
+      <div class="ornament">✦ ✦ ✦</div>
+      <h1>Heinz Potthoff</h1>
+      <hr class="h1-rule">
+      <p class="tagline">„Der treue Zeitzeuge" — Bottrop-Batenbrock, 74 Jahre</p>
+      <p class="tagline" style="font-style:normal; margin-top:6px; font-size:.9rem; color:var(--stone);">Ehem. Bergmann · Rentner · Männliche Persona · Ruhrgebiet</p>
+    </div>
+    <div class="steck">
+      <div class="steck-head">Steckbrief</div>
+      <div class="si"><span class="k">Alter</span><span class="v">74 Jahre</span></div>
+      <div class="si"><span class="k">Wohnort</span><span class="v">Bottrop-Batenbrock</span></div>
+      <div class="si"><span class="k">Beruf</span><span class="v">Rentner (ehem. Bergmann, 38 J.)</span></div>
+      <div class="si"><span class="k">Einkommen</span><span class="v">ca. 1.950 € / Monat</span></div>
+      <div class="si"><span class="k">Familie</span><span class="v">Verheiratet, 2 Kinder, 4 Enkel</span></div>
+      <div class="si"><span class="k">Bildung</span><span class="v">Volksschule, Berufsausbildung</span></div>
+      <div class="si"><span class="k">Wohnen</span><span class="v">Eigenheim seit 1971, abbezahlt</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="motto-band">„Man muss nicht viel haben. Man muss wissen, was man hat."</div>
+
+<main>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">I.</span><span class="sec-title">Persönlichkeit & Werte</span></div>
+    <p>Heinz ist ein ruhiger, verlässlicher Mann mit einer Lebensgeschichte, die das Ruhrgebiet selbst erzählt. Er hat 38 Jahre unter Tage gearbeitet, eine Familie ernährt, ein Haus aufgebaut und Pflichten erfüllt – ohne groß darüber zu reden. Pflicht war nie Bürde. Sie war Selbstverständlichkeit.</p>
+    <p>Er ist kein Verbitterter, aber einer, dem die Welt zunehmend fremd wird. Nicht die Welt der Menschen – die kennt er gut. Sondern die Welt der Bildschirme, der Schnelligkeit, der Sprachen, die sich verändern. Er beobachtet das mit Abstand und einem milden Unverständnis.</p>
+    <ul class="val-list">
+      <li><strong>Pflicht & Verlässlichkeit</strong><span>Man tut, was man tun muss. Ohne Aufhebens.</span></li>
+      <li><strong>Bescheidenheit</strong><span>Man braucht nicht viel. Man schätzt, was man hat.</span></li>
+      <li><strong>Gemeinschaft</strong><span>Familie, Nachbarschaft, Verein. Das Kollektiv trägt den Einzelnen.</span></li>
+      <li><strong>Ordnung</strong><span>Dinge haben ihren Platz, Zeiten ihren Rhythmus. Das gibt Halt.</span></li>
+      <li><strong>Würde der Arbeit</strong><span>Er hat körperlich gearbeitet. Das verdient Respekt, auch im Rückblick.</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">II.</span><span class="sec-title">Lebenswelt & Alltag</span></div>
+    <div class="two-col">
+      <div class="card">
+        <h3>Wohnen</h3>
+        <p>Das Reihenhaus in Batenbrock hat Heinz selbst ausgebaut – Keller gefliest, Dachboden ausgebaut, Garten angelegt. Jede Ecke hat eine Geschichte. Einrichtung aus verschiedenen Jahrzehnten: solide, funktional, gepflegt. Der Garten ist sein Tageswerk.</p>
+      </div>
+      <div class="card">
+        <h3>Mobilität</h3>
+        <p>VW Polo (Benziner, 2015) – für Arzttermine, Einkäufe, Familienbesuche. Fährt wenig, aber zuverlässig. Über E-Autos macht er sich keine Gedanken: <em>„Das kommt für mich nicht mehr in Frage."</em></p>
+      </div>
+      <div class="card">
+        <h3>Ernährung</h3>
+        <p>Hildegard kocht – jeden Tag. Deutsch, saisonal, hausgemacht. Samstags Fleischer in der Fußgängerzone. Kaffee und Kuchen am Nachmittag: unverhandelbar.</p>
+      </div>
+      <div class="card">
+        <h3>Freizeit</h3>
+        <div class="tags">
+          <span class="tag hi">Schützenverein (40 J. Mitglied)</span>
+          <span class="tag hi">Kleingarten täglich</span>
+          <span class="tag co">Spaziergang mit Hildegard</span>
+          <span class="tag hi">TV täglich strukturiert</span>
+          <span class="tag">Kirchenchor (evangelisch)</span>
+          <span class="tag hi">Skat mit alten Kollegen</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">III.</span><span class="sec-title">Weltanschauung & Politik</span></div>
+    <p>Heinz hat immer SPD gewählt – aus Überzeugung. Die SPD war die Partei der Bergleute, der Gewerkschaft, seiner Klasse. Er wählt sie noch immer, aber mit Wehmut: <em>„Die kennen uns nicht mehr."</em></p>
+    <div class="pull">
+      <p>„Die Zeche hat uns ernährt. Das war keine Schande. Das war unser Leben."</p>
+      <cite>Heinz über seine Arbeit und Klimapolitik</cite>
+    </div>
+    <div class="pos-grid">
+      <div class="pos-card"><div class="topic">Rente</div><p>Sein zentrales Thema. Wer 38 Jahre gearbeitet hat, verdient eine würdige Rente.</p></div>
+      <div class="pos-card"><div class="topic">Gesundheit</div><p>Arzttermine, langer Hausarztsuche – das macht ihm Sorgen im Alltag.</p></div>
+      <div class="pos-card"><div class="topic">Migration</div><p>„Man sollte fair sein – zu allen." Mehr hat er dazu nicht zu sagen.</p></div>
+      <div class="pos-card"><div class="topic">Klimapolitik</div><p>Kein eigentliches Thema. Er hat ein Leben lang Kohle gefördert – das war Arbeit, kein Verbrechen.</p></div>
+      <div class="pos-card"><div class="topic">Digitalisierung</div><p>Er empfindet sie als wachsende Barriere, nicht als Fortschritt.</p></div>
+      <div class="pos-card"><div class="topic">Institutionen</div><p>Grundvertrauen in Kirche, Gewerkschaft, Rente – das bröckelt nur wenn Behörden auf online umstellen.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">IV.</span><span class="sec-title">Konsumgewohnheiten</span></div>
+    <p>Heinz kauft wenig und hält alles so lange wie möglich. Neues kauft er, wenn etwas kaputt ist – und dann bei einem Händler, dem er vertraut.</p>
+    <div class="two-col">
+      <div>
+        <div class="card" style="margin-bottom:10px">
+          <h3>Kaufmuster</h3>
+          <div class="tags">
+            <span class="tag hi">Edeka / Rewe / Fleischer</span>
+            <span class="tag hi">Fachhandel (lokal, vertraut)</span>
+            <span class="tag co">Kein Smartphone</span>
+            <span class="tag co">Kein Online-Shopping</span>
+            <span class="tag hi">Markentreue sehr hoch</span>
+            <span class="tag hi">Kein Raten- oder Schulden-Kauf</span>
+          </div>
+        </div>
+        <div class="pull" style="margin:0">
+          <p>„Was sich bewährt hat, das behält man."</p>
+          <cite>Heinz über Markentreue und Konsum</cite>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Nachhaltigkeits-Praxis</h3>
+        <p>Er lebt seit Jahrzehnten ressourcenschonend – aus Sparsamkeit und Prinzip. Wegwerfen ist für ihn eine moralische Frage, keine ökologische.</p>
+        <p style="margin-top:12px; color:var(--brown); font-size:.9rem">Den Begriff „Nachhaltigkeit" kennt er, verbindet ihn aber nicht mit sich. Er lebt es einfach – seit 74 Jahren.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">V.</span><span class="sec-title">Medien & Kommunikation</span></div>
+    <div class="two-col">
+      <div class="media-stack">
+        <div class="media-row"><div class="media-lbl">TV</div><div class="media-c">ARD/ZDF täglich. Tagesschau 20 Uhr unverhandelbar. Heimatkrimis, Dokumentationen, Sportschau.</div></div>
+        <div class="media-row"><div class="media-lbl">Radio</div><div class="media-c">WDR 4 morgens beim Frühstück, WDR 2 im Auto – seit Jahrzehnten.</div></div>
+        <div class="media-row"><div class="media-lbl">Zeitung</div><div class="media-c">WAZ täglich, Print. Gründlich gelesen – auch Lokalteil und Todesanzeigen.</div></div>
+        <div class="media-row"><div class="media-lbl">Kein</div><div class="media-c">Internet. Kein Computer, kein Smartphone, kein Online-Zugang.</div></div>
+        <div class="media-row"><div class="media-lbl">Telefon</div><div class="media-c">Festnetz. Täglich im Einsatz. Das ist sein digitales Leben.</div></div>
+      </div>
+      <div class="card">
+        <h3>Kommunikationsstil</h3>
+        <p>Telefoniert gerne und ausführlich – am Festnetz. Schreibt Briefe für wichtige Anlässe. Direkt, wenige Worte, aber jedes mit Gewicht.</p>
+        <p style="margin-top:12px; font-style:italic; color:var(--brown); font-size:.9rem">„Ich weiß nicht, wer da mitliest." – sein Grund, dem Internet nicht zu vertrauen.</p>
+        <p style="margin-top:10px">Vertraut dem persönlichen Gespräch und dem gedruckten Wort mehr als allem anderen.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">VI.</span><span class="sec-title">Bezug zum Ruhrgebiet</span></div>
+    <p>Bottrop ist Heinz' Welt. Er hat nie woanders leben wollen. Die Zeche hat sein Leben strukturiert – ihr Schließen war ein echter Verlust, auch emotional.</p>
+    <div class="pull">
+      <p>„Die stillgelegten Zechen – da schau ich immer noch mit einem eigenartigen Gefühl hin. Stolz und Schmerz zugleich."</p>
+      <cite>Heinz über den Strukturwandel im Ruhrgebiet</cite>
+    </div>
+    <div class="contrast">
+      <div class="contrast-side pos">
+        <h4>Was ihn bindet</h4>
+        <ul>
+          <li>Ruhrgebiet als Identität und Biografie</li>
+          <li>38 Jahre Arbeit unter Tage – das ist sein Denkmal</li>
+          <li>Nachbarschaft seit Jahrzehnten</li>
+          <li>Sein Haus, sein Garten, seine Geschichte</li>
+          <li>Die Vertrautheit jeder Straße</li>
+        </ul>
+      </div>
+      <div class="contrast-side neg">
+        <h4>Was ihm Sorgen macht</h4>
+        <ul>
+          <li>Digitale Ausgrenzung durch Behörden</li>
+          <li>Hausarztsituation im Viertel</li>
+          <li>Busverbindung wurde ausgedünnt</li>
+          <li>Das Gefühl, dass seine Generation vergessen wird</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">VII.</span><span class="sec-title">Frustrationen & Reibungspunkte</span></div>
+    <ul class="frust-list">
+      <li>Digitale Ausgrenzung: Behörden, Ärzte, Banken nur online</li>
+      <li>Das Lebenswerk Bergbau fühlt sich gesellschaftlich entwertet an</li>
+      <li>Hausarzt hat aufgehört, Nachfolger nicht gefunden</li>
+      <li>Busverbindung im Viertel ausgedünnt</li>
+      <li>Das Tempo der Gesellschaft hängt ihn ab</li>
+      <li>Sprache in Medien und Politik, die er nicht mehr versteht</li>
+      <li>Die jüngeren Generationen haben keine Zeit mehr</li>
+      <li>Stille Sorge: Was kommt nach der eigenen Gesundheit?</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">VIII.</span><span class="sec-title">Kampagnen-Empfehlungen</span></div>
+    <table class="c-table">
+      <thead><tr><th>Aspekt</th><th>Empfehlung</th></tr></thead>
+      <tbody>
+        <tr><td>TON</td><td>Ruhig, respektvoll, klar – wie ein gutes Gespräch zwischen Nachbarn, nicht wie Werbung</td></tr>
+        <tr><td>ARGUMENTE</td><td>Würde, Verlässlichkeit, Anerkennung von Lebensleistung, lokale Nähe und Kontinuität</td></tr>
+        <tr><td>KANÄLE</td><td>ARD/ZDF Abendprogramm, WAZ Print, WDR 4, Gemeindeblatt, Schaukasten im Verein, persönliches Gespräch</td></tr>
+        <tr><td>VERMEIDEN</td><td>Alles Digitale als einziger Kanal, schnelle Schnitte, Jugendsprache, Online-only-Angebote</td></tr>
+        <tr><td>MOBILISIERUNG</td><td>Über vertraute Personen und Orte: Pfarrer, Vereinswirt, Nachbar, Hausarzt</td></tr>
+        <tr><td>BOTSCHAFT</td><td>„Was Sie aufgebaut haben, hat Bestand. Wir vergessen das nicht."</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+</main>
+
+<footer>
+  <span>Traditionelles Milieu · Sinus 2021 · Ruhrgebiet · Männliche Persona</span><br>
+  Kampagnenplanung & Zielgruppenanalyse · Auf Basis Sinus-Milieuforschung
+</footer>
+
+</body>
+</html>

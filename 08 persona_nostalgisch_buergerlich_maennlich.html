@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Persona · Nostalgisch-Bürgerliches Milieu · Werner Kaluza</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper:    #f2ede4;
+    --cream:    #faf7f2;
+    --warm:     #e8e0d0;
+    --rule:     #ccc4b4;
+    --stone:    #a09080;
+    --ink:      #2a2218;
+    --muted:    #6e6050;
+    --mid:      #8c7c6c;
+    --red:      #8b1a1a;
+    --red-l:    #b02828;
+    --blue:     #1c3a5e;
+    --blue-l:   #2a5080;
+    --white:    #ffffff;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Source Sans 3', system-ui, sans-serif;
+    font-size: 15.5px;
+    line-height: 1.72;
+    font-weight: 300;
+  }
+
+  /* ── MASTHEAD ── */
+  .masthead {
+    background: var(--ink);
+    padding: 14px 40px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  .masthead-label {
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-size: .7rem;
+    color: var(--stone);
+    letter-spacing: .18em;
+    text-transform: uppercase;
+  }
+  .masthead-milieu {
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-size: .9rem;
+    color: var(--warm);
+    font-style: italic;
+    letter-spacing: .04em;
+  }
+  .masthead-pct {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: .72rem;
+    color: var(--stone);
+    letter-spacing: .12em;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--cream);
+    border-bottom: 3px double var(--rule);
+    padding: 0;
+  }
+  .header-inner {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 48px 40px 40px;
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 48px;
+    align-items: start;
+  }
+
+  .kicker {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: .72rem;
+    font-weight: 600;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .kicker::before { content: ''; display: block; width: 24px; height: 1px; background: var(--red); }
+
+  header h1 {
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.05;
+    margin-bottom: 8px;
+  }
+  .h1-sub {
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-size: 1rem;
+    color: var(--muted);
+    font-style: italic;
+    border-top: 1px solid var(--rule);
+    padding-top: 10px;
+    margin-top: 12px;
+  }
+
+  /* STECKBRIEF */
+  .steck {
+    background: var(--warm);
+    border: 1px solid var(--rule);
+    border-top: 3px solid var(--ink);
+  }
+  .steck-head {
+    background: var(--ink);
+    padding: 8px 16px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: .68rem;
+    font-weight: 600;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--warm);
+  }
+  .steck-body { display: flex; flex-direction: column; }
+  .si {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 8px;
+    padding: 9px 16px;
+    border-bottom: 1px solid var(--rule);
+    font-size: .88rem;
+  }
+  .si:last-child { border-bottom: none; }
+  .si .k { font-weight: 600; color: var(--mid); font-size: .78rem; padding-top: 1px; }
+  .si .v { color: var(--ink); }
+
+  /* MOTTO RULE */
+  .motto-rule {
+    background: var(--red);
+    color: var(--cream);
+    padding: 14px 40px;
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .motto-rule::before,
+  .motto-rule::after {
+    content: '❧';
+    color: rgba(255,255,255,.4);
+    font-size: .9rem;
+    flex-shrink: 0;
+  }
+
+  /* ── MAIN ── */
+  main {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 56px 40px 100px;
+    display: grid;
+    gap: 52px;
+  }
+
+  .sec-head {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--ink);
+  }
+  .sec-num {
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-size: .72rem;
+    color: var(--red);
+    letter-spacing: .1em;
+    flex-shrink: 0;
+  }
+  .sec-title {
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  p { color: var(--muted); font-size: .96rem; margin-bottom: 13px; }
+  p:last-child { margin-bottom: 0; }
+  em { font-style: italic; color: var(--red); }
+
+  /* VALUES */
+  .val-list {
+    list-style: none;
+    counter-reset: vv;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 10px;
+  }
+  .val-list li {
+    counter-increment: vv;
+    background: var(--cream);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--red);
+    padding: 14px 18px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    transition: background .15s;
+  }
+  .val-list li:hover { background: var(--white); }
+  .val-list li::before {
+    content: counter(vv, upper-roman);
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-size: .8rem;
+    color: var(--red);
+    flex-shrink: 0;
+    padding-top: 2px;
+    min-width: 22px;
+  }
+  .val-list li strong { display: block; color: var(--ink); font-weight: 600; font-size: .9rem; margin-bottom: 3px; }
+  .val-list li span { font-size: .87rem; color: var(--muted); }
+
+  /* TWO COL */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } }
+
+  .card {
+    background: var(--cream);
+    border: 1px solid var(--rule);
+    padding: 20px 22px;
+  }
+  .card h3 {
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-size: .82rem;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  /* TAGS */
+  .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 6px; }
+  .tag { background: transparent; border: 1px solid var(--rule); color: var(--mid); font-family: 'Source Sans 3', sans-serif; font-size: .75rem; font-weight: 400; padding: 3px 10px; letter-spacing: .04em; transition: all .15s; cursor: default; }
+  .tag:hover { border-color: var(--red); color: var(--red); }
+  .tag.hi { background: rgba(139,26,26,.06); border-color: rgba(139,26,26,.25); color: var(--red); }
+  .tag.blu { background: rgba(28,58,94,.05); border-color: rgba(28,58,94,.2); color: var(--blue-l); }
+
+  /* PULL QUOTE */
+  .pull {
+    background: var(--warm);
+    border-left: 4px solid var(--ink);
+    padding: 18px 26px;
+    margin: 16px 0;
+  }
+  .pull p { font-family: 'Libre Baskerville', Georgia, serif; font-size: 1.04rem; font-style: italic; color: var(--ink); font-weight: 400; margin: 0 0 8px; }
+  .pull cite { font-family: 'Source Sans 3', sans-serif; font-size: .68rem; color: var(--stone); letter-spacing: .12em; text-transform: uppercase; font-style: normal; font-weight: 600; }
+
+  /* POSITION GRID */
+  .pos-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
+  .pos-card { background: var(--cream); border: 1px solid var(--rule); border-top: 2px solid var(--blue); padding: 14px 16px; }
+  .pos-card .topic { font-family: 'Source Sans 3', sans-serif; font-size: .7rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; color: var(--blue); margin-bottom: 6px; }
+  .pos-card p { font-size: .87rem; margin: 0; }
+
+  /* MEDIA */
+  .media-stack { display: flex; flex-direction: column; gap: 8px; }
+  .media-row { display: flex; gap: 12px; align-items: flex-start; padding: 10px 14px; background: var(--cream); border: 1px solid var(--rule); }
+  .media-lbl { font-family: 'Source Sans 3', sans-serif; font-size: .68rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--red); min-width: 80px; flex-shrink: 0; padding-top: 1px; }
+  .media-c { color: var(--muted); font-size: .9rem; }
+
+  /* CONTRAST BOX */
+  .contrast { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 8px; }
+  .contrast-side { background: var(--cream); border: 1px solid var(--rule); padding: 18px 20px; }
+  .contrast-side h4 { font-family: 'Libre Baskerville', Georgia, serif; font-size: .82rem; font-weight: 700; margin-bottom: 12px; padding-bottom: 6px; border-bottom: 1px solid var(--rule); }
+  .contrast-side.pos h4 { color: var(--blue); }
+  .contrast-side.neg h4 { color: var(--red); }
+  .contrast-side ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+  .contrast-side ul li { font-size: .9rem; color: var(--muted); padding-left: 16px; position: relative; }
+  .contrast-side.pos ul li::before { content: '+'; position: absolute; left: 0; color: var(--blue); font-weight: 700; }
+  .contrast-side.neg ul li::before { content: '–'; position: absolute; left: 0; color: var(--red); font-weight: 700; }
+  @media (max-width: 640px) { .contrast { grid-template-columns: 1fr; } }
+
+  /* FRUST */
+  .frust-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
+  @media (max-width: 640px) { .frust-list { grid-template-columns: 1fr; } }
+  .frust-list li { background: var(--cream); border: 1px solid var(--rule); border-left: 3px solid var(--red-l); padding: 10px 14px; font-size: .9rem; color: var(--muted); }
+
+  /* CAMPAIGN TABLE */
+  .c-table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+  .c-table thead { background: var(--ink); }
+  .c-table th { font-family: 'Source Sans 3', sans-serif; font-size: .7rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--warm); text-align: left; padding: 10px 16px; }
+  .c-table td { padding: 11px 16px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  .c-table tr:nth-child(even) td { background: var(--warm); }
+  .c-table td:first-child { font-family: 'Source Sans 3', sans-serif; font-size: .72rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--red); white-space: nowrap; width: 130px; }
+
+  /* FOOTER */
+  footer { background: var(--ink); color: var(--stone); text-align: center; padding: 24px 40px; font-family: 'Libre Baskerville', Georgia, serif; font-size: .75rem; font-style: italic; line-height: 2; }
+  footer span { color: var(--warm); font-style: normal; letter-spacing: .06em; }
+
+  /* ANIM */
+  @keyframes appear { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+  main > section { animation: appear .45s ease both; }
+  main > section:nth-child(1) { animation-delay: .04s; }
+  main > section:nth-child(2) { animation-delay: .09s; }
+  main > section:nth-child(3) { animation-delay: .14s; }
+  main > section:nth-child(4) { animation-delay: .19s; }
+  main > section:nth-child(5) { animation-delay: .24s; }
+  main > section:nth-child(6) { animation-delay: .29s; }
+  main > section:nth-child(7) { animation-delay: .34s; }
+  main > section:nth-child(8) { animation-delay: .39s; }
+
+  @media (max-width: 720px) {
+    .masthead { padding: 12px 20px; flex-wrap: wrap; gap: 6px; }
+    .header-inner { grid-template-columns: 1fr; padding: 36px 20px; }
+    .motto-rule { padding: 14px 20px; }
+    main { padding: 40px 20px 80px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <span class="masthead-label">Sinus-Milieus® 2021 · Persona</span>
+  <span class="masthead-milieu">Nostalgisch-Bürgerliches Milieu</span>
+  <span class="masthead-pct">11 % · Traditioneller Mainstream</span>
+</div>
+
+<header>
+  <div class="header-inner">
+    <div>
+      <div class="kicker">Persona-Profil · Männlich · Ruhrgebiet</div>
+      <h1>Werner Kaluza</h1>
+      <div class="h1-sub">„Der enttäuschte Stabilisierer" — Gelsenkirchen-Buer, 58 J.</div>
+    </div>
+    <div class="steck">
+      <div class="steck-head">Steckbrief</div>
+      <div class="steck-body">
+        <div class="si"><span class="k">Alter</span><span class="v">58 Jahre</span></div>
+        <div class="si"><span class="k">Wohnort</span><span class="v">Gelsenkirchen-Buer</span></div>
+        <div class="si"><span class="k">Beruf</span><span class="v">Anlagenführer, Industriezulieferer (Schicht)</span></div>
+        <div class="si"><span class="k">Einkommen</span><span class="v">ca. 3.100 € netto (Haushalt)</span></div>
+        <div class="si"><span class="k">Familie</span><span class="v">Verheiratet, 2 erwachsene Kinder</span></div>
+        <div class="si"><span class="k">Bildung</span><span class="v">Ausbildung Industriemechaniker</span></div>
+        <div class="si"><span class="k">Wohnen</span><span class="v">Eigenheim seit 1998, abbezahlt</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="motto-rule">„Früher wusste man noch, woran man war."</div>
+
+<main>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">I.</span><span class="sec-title">Persönlichkeit & Werte</span></div>
+    <p>Werner ist kein bitterer Mann – aber ein enttäuschter. Er hat sein Leben nach den Regeln gespielt, die ihm vermittelt wurden: arbeiten, Haus kaufen, Familie gründen, Steuern zahlen. Und er fragt sich zunehmend, ob das noch irgendjemandem auffällt.</p>
+    <p>Er wäre bereit, dem Staat zu vertrauen – wenn der Staat ihm gegenüber verlässlich wäre. Das Gefühl, dass die „da oben" nicht für Leute wie ihn Politik machen, hat sich tief eingebrannt. Nicht als Wut, sondern als stille Resignation.</p>
+    <ul class="val-list">
+      <li><strong>Ordnung & Verlässlichkeit</strong><span>Regeln gelten für alle. Konsequenz ist kein Luxus.</span></li>
+      <li><strong>Leistungsgerechtigkeit</strong><span>Wer sich anstrengt, soll belohnt werden – nicht übergangen.</span></li>
+      <li><strong>Heimat & Zugehörigkeit</strong><span>Sein Viertel, seine Stadt, sein Revier. Das Globale ist abstrakt.</span></li>
+      <li><strong>Familie als Fundament</strong><span>Ehe, Kinder, gegenseitige Verlässlichkeit. Das hat funktioniert.</span></li>
+      <li><strong>Handwerk & Würde</strong><span>Körperliche Arbeit ist keine mindere Arbeit. Das soll anerkannt werden.</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">II.</span><span class="sec-title">Lebenswelt & Alltag</span></div>
+    <div class="two-col">
+      <div class="card">
+        <h3>Wohnen</h3>
+        <p>Das Reihenhaus in Buer ist sein Lebenswerk – selbst ausgebaut, Garage angebaut, Garten angelegt. Jedes Zimmer hat eine Geschichte. Die Nachbarschaft hat sich verändert. Der Garten ist gepflegt, der Vorgarten ordentlich: man sieht, was man draus macht.</p>
+      </div>
+      <div class="card">
+        <h3>Mobilität</h3>
+        <p>Ford Galaxy (Diesel, 2017). E-Auto: <em>„Solange die Ladesäulen fehlen und der Preis so ist, kommt das nicht in Frage."</em> Kein ideologisches Statement – pragmatische Skepsis gegenüber Versprechen, die er schon oft gehört hat.</p>
+      </div>
+      <div class="card">
+        <h3>Ernährung</h3>
+        <p>Kochen ist Frauensache – er grillt. Und das gut. Samstags Fleischer um die Ecke, der Rest Lidl oder Aldi. Bio: <em>„Die sollen mir erstmal erklären, warum das dreimal so teuer ist."</em></p>
+      </div>
+      <div class="card">
+        <h3>Freizeit</h3>
+        <div class="tags">
+          <span class="tag hi">Schrebergarten seit 15 Jahren</span>
+          <span class="tag hi">Schalke 04</span>
+          <span class="tag blu">BMW R 1250 GS – Motorrad</span>
+          <span class="tag hi">Stammtisch 2×/Monat</span>
+          <span class="tag">Angeln (Rhein-Herne-Kanal)</span>
+          <span class="tag">TV-Abend mit der Frau</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">III.</span><span class="sec-title">Weltanschauung & Politik</span></div>
+    <p>Werner hat sein Leben lang SPD gewählt – sein Vater war Gewerkschafter. „Die haben uns verraten." Das sitzt tief. Er wählt nicht AfD – aus einem gewissen Anstand. Aber er versteht, warum Leute aus seinem Umfeld es tun.</p>
+    <div class="pull">
+      <p>„Die wählen die nicht, weil sie Nazis sind. Die wählen die, weil sie sonst niemand hört."</p>
+      <cite>Werner über Protestwähler in seinem Umfeld</cite>
+    </div>
+    <div class="pos-grid">
+      <div class="pos-card"><div class="topic">Migration</div><p>Sein meistgenanntes Thema. Er empfindet die Zuwanderung als unkontrolliert und die Reaktion des Staates als ungerecht.</p></div>
+      <div class="pos-card"><div class="topic">Klimapolitik</div><p>Grundsätzliche Skepsis. Das Heizungsgesetz hat ihn nachhaltig geärgert. „Wir machen hier alles kaputt, China baut jeden Monat ein Kraftwerk."</p></div>
+      <div class="pos-card"><div class="topic">Rente</div><p>Existenzielle Sorge. 38 Jahre eingezahlt – er fragt sich, was er bekommt.</p></div>
+      <div class="pos-card"><div class="topic">Soziales</div><p>Der Sozialstaat ist in Schieflage: die Mitte zahlt, die Ränder bekommen.</p></div>
+      <div class="pos-card"><div class="topic">Institutionen</div><p>Misstrauen gegenüber Medien, Parteien, EU. Nicht verschwörungstheoretisch – aber grundlegend skeptisch.</p></div>
+      <div class="pos-card"><div class="topic">Gesellschaft</div><p>Gegenderte Sprache irritiert ihn. Kein Böswille – echtes Fremdheitsgefühl.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">IV.</span><span class="sec-title">Konsumgewohnheiten</span></div>
+    <p>Werner kauft selten und dann gründlich. Er repariert, was repariert werden kann. Neues kauft er, wenn das Alte wirklich kaputt ist – und dann Qualität.</p>
+    <div class="two-col">
+      <div>
+        <div class="card" style="margin-bottom:10px">
+          <h3>Marken & Orte</h3>
+          <div class="tags">
+            <span class="tag hi">Bosch / Makita (Werkzeug)</span>
+            <span class="tag hi">Engelbert Strauss (Arbeit)</span>
+            <span class="tag">C&A Privat</span>
+            <span class="tag hi">Aldi / Lidl</span>
+            <span class="tag blu">Metzger samstags</span>
+            <span class="tag">Stiftung Warentest (Print)</span>
+            <span class="tag">Kein Amazon</span>
+          </div>
+        </div>
+        <div class="pull" style="margin:0">
+          <p>„Ich werf nicht weg, was noch gut ist. Das haben mir meine Eltern beigebracht."</p>
+          <cite>Werner über Konsumhaltung</cite>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Nachhaltigkeits-Praxis</h3>
+        <p>Er repariert. Er fliegt nicht. Er kauft nicht weg, was noch funktioniert. Das ist für ihn keine Öko-Einstellung – es ist Sparsamkeit und Respekt.</p>
+        <p style="margin-top:12px; color:var(--red); font-size:.88rem">Den Begriff „Nachhaltigkeit" verbindet er mit Verboten und Mehrkosten. Die Praxis lebt er trotzdem – seit 40 Jahren.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">V.</span><span class="sec-title">Medien & Kommunikation</span></div>
+    <div class="two-col">
+      <div class="media-stack">
+        <div class="media-row"><div class="media-lbl">TV</div><div class="media-c">ARD/ZDF täglich, Tagesschau 20 Uhr (Pflicht), Tatort, Sportschau, Heimatkrimis</div></div>
+        <div class="media-row"><div class="media-lbl">Print</div><div class="media-c">WAZ (Wochenende, Print), gelegentlich Bild für schnelle Schlagzeilen</div></div>
+        <div class="media-row"><div class="media-lbl">Radio</div><div class="media-c">WDR 2 im Auto und in der Werkstatt – immer</div></div>
+        <div class="media-row"><div class="media-lbl">Online</div><div class="media-c">Facebook (Schalke, Motorrad, Kleinanzeigen), YouTube für Reparaturanleitungen</div></div>
+        <div class="media-row"><div class="media-lbl">Kein</div><div class="media-c">Instagram, TikTok, Twitter – kein Vertrauen, kein Interesse</div></div>
+      </div>
+      <div class="card">
+        <h3>Kommunikationsstil</h3>
+        <p>Direkt, wenige Worte, keine Umschweife. Telefoniert lieber als er schreibt. WhatsApp nur für Familie und enge Freunde.</p>
+        <p style="margin-top:12px">Misstrauisch gegenüber komplexen Formularen und offizieller Kommunikation. Vertraut Personen mehr als Institutionen.</p>
+        <p style="margin-top:12px; color:var(--red); font-size:.88rem">Empfehlungen aus dem Stammtisch wirken mehr als jede Kampagne.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">VI.</span><span class="sec-title">Bezug zum Ruhrgebiet</span></div>
+    <p>Gelsenkirchen ist Werners Welt. Er kennt die Stadt wie seinen Garten. Die Zeche, die geschlossen hat, als er noch ein Kind war. Den Strukturwandel, der Stellen gekostet hat. Schalke in der 2. Liga. Er hat alles mitgemacht – und ist geblieben.</p>
+    <div class="pull">
+      <p>„Die bauen immer da, wo es eh schon gut läuft."</p>
+      <cite>Werner über Stadtentwicklung in Gelsenkirchen</cite>
+    </div>
+    <div class="contrast">
+      <div class="contrast-side pos">
+        <h4>Was ihn hält</h4>
+        <ul>
+          <li>Ruhrgebiet als echte Identität</li>
+          <li>Schalke: emotionale Heimat</li>
+          <li>Bekannte Gesichter, vertraute Wege</li>
+          <li>Sein Haus, sein Garten, seine Geschichte</li>
+        </ul>
+      </div>
+      <div class="contrast-side neg">
+        <h4>Was ihm Sorgen macht</h4>
+        <ul>
+          <li>Veränderung seiner Nachbarschaft</li>
+          <li>Verfall des Stadtbildes, mangelnde Reaktion</li>
+          <li>Misstrauen in kommunale Stadtentwicklung</li>
+          <li>Sicherheitsgefühl im öffentlichen Raum</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">VII.</span><span class="sec-title">Frustrationen & Reibungspunkte</span></div>
+    <ul class="frust-list">
+      <li>Ein Leben nach den Regeln gespielt – ohne Anerkennung</li>
+      <li>Migration als wahrgenommene Ungerechtigkeit im System</li>
+      <li>Klimapolitik mit Verboten statt Lösungen</li>
+      <li>Medien, die ihn nicht abbilden oder abwertend darstellen</li>
+      <li>Verfall seiner Nachbarschaft ohne staatliche Reaktion</li>
+      <li>Politiker, die über ihn reden, aber nie mit ihm</li>
+      <li>Die Angst, dass seine Rente nicht reicht</li>
+      <li>Eine Sprache im öffentlichen Diskurs, die ihm fremd ist</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">VIII.</span><span class="sec-title">Kampagnen-Empfehlungen</span></div>
+    <table class="c-table">
+      <thead><tr><th>Aspekt</th><th>Empfehlung</th></tr></thead>
+      <tbody>
+        <tr><td>TON</td><td>Respektvoll, geerdet, ohne Belehrung – er merkt sofort, wenn er von oben herab angesprochen wird</td></tr>
+        <tr><td>ARGUMENTE</td><td>Verlässlichkeit, Fairness, lokale Wirkung, Anerkennung von Leistung</td></tr>
+        <tr><td>KANÄLE</td><td>ARD/ZDF (Abend), WAZ Print, WDR 2, Facebook-Gruppen, Stammtisch-Umfeld</td></tr>
+        <tr><td>VERMEIDEN</td><td>Gendersensible Sprache, abstrakte Klimaappelle, diverse Bildwelten als inszenierter Standard, Fachbegriffe</td></tr>
+        <tr><td>MOBILISIERUNG</td><td>Über konkrete lokale Themen: Sicherheit, Rente, Infrastruktur, Respekt für Handwerk</td></tr>
+        <tr><td>BOTSCHAFT</td><td>„Deine Arbeit zählt. Dein Wort zählt. Hier, in deiner Stadt."</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+</main>
+
+<footer>
+  <span>Nostalgisch-Bürgerliches Milieu · Sinus 2021</span> · Ruhrgebiet · Männliche Persona<br>
+  Kampagnenplanung & Zielgruppenanalyse · Auf Basis Sinus-Milieuforschung
+</footer>
+
+</body>
+</html>

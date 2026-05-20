@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Persona · Performer-Milieu · Katharina Weidemann</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:      #fafaf9;
+    --surface: #ffffff;
+    --panel:   #f5f4f2;
+    --border:  #e4e2de;
+    --gold:    #b5892a;
+    --gold-l:  #d4a843;
+    --slate:   #334155;
+    --muted:   #94908a;
+    --text:    #4a4540;
+    --ink:     #1c1a18;
+    --green:   #15803d;
+    --red:     #b91c1c;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 14.5px;
+    line-height: 1.72;
+    font-weight: 300;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--ink);
+    position: relative;
+    overflow: hidden;
+  }
+  header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  .header-inner {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 52px 40px 46px;
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 48px;
+    align-items: center;
+  }
+
+  .badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+  .badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .65rem;
+    padding: 3px 10px;
+    border-radius: 3px;
+    letter-spacing: .06em;
+  }
+  .badge.primary { background: var(--gold); color: var(--ink); font-weight: 600; }
+  .badge.outline { border: 1px solid rgba(255,255,255,.15); color: rgba(255,255,255,.5); }
+
+  header h1 {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+    font-weight: 700;
+    color: #f0ece4;
+    line-height: 1.05;
+    letter-spacing: -.03em;
+    margin-bottom: 8px;
+  }
+  .h1-accent { color: var(--gold); }
+  .tagline { font-size: .92rem; color: rgba(255,255,255,.4); margin-top: 8px; }
+
+  /* STECKBRIEF */
+  .steck { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); border-radius: 6px; overflow: hidden; }
+  .steck-head { background: var(--gold); padding: 8px 16px; font-family: 'JetBrains Mono', monospace; font-size: .65rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--ink); }
+  .steck-body { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(255,255,255,.08); }
+  .si { background: rgba(28,26,24,.7); padding: 11px 14px; }
+  .si.full { grid-column: 1/-1; }
+  .si .k { font-family: 'JetBrains Mono', monospace; font-size: .58rem; color: rgba(255,255,255,.35); letter-spacing: .12em; text-transform: uppercase; margin-bottom: 2px; }
+  .si .v { font-size: .86rem; color: rgba(255,255,255,.8); font-weight: 400; }
+
+  /* MOTTO */
+  .motto-bar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 13px 40px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .82rem;
+    color: var(--gold);
+    letter-spacing: .04em;
+    font-style: italic;
+  }
+
+  /* ── MAIN ── */
+  main { max-width: 1040px; margin: 0 auto; padding: 56px 40px 100px; display: grid; gap: 52px; }
+
+  .sec-head { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+  .sec-num { font-family: 'JetBrains Mono', monospace; font-size: .65rem; color: var(--gold); letter-spacing: .1em; }
+  .sec-title { font-size: .95rem; font-weight: 600; color: var(--ink); letter-spacing: -.01em; }
+
+  p { color: var(--muted); font-size: .92rem; margin-bottom: 12px; }
+  p:last-child { margin-bottom: 0; }
+  em { font-style: italic; color: var(--gold); }
+
+  /* VALUES */
+  .val-list { list-style: none; counter-reset: vv; display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 10px; }
+  .val-list li { counter-increment: vv; background: var(--surface); border: 1px solid var(--border); border-left: 2px solid var(--gold); padding: 14px 18px; display: flex; gap: 12px; align-items: flex-start; border-radius: 2px; transition: box-shadow .15s; }
+  .val-list li:hover { box-shadow: 0 2px 12px rgba(0,0,0,.06); }
+  .val-list li::before { content: '0'counter(vv); font-family: 'JetBrains Mono', monospace; font-size: .68rem; color: var(--gold); flex-shrink: 0; padding-top: 2px; }
+  .val-list li strong { display: block; color: var(--ink); font-weight: 500; font-size: .9rem; margin-bottom: 3px; }
+  .val-list li span { font-size: .85rem; color: var(--muted); }
+
+  /* TWO COL */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } }
+
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 20px 22px; }
+  .card h3 { font-family: 'JetBrains Mono', monospace; font-size: .63rem; color: var(--gold); letter-spacing: .12em; text-transform: uppercase; margin-bottom: 10px; }
+
+  /* TAGS */
+  .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 6px; }
+  .tag { background: transparent; border: 1px solid var(--border); color: var(--muted); font-family: 'JetBrains Mono', monospace; font-size: .62rem; padding: 3px 9px; border-radius: 3px; letter-spacing: .04em; transition: all .13s; cursor: default; }
+  .tag:hover { border-color: var(--gold); color: var(--gold); }
+  .tag.hi { background: rgba(181,137,42,.06); border-color: rgba(181,137,42,.22); color: var(--gold); }
+  .tag.gr { background: rgba(21,128,61,.05); border-color: rgba(21,128,61,.2); color: var(--green); }
+  .tag.sl { background: rgba(51,65,85,.05); border-color: rgba(51,65,85,.2); color: var(--slate); }
+
+  /* PULL */
+  .pull { background: var(--panel); border-left: 2px solid var(--gold); padding: 16px 22px; margin: 14px 0; border-radius: 0 4px 4px 0; }
+  .pull p { font-size: .97rem; font-style: italic; color: var(--ink); margin: 0 0 8px; font-weight: 300; }
+  .pull cite { font-family: 'JetBrains Mono', monospace; font-size: .6rem; color: var(--muted); letter-spacing: .1em; text-transform: uppercase; font-style: normal; }
+
+  /* POS GRID */
+  .pos-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
+  .pos-card { background: var(--surface); border: 1px solid var(--border); border-top: 1px solid var(--gold-l); border-radius: 4px; padding: 14px 16px; }
+  .pos-card .topic { font-family: 'JetBrains Mono', monospace; font-size: .62rem; color: var(--gold); letter-spacing: .1em; text-transform: uppercase; margin-bottom: 6px; }
+  .pos-card p { font-size: .86rem; margin: 0; }
+
+  /* MEDIA */
+  .media-stack { display: flex; flex-direction: column; gap: 8px; }
+  .media-row { display: flex; gap: 12px; align-items: flex-start; padding: 10px 14px; background: var(--surface); border: 1px solid var(--border); border-radius: 3px; }
+  .media-lbl { font-family: 'JetBrains Mono', monospace; font-size: .62rem; color: var(--gold); letter-spacing: .1em; text-transform: uppercase; min-width: 80px; flex-shrink: 0; padding-top: 1px; }
+  .media-c { color: var(--muted); font-size: .88rem; }
+
+  /* FRUST */
+  .frust-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
+  @media (max-width: 640px) { .frust-list { grid-template-columns: 1fr; } }
+  .frust-list li { background: var(--surface); border: 1px solid var(--border); border-left: 2px solid var(--red); padding: 10px 14px; font-size: .88rem; color: var(--muted); border-radius: 0 3px 3px 0; }
+
+  /* CAMPAIGN TABLE */
+  .c-table { width: 100%; border-collapse: collapse; font-size: .88rem; }
+  .c-table thead { background: var(--ink); }
+  .c-table th { font-family: 'JetBrains Mono', monospace; font-size: .63rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: #f0ece4; text-align: left; padding: 10px 16px; }
+  .c-table td { padding: 11px 16px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .c-table tr:nth-child(even) td { background: var(--panel); }
+  .c-table td:first-child { font-family: 'JetBrains Mono', monospace; font-size: .65rem; color: var(--gold); letter-spacing: .06em; white-space: nowrap; width: 120px; }
+
+  /* FOOTER */
+  footer { background: var(--ink); text-align: center; padding: 24px 40px; font-family: 'JetBrains Mono', monospace; font-size: .62rem; color: rgba(255,255,255,.3); letter-spacing: .08em; line-height: 2; }
+  footer span { color: var(--gold); }
+
+  /* ANIM */
+  @keyframes up { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+  main > section { animation: up .4s ease both; }
+  main > section:nth-child(1) { animation-delay: .04s; }
+  main > section:nth-child(2) { animation-delay: .09s; }
+  main > section:nth-child(3) { animation-delay: .14s; }
+  main > section:nth-child(4) { animation-delay: .19s; }
+  main > section:nth-child(5) { animation-delay: .24s; }
+  main > section:nth-child(6) { animation-delay: .29s; }
+  main > section:nth-child(7) { animation-delay: .34s; }
+  main > section:nth-child(8) { animation-delay: .39s; }
+
+  @media (max-width: 720px) {
+    .header-inner { grid-template-columns: 1fr; padding: 36px 20px; }
+    .motto-bar { padding: 13px 20px; }
+    main { padding: 40px 20px 80px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div>
+      <div class="badge-row">
+        <span class="badge primary">Sinus 2021</span>
+        <span class="badge outline">Performer-Milieu</span>
+        <span class="badge outline">10 % · Leitmilieu</span>
+      </div>
+      <h1>Katharina <span class="h1-accent">Weidemann</span></h1>
+      <p class="tagline">„Die strategische Gestalterin" — Dortmund-Kreuzviertel, 35 J.</p>
+    </div>
+    <div class="steck">
+      <div class="steck-head">Steckbrief</div>
+      <div class="steck-body">
+        <div class="si"><div class="k">Alter</div><div class="v">35 Jahre</div></div>
+        <div class="si"><div class="k">Wohnort</div><div class="v">Dortmund-Kreuzviertel</div></div>
+        <div class="si"><div class="k">Beruf</div><div class="v">Senior Managerin, Unternehmensberatung</div></div>
+        <div class="si"><div class="k">Einkommen</div><div class="v">ca. 7.400 € + Boni + Spesen</div></div>
+        <div class="si full"><div class="k">Bildung</div><div class="v">M.Sc. BWL (WHU) + MBA-Modul Singapur</div></div>
+        <div class="si full"><div class="k">Wohnen</div><div class="v">ETW 88 m², Gründerzeitbau saniert, Home-Office</div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="motto-bar">„Clarify what matters. Cut everything else."</div>
+
+<main>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">01 /</span><span class="sec-title">Persönlichkeit & Werte</span></div>
+    <p>Katharina ist die klügste Person im Raum – und sie tut nichts dafür, das zu verbergen oder zu betonen. Ihre Intelligenz zeigt sich in der Qualität ihrer Fragen, nicht in der Länge ihrer Antworten. Sie hört aufmerksam zu und spricht dann präzise.</p>
+    <p>Sie ist extrem selbstbestimmt. Kontrolle über die eigene Zeit ist für sie der wichtigste Indikator für ein gutes Leben – nicht Geld, nicht Titel. Gleichzeitig baut sie Teams, mentort Kolleginnen und ist in ihrem Netzwerk bekannt für Verlässlichkeit und Klarheit.</p>
+    <ul class="val-list">
+      <li><strong>Selbstbestimmung</strong><span>Über Zeit, Körper, Karriere und Beziehungen.</span></li>
+      <li><strong>Exzellenz</strong><span>Sie gibt sich mit weniger als ihrem Besten nicht zufrieden.</span></li>
+      <li><strong>Klarheit</strong><span>In Kommunikation, in Prioritäten, in Entscheidungen.</span></li>
+      <li><strong>Wirkung</strong><span>Sie will Dinge bewegen, nicht nur verwalten.</span></li>
+      <li><strong>Netzwerk als Kapital</strong><span>Beziehungen sind Investitionen, die sie pflegt.</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">02 /</span><span class="sec-title">Lebenswelt & Alltag</span></div>
+    <div class="two-col">
+      <div class="card">
+        <h3>Wohnen</h3>
+        <p>Muuto-Möbel, ein original Eames-Lounge Chair (Jubiläumsgeschenk an sich selbst), viele Bücher. Standing Desk, Rode-Mikro, zwei Monitore. Kein Chaos, aber kein Showroom. Die Küche ist gut ausgestattet.</p>
+      </div>
+      <div class="card">
+        <h3>Mobilität</h3>
+        <p>Bahncard 100. Kein Auto. Wöchentliches Pendeln zu Kundenstandorten (Frankfurt, Düsseldorf, München). Privatreisen: Bahn bevorzugt, Premium Economy wenn nötig. Uber und Taxi für Abende.</p>
+      </div>
+      <div class="card">
+        <h3>Ernährung</h3>
+        <p>Bewusst, ohne Dogma. Viel Gemüse, wenig Fleisch – weil es sich besser anfühlt, nicht aus Ideologie. Kocht am Wochenende intensiv. Kaffee dreimal täglich, Qualität ist wichtig.</p>
+      </div>
+      <div class="card">
+        <h3>Freizeit</h3>
+        <div class="tags">
+          <span class="tag hi">Krafttraining 4×/Wo</span>
+          <span class="tag hi">Sachbücher + Biographien</span>
+          <span class="tag sl">Reisen 6–8×/Jahr (Japan, Lissabon, Kopenhagen)</span>
+          <span class="tag hi">WSET Level 2 Wein</span>
+          <span class="tag gr">Mentoring (2 Mentees)</span>
+          <span class="tag">Theater Dortmund / Oper Düsseldorf</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">03 /</span><span class="sec-title">Weltanschauung & Politik</span></div>
+    <p>Katharina wählt Grüne oder FDP – je nach Kandidatur. Wirtschaftsliberal und ökologisch zugleich – was ihr manchmal das Gefühl gibt, keine politische Heimat zu haben. Sie engagiert sich für strukturelle Gleichstellung, nicht für symbolische.</p>
+    <div class="pull">
+      <p>„Gleichstellung ohne strukturelle Maßnahmen ist Dekoration. Ich habe keine Zeit für Dekoration."</p>
+      <cite>Katharina über Gleichstellungspolitik und Substanz</cite>
+    </div>
+    <div class="pos-grid">
+      <div class="pos-card"><div class="topic">Wirtschaft</div><p>Freie Märkte mit klaren Spielregeln. Schätzt ordnungspolitisches Denken über Ideologie.</p></div>
+      <div class="pos-card"><div class="topic">Klima</div><p>Dringlich, lösungsorientiert. Kein Interesse an Schulddebatte – Interesse an Lösungen.</p></div>
+      <div class="pos-card"><div class="topic">Gleichstellung</div><p>Ihr persönlichstes Thema. Pay Equity, Vereinbarkeit, Führungszugang. Strukturell, nicht performativ.</p></div>
+      <div class="pos-card"><div class="topic">Digital</div><p>Deutschland verschläft KI-Entwicklung. Frustriert sie als Beraterin von innen.</p></div>
+      <div class="pos-card"><div class="topic">Europa</div><p>Klare Befürworterin. Ohne EU keine geopolitische Handlungsfähigkeit.</p></div>
+      <div class="pos-card"><div class="topic">Debatten</div><p>Findet viele öffentliche Debatten unproduktiv. Ändert Meinung bei Daten und Argumenten.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">04 /</span><span class="sec-title">Konsumgewohnheiten</span></div>
+    <p>Katharina kauft bewusst und selten – aber wenn, dann mit Überzeugung und Budget. Kein Luxus um des Luxus willen. Qualität als Zeitersparnis: was hält, muss nicht ersetzt werden.</p>
+    <div class="two-col">
+      <div>
+        <div class="card" style="margin-bottom:10px">
+          <h3>Kaufmuster</h3>
+          <div class="tags">
+            <span class="tag hi">Cuyana / COS / Boden</span>
+            <span class="tag hi">Apple-Ökosystem komplett</span>
+            <span class="tag sl">La Mer / Augustinus Bader (Skincare)</span>
+            <span class="tag gr">ETF + Impact-Fonds</span>
+            <span class="tag hi">Gemüse-Abo + Weinhandlung</span>
+            <span class="tag">Zweite Immobilie in Planung</span>
+          </div>
+        </div>
+        <div class="pull" style="margin:0">
+          <p>„Ich kaufe keine Marke. Ich kaufe Qualität, die hält."</p>
+          <cite>Katharina über Konsum und Zeiteffizienz</cite>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Nachhaltigkeit</h3>
+        <p>Nachhaltigkeit als selbstverständlicher Rahmen, nicht als Identität. Kein Fast Fashion, Bahncard, Impact-Fonds, Gemüsebox.</p>
+        <p style="margin-top:12px; color:var(--green); font-size:.86rem">Sie macht es – braucht keinen Applaus dafür und keinen Moralvortrag von anderen.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">05 /</span><span class="sec-title">Medien & Kommunikation</span></div>
+    <div class="two-col">
+      <div class="media-stack">
+        <div class="media-row"><div class="media-lbl">Podcasts</div><div class="media-c">Masters of Scale, The Tim Ferriss Show, Acquired, How I Built This, Worklife (Adam Grant)</div></div>
+        <div class="media-row"><div class="media-lbl">Newsletter</div><div class="media-c">Stratechery, The Information (bezahlt), Refinery29 Work & Money, FT Weekend</div></div>
+        <div class="media-row"><div class="media-lbl">LinkedIn</div><div class="media-c">Täglich – eigene Posts zu Führung, Gleichstellung, Beratungsbranche</div></div>
+        <div class="media-row"><div class="media-lbl">Presse</div><div class="media-c">The Economist, Zeit digital, Handelsblatt</div></div>
+        <div class="media-row"><div class="media-lbl">Kein</div><div class="media-c">TikTok, kein öffentliches Instagram, keine Boulevardmedien</div></div>
+      </div>
+      <div class="card">
+        <h3>Kommunikationsstil</h3>
+        <p>Strukturiert, direkt, auf den Punkt – ohne Kälte. Asynchrone Kommunikation bevorzugt. Wenn sie antwortet, antwortet sie gründlich.</p>
+        <p style="margin-top:12px; color:var(--red); font-size:.86rem">Hasst: Mansplaining, politische Spielchen in Meetings, vage Formulierungen, Unvorbereitetheit.</p>
+        <p style="margin-top:10px; color:var(--green); font-size:.86rem">Wertschätzt: Menschen die Widerspruch aushalten und konstruktiv bleiben.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">06 /</span><span class="sec-title">Bezug zum Ruhrgebiet</span></div>
+    <p>Katharina kommt aus Bochum und hat das Ruhrgebiet nie ganz verlassen wollen – auch wenn sie es hätte können. Dortmund-Kreuzviertel ist für sie ein urbaner Rückzugsort mit dem Charakter einer Großstadt ohne deren Anonymität.</p>
+    <div class="pull">
+      <p>„Das Revier ist ein unterschätzter Wirtschaftsraum. Aber es muss aufhören, sich selbst kleinzureden."</p>
+      <cite>Katharina über Selbstbild und Potenzial des Ruhrgebiets</cite>
+    </div>
+    <div class="tags" style="margin-top:4px">
+      <span class="tag hi">B2B-Tech- und Logistik-Potenzial</span>
+      <span class="tag hi">Mentorin im Gründerinnen-Netzwerk NRW</span>
+      <span class="tag sl">Jurymitglied Startup-Pitch Dortmund</span>
+      <span class="tag">Ärgert sich: zu wenig Female Founders</span>
+      <span class="tag">Ärgert sich: schlechtes Image nach außen</span>
+      <span class="tag gr">Schätzt: urbanes Flair ohne Anonymität</span>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">07 /</span><span class="sec-title">Frustrationen & Reibungspunkte</span></div>
+    <ul class="frust-list">
+      <li>Wenig sichtbare Frauen in Führung im Ruhrgebiet</li>
+      <li>Beratungskultur: Präsenz ≠ Leistung</li>
+      <li>Deutschlands Rückstand bei KI und Digitalisierung</li>
+      <li>Zwei Welten: global und provinziell gleichzeitig</li>
+      <li>Work-Life-Grenzen verschwimmen trotz allem</li>
+      <li>Zu wenig gute Restaurants für Kundenabende in Dortmund</li>
+      <li>Gleichstellungsdiskurs: oft symbolisch, selten strukturell</li>
+      <li>Mangel an guten Tech-Talenten trotz Hochschulnähe</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">08 /</span><span class="sec-title">Kampagnen-Empfehlungen</span></div>
+    <table class="c-table">
+      <thead><tr><th>Aspekt</th><th>Empfehlung</th></tr></thead>
+      <tbody>
+        <tr><td>TON</td><td>Klar, respektvoll, auf Augenhöhe – kein Mansplaining, kein Paternalismus, kein leeres Empowerment</td></tr>
+        <tr><td>ARGUMENTE</td><td>Qualität, Wirkung, Zeitersparnis, strukturelle Verbesserung, Relevanz für ihre Arbeit</td></tr>
+        <tr><td>KANÄLE</td><td>LinkedIn (organisch + gesponsert), FT/Economist-Umfeld, Newsletter, Podcast-Sponsoring</td></tr>
+        <tr><td>VERMEIDEN</td><td>Klischee-Framing für Frauen, bunte Grafiken ohne Substanz, leere Diversity-Rhetoric</td></tr>
+        <tr><td>MOBILISIERUNG</td><td>Über Peer-Netzwerke, kuratierte Events, exklusive Zugangsangebote</td></tr>
+        <tr><td>BOTSCHAFT</td><td>„Für Menschen, die Dinge wirklich bewegen wollen."</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+</main>
+
+<footer>
+  <span>Performer-Milieu · Sinus 2021</span> · Ruhrgebiet · Weibliche Persona<br>
+  Kampagnenplanung & Zielgruppenanalyse · Auf Basis Sinus-Milieuforschung
+</footer>
+
+</body>
+</html>

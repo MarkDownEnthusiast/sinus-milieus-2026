@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Persona · Prekäres Milieu · Timo Brauer</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:      #18191c;
+    --surface: #222428;
+    --panel:   #2a2d32;
+    --border:  #363a40;
+    --muted:   #6b7280;
+    --text:    #cdd2d8;
+    --white:   #eef1f4;
+    --yellow:  #f5c400;
+    --yellow-d:#c9a000;
+    --red:     #e03030;
+    --blue:    #4a90d9;
+    --green:   #3aab6e;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'IBM Plex Sans', system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.72;
+    font-weight: 300;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--yellow), transparent 60%);
+  }
+
+  .header-inner {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 48px 40px 44px;
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 40px;
+    align-items: start;
+  }
+
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: .68rem;
+    color: var(--yellow);
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+
+  header h1 {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+    font-weight: 600;
+    color: var(--white);
+    line-height: 1.05;
+    margin-bottom: 10px;
+  }
+  .h1-accent { color: var(--yellow); }
+  .tagline { font-size: .97rem; color: var(--muted); font-style: italic; margin-top: 8px; }
+
+  /* STECKBRIEF */
+  .steck { background: var(--panel); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
+  .steck-head { background: var(--yellow); padding: 8px 16px; font-family: 'IBM Plex Mono', monospace; font-size: .65rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--bg); }
+  .steck-body { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); }
+  .si { background: var(--panel); padding: 11px 15px; }
+  .si.full { grid-column: 1/-1; }
+  .si .k { font-family: 'IBM Plex Mono', monospace; font-size: .6rem; color: var(--muted); letter-spacing: .12em; text-transform: uppercase; margin-bottom: 2px; }
+  .si .v { font-size: .88rem; color: var(--white); }
+
+  /* MOTTO */
+  .motto { background: var(--yellow); padding: 14px 40px; font-family: 'IBM Plex Sans', sans-serif; font-size: 1rem; font-weight: 600; color: var(--bg); letter-spacing: .02em; }
+
+  /* ── MAIN ── */
+  main { max-width: 1040px; margin: 0 auto; padding: 56px 40px 100px; display: grid; gap: 52px; }
+
+  .sec-head { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+  .sec-num { font-family: 'IBM Plex Mono', monospace; font-size: .66rem; color: var(--yellow); letter-spacing: .1em; flex-shrink: 0; }
+  .sec-title { font-family: 'IBM Plex Sans', sans-serif; font-size: 1rem; font-weight: 600; color: var(--white); }
+
+  p { color: #9aa0a8; font-size: .94rem; margin-bottom: 12px; }
+  p:last-child { margin-bottom: 0; }
+  em { font-style: italic; color: var(--yellow); }
+
+  /* VALUES */
+  .val-list { list-style: none; counter-reset: vv; display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 10px; }
+  .val-list li { counter-increment: vv; background: var(--panel); border: 1px solid var(--border); border-left: 3px solid var(--yellow); padding: 14px 18px; display: flex; gap: 12px; align-items: flex-start; border-radius: 2px; transition: border-left-color .15s; }
+  .val-list li:hover { border-left-color: var(--blue); }
+  .val-list li::before { content: '0'counter(vv); font-family: 'IBM Plex Mono', monospace; font-size: .7rem; color: var(--yellow); flex-shrink: 0; padding-top: 2px; min-width: 22px; }
+  .val-list li strong { display: block; color: var(--white); font-weight: 600; font-size: .9rem; margin-bottom: 3px; }
+  .val-list li span { font-size: .86rem; color: var(--muted); }
+
+  /* TWO COL */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } }
+
+  .card { background: var(--panel); border: 1px solid var(--border); border-radius: 4px; padding: 20px 22px; }
+  .card h3 { font-family: 'IBM Plex Mono', monospace; font-size: .68rem; color: var(--yellow); letter-spacing: .12em; text-transform: uppercase; margin-bottom: 10px; }
+
+  /* TAGS */
+  .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 6px; }
+  .tag { background: transparent; border: 1px solid var(--border); color: var(--muted); font-family: 'IBM Plex Mono', monospace; font-size: .64rem; padding: 3px 10px; border-radius: 2px; letter-spacing: .04em; transition: all .13s; cursor: default; }
+  .tag:hover { border-color: var(--yellow); color: var(--yellow); }
+  .tag.hi { background: rgba(245,196,0,.07); border-color: rgba(245,196,0,.3); color: var(--yellow); }
+  .tag.bl { background: rgba(74,144,217,.06); border-color: rgba(74,144,217,.28); color: var(--blue); }
+  .tag.rd { background: rgba(224,48,48,.06); border-color: rgba(224,48,48,.25); color: var(--red); }
+
+  /* PULL */
+  .pull { background: var(--panel); border-left: 3px solid var(--yellow); padding: 18px 24px; margin: 16px 0; border-radius: 0 4px 4px 0; }
+  .pull p { font-size: 1.02rem; font-style: italic; color: var(--white); margin: 0 0 8px; }
+  .pull cite { font-family: 'IBM Plex Mono', monospace; font-size: .62rem; color: var(--muted); letter-spacing: .1em; text-transform: uppercase; font-style: normal; }
+
+  /* POSITION GRID */
+  .pos-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
+  .pos-card { background: var(--panel); border: 1px solid var(--border); border-top: 2px solid var(--blue); border-radius: 2px; padding: 14px 16px; }
+  .pos-card .topic { font-family: 'IBM Plex Mono', monospace; font-size: .63rem; color: var(--blue); letter-spacing: .12em; text-transform: uppercase; margin-bottom: 6px; }
+  .pos-card p { font-size: .87rem; margin: 0; }
+
+  /* MEDIA */
+  .media-stack { display: flex; flex-direction: column; gap: 8px; }
+  .media-row { display: flex; gap: 12px; align-items: flex-start; padding: 10px 14px; background: var(--panel); border: 1px solid var(--border); border-radius: 3px; }
+  .media-lbl { font-family: 'IBM Plex Mono', monospace; font-size: .63rem; color: var(--yellow); letter-spacing: .1em; text-transform: uppercase; min-width: 80px; flex-shrink: 0; padding-top: 1px; }
+  .media-c { color: var(--muted); font-size: .9rem; }
+
+  /* WARNING BOX */
+  .warn-box { background: rgba(245,196,0,.06); border: 1px solid rgba(245,196,0,.25); border-radius: 4px; padding: 20px 24px; margin-top: 8px; }
+  .warn-box .warn-head { font-family: 'IBM Plex Mono', monospace; font-size: .68rem; color: var(--yellow); letter-spacing: .12em; text-transform: uppercase; margin-bottom: 10px; }
+  .warn-box p { font-size: .9rem; color: #9aa0a8; margin: 0; }
+
+  /* FRUST */
+  .frust-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
+  @media (max-width: 640px) { .frust-list { grid-template-columns: 1fr; } }
+  .frust-list li { background: var(--panel); border: 1px solid var(--border); border-left: 2px solid var(--red); padding: 10px 14px; font-size: .9rem; color: var(--muted); border-radius: 0 3px 3px 0; }
+
+  /* CAMPAIGN TABLE */
+  .c-table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+  .c-table thead { background: var(--yellow); }
+  .c-table th { font-family: 'IBM Plex Mono', monospace; font-size: .65rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--bg); text-align: left; padding: 10px 16px; }
+  .c-table td { padding: 11px 16px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .c-table tr:nth-child(odd) td { background: var(--panel); }
+  .c-table td:first-child { font-family: 'IBM Plex Mono', monospace; font-size: .68rem; color: var(--yellow); letter-spacing: .06em; white-space: nowrap; width: 120px; }
+
+  /* FOOTER */
+  footer { border-top: 1px solid var(--border); text-align: center; padding: 24px 40px; font-family: 'IBM Plex Mono', monospace; font-size: .65rem; color: var(--muted); letter-spacing: .08em; line-height: 2; }
+  footer span { color: var(--yellow); }
+
+  /* ANIM */
+  @keyframes up { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+  main > section { animation: up .45s ease both; }
+  main > section:nth-child(1) { animation-delay: .04s; }
+  main > section:nth-child(2) { animation-delay: .09s; }
+  main > section:nth-child(3) { animation-delay: .14s; }
+  main > section:nth-child(4) { animation-delay: .19s; }
+  main > section:nth-child(5) { animation-delay: .24s; }
+  main > section:nth-child(6) { animation-delay: .29s; }
+  main > section:nth-child(7) { animation-delay: .34s; }
+  main > section:nth-child(8) { animation-delay: .39s; }
+
+  @media (max-width: 720px) {
+    .header-inner { grid-template-columns: 1fr; padding: 36px 20px; }
+    .motto { padding: 14px 20px; }
+    main { padding: 40px 20px 80px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div>
+      <div class="eyebrow">Sinus 2021 · Prekäres Milieu · 9 % · Moderner Mainstream</div>
+      <h1>Timo <span class="h1-accent">Brauer</span></h1>
+      <p class="tagline">„Der Unsichtbare" — Duisburg-Marxloh, 34 J.</p>
+    </div>
+    <div class="steck">
+      <div class="steck-head">Steckbrief</div>
+      <div class="steck-body">
+        <div class="si"><div class="k">Alter</div><div class="v">34 Jahre</div></div>
+        <div class="si"><div class="k">Wohnort</div><div class="v">Duisburg-Marxloh</div></div>
+        <div class="si"><div class="k">Beruf</div><div class="v">Lagerlogistiker (Zeitarbeit)</div></div>
+        <div class="si"><div class="k">Einkommen</div><div class="v">ca. 1.350 € / Monat</div></div>
+        <div class="si full"><div class="k">Bildung</div><div class="v">Hauptschulabschluss, abgebr. Ausbildung</div></div>
+        <div class="si full"><div class="k">Wohnen</div><div class="v">2-Zi.-Wohnung 52 m², Untermiete</div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="motto">„Irgendwie läuft's schon."</div>
+
+<main>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">01 /</span><span class="sec-title">Persönlichkeit & Werte</span></div>
+    <p>Timo ist kein Verlierer – er sieht sich selbst nicht so, und das ist wichtig. Er kommt mit dem zurecht, was er hat, hat immer einen Witz parat und ist in seiner Clique beliebt: laut, herzlich, verlässlich wenn's drauf ankommt.</p>
+    <p>Was ihn wirklich beschäftigt, spricht er selten aus: die Angst, dass es so bleibt. Diese Gedanken schiebt er weg – oft durch Ablenkung, manchmal durch Überzeugung, dass es schon gut wird. Gesellschaftliche Teilhabe bedeutet für ihn vor allem: dazugehören. Die richtigen Schuhe anhaben. Beim Fußball mitreden können.</p>
+    <ul class="val-list">
+      <li><strong>Zugehörigkeit</strong><span>Dabei sein, anerkannt sein, nicht ausgeschlossen werden.</span></li>
+      <li><strong>Loyalität</strong><span>Für seine Leute da sein. Das erwartet er auch von anderen.</span></li>
+      <li><strong>Respekt</strong><span>Er will als Mensch behandelt werden, nicht als Sozialfall.</span></li>
+      <li><strong>Augenblick</strong><span>Die Zukunft ist unsicher. Das Jetzt ist real.</span></li>
+      <li><strong>Stolz</strong><span>Er hat gelernt, mit wenig klarzukommen. Das ist keine Schwäche.</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">02 /</span><span class="sec-title">Lebenswelt & Alltag</span></div>
+    <div class="two-col">
+      <div class="card">
+        <h3>Wohnen</h3>
+        <p>Wenig Möbel, viel Zeug auf dem Boden. Stolzer Mittelpunkt: ein großer Bildschirm für Gaming und Streaming – dafür gespart. Marxloh hat einen schlechten Ruf, den er nicht teilt: <em>„Hier kennt jeder jeden."</em> Aber er will nicht für immer hier bleiben.</p>
+      </div>
+      <div class="card">
+        <h3>Mobilität</h3>
+        <p>Kein Auto, kein Führerschein. Bus und Bahn. Zur Arbeit Fahrgemeinschaft mit Kollege. Über den Führerschein nachgedacht – Kosten zu hoch. Fernbus für weite Strecken.</p>
+      </div>
+      <div class="card">
+        <h3>Ernährung</h3>
+        <p>Schnell, günstig, sättigend. Lidl und Aldi. Döner oder Fastfood mit den Kumpels – auch soziales Ritual. TK-Pizza und Nudeln als Basis. Kochen kann er, macht er selten.</p>
+      </div>
+      <div class="card">
+        <h3>Freizeit</h3>
+        <div class="tags">
+          <span class="tag hi">FIFA + Call of Duty täglich</span>
+          <span class="tag hi">Schalke schauen</span>
+          <span class="tag bl">YouTube Gaming-Channels</span>
+          <span class="tag hi">TikTok mehrere Std./Tag</span>
+          <span class="tag">Sportwetten gelegentlich</span>
+          <span class="tag rd">Traum: Motorrad</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">03 /</span><span class="sec-title">Weltanschauung & Politik</span></div>
+    <p>Timo wählt nicht. „Die machen doch, was sie wollen." Das ist keine radikale Haltung – es ist Gleichgültigkeit aus Erfahrung. Er erlebt Politik nicht als etwas, das für ihn gemacht wird.</p>
+    <div class="pull">
+      <p>„Ich muss erst mal überleben – dann kann ich mich um Klima kümmern."</p>
+      <cite>Timo über Klimapolitik und Alltagspriorität</cite>
+    </div>
+    <div class="pos-grid">
+      <div class="pos-card"><div class="topic">Soziales</div><p>Er will Fairness. „Wer arbeitet, muss mehr haben." Das ist keine Ideologie – das ist gelebte Ungerechtigkeit.</p></div>
+      <div class="pos-card"><div class="topic">Migration</div><p>Stereotypisierte Wahrnehmung, geprägt durch TikTok-Inhalte und eigene Alltagserfahrungen im Viertel.</p></div>
+      <div class="pos-card"><div class="topic">Rente</div><p>Kein Thema. Zu abstrakt, zu weit weg. Er denkt in Wochen, nicht Jahrzehnten.</p></div>
+      <div class="pos-card"><div class="topic">Staat</div><p>Tief misstrauisch. Jobcenter ist Kontrolle, kein Hilfsangebot. Inoffizielle Hilfe bevorzugt.</p></div>
+      <div class="pos-card"><div class="topic">Klima</div><p>Gleichgültig. Er hat andere Probleme. Wenn es teurer wird, trifft es ihn zuerst.</p></div>
+      <div class="pos-card"><div class="topic">Wahl</div><p>Nichtwähler. Nicht aus Radikalismus – aus Erfahrung, dass es nichts ändert.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">04 /</span><span class="sec-title">Konsumgewohnheiten</span></div>
+    <p>Timo konsumiert für Zugehörigkeit. Wenn das Geld knapp ist, spart er beim Essen – aber nicht bei den Sneakern. Das klingt irrational, ist aber eine rationale Investition in soziales Kapital.</p>
+    <div class="two-col">
+      <div>
+        <div class="card" style="margin-bottom:10px">
+          <h3>Kaufmuster</h3>
+          <div class="tags">
+            <span class="tag hi">Nike / Adidas (auch auf Raten)</span>
+            <span class="tag hi">Aldi / Lidl / Penny</span>
+            <span class="tag bl">Gaming-Setup (gespart)</span>
+            <span class="tag">Smartphone mittelpreisig auf Raten</span>
+            <span class="tag hi">Amazon + Klarna</span>
+            <span class="tag rd">Keine Rücklagen</span>
+          </div>
+        </div>
+        <div class="pull" style="margin:0">
+          <p>„Ohne die richtigen Schuhe gehörst du nicht dazu. Das ist so."</p>
+          <cite>Timo über Konsum als soziale Teilhabe</cite>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Nachhaltigkeit</h3>
+        <p>Kein Thema. Nicht aus Bösartigkeit, sondern aus Distanz: das ist eine Debatte für Leute, die sich Gedanken über übermorgen leisten können.</p>
+        <p style="margin-top:12px; color:var(--muted); font-size:.87rem">Er denkt in Wochenrhythmen. Langfristige Konsumentscheidungen existieren nicht in seiner Lebensrealität.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">05 /</span><span class="sec-title">Medien & Kommunikation</span></div>
+    <div class="two-col">
+      <div class="media-stack">
+        <div class="media-row"><div class="media-lbl">TikTok</div><div class="media-c">Hauptmedium. Täglich mehrere Stunden. Sport, Memes, Alltagsvideos, algorithmisch gesteuert, gelegentlich politische Inhalte</div></div>
+        <div class="media-row"><div class="media-lbl">YouTube</div><div class="media-c">Gaming-Channels, Fußball-Analysen, Reaction-Videos</div></div>
+        <div class="media-row"><div class="media-lbl">Instagram</div><div class="media-c">Folgt Influencern, postet selten – Außendarstellung ist kontrolliert</div></div>
+        <div class="media-row"><div class="media-lbl">WhatsApp</div><div class="media-c">Hauptkommunikationskanal, viele Gruppen</div></div>
+        <div class="media-row"><div class="media-lbl">Kein</div><div class="media-c">Lineares TV, Zeitung, Nachrichtenapp, Facebook</div></div>
+      </div>
+      <div class="card">
+        <h3>Kommunikationsstil</h3>
+        <p>Direkt, laut, viel Humor in seiner Gruppe. Gegenüber Behörden und Institutionen: einsilbig, defensiv.</p>
+        <p style="margin-top:12px">Sprachnachrichten bevorzugt. Misstrauisch gegenüber unbekannten Absendern und komplexen Texten.</p>
+        <p style="margin-top:12px; color:var(--yellow); font-size:.87rem">Empfänglich für Inhalte, die seinen Alltag direkt spiegeln – nicht für abstrakte Ansprachen.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">06 /</span><span class="sec-title">Bezug zum Ruhrgebiet</span></div>
+    <p>Marxloh, Duisburg – das ist seine Welt. Er verteidigt sie nach außen, leidet aber nach innen unter dem Stigma. Er weiß, wie das Viertel wahrgenommen wird, und das schmerzt.</p>
+    <div class="pull">
+      <p>„Das Ruhrgebiet ist nicht kaputt. Die Leute hier kennen sich. Aber Chancen? Die sind woanders."</p>
+      <cite>Timo über sein Viertel</cite>
+    </div>
+    <div class="tags" style="margin-top:4px">
+      <span class="tag hi">Marxloh als Heimat</span>
+      <span class="tag rd">Stigma des Viertels</span>
+      <span class="tag rd">Strukturwandel = weniger Jobs</span>
+      <span class="tag">Schalke als emotionaler Ankerpunkt</span>
+      <span class="tag hi">Nachbarschaft als echtes Netz</span>
+      <span class="tag rd">Chancen: woanders</span>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">07 /</span><span class="sec-title">Frustrationen & Reibungspunkte</span></div>
+    <ul class="frust-list">
+      <li>Befristete Verträge, keine Planungssicherheit</li>
+      <li>Hart arbeiten ohne voranzukommen</li>
+      <li>Behörden, die ihn wie eine Fallnummer behandeln</li>
+      <li>Das Gefühl, unsichtbar zu sein</li>
+      <li>Social Media zeigt täglich, was andere haben</li>
+      <li>Stigma des Viertels und seiner sozialen Lage</li>
+      <li>Politiker, die über sein Leben reden, ohne es zu kennen</li>
+      <li>Kein Puffer – jeder Notfall ist eine Krise</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">08 /</span><span class="sec-title">Kampagnen-Empfehlungen</span></div>
+    <table class="c-table">
+      <thead><tr><th>Aspekt</th><th>Empfehlung</th></tr></thead>
+      <tbody>
+        <tr><td>TON</td><td>Auf Augenhöhe, ohne Mitleid, ohne Belehrung – er merkt Herablassung sofort und schaltet ab</td></tr>
+        <tr><td>ARGUMENTE</td><td>Fairness, Respekt, konkrete Alltagsverbesserung, Anerkennung von Leistung</td></tr>
+        <tr><td>KANÄLE</td><td>TikTok, YouTube, Instagram, WhatsApp-Gruppen, lokale Influencer aus dem Viertel</td></tr>
+        <tr><td>VERMEIDEN</td><td>Sozialarbeiter-Sprache, Komplexität, abstrakte Werte, Bilder die Armut inszenieren</td></tr>
+        <tr><td>MOBILISIERUNG</td><td>Über Anerkennung und konkreten Alltagsnutzen – nicht über politische Großerzählungen</td></tr>
+        <tr><td>BOTSCHAFT</td><td>„Du wirst gesehen. Du zählst. Das hier ist für dich gemacht."</td></tr>
+      </tbody>
+    </table>
+    <div class="warn-box">
+      <div class="warn-head">⚠ Hinweis für die Kampagnenarbeit</div>
+      <p>Das Prekäre Milieu ist das am schwersten erreichbare und gleichzeitig das am meisten vernachlässigte. Wer diese Zielgruppe ernst nimmt, gewinnt Vertrauen – wer sie instrumentalisiert oder als defizitär darstellt, verliert es dauerhaft.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <span>Prekäres Milieu · Sinus 2021</span> · Ruhrgebiet · Männliche Persona<br>
+  Kampagnenplanung & Zielgruppenanalyse · Auf Basis Sinus-Milieuforschung
+</footer>
+
+</body>
+</html>

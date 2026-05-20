@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sinus-Milieus – Persona Übersicht</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 40px 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 1.6rem;
+            color: #222;
+        }
+
+        .achsen-container {
+            position: relative;
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        /* Achsenbeschriftungen */
+        .achse-x {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 10px 6px 10px;
+            font-size: 0.75rem;
+            color: #888;
+            font-style: italic;
+        }
+
+        .achse-y-label {
+            position: absolute;
+            left: -30px;
+            top: 50%;
+            transform: translateY(-50%) rotate(-90deg);
+            font-size: 0.75rem;
+            color: #888;
+            font-style: italic;
+            white-space: nowrap;
+        }
+
+        .achse-y-oben {
+            text-align: center;
+            font-size: 0.75rem;
+            color: #888;
+            font-style: italic;
+            margin-bottom: 4px;
+        }
+
+        .achse-y-unten {
+            text-align: center;
+            font-size: 0.75rem;
+            color: #888;
+            font-style: italic;
+            margin-top: 4px;
+        }
+
+        /* Grid */
+        .matrix {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: auto auto auto;
+            gap: 12px;
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 10px;
+        }
+
+        /* Milieu-Karten */
+        .milieu-card {
+            border-radius: 10px;
+            padding: 14px 10px;
+            text-align: center;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .milieu-card h3 {
+            font-size: 0.85rem;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .milieu-card a {
+            display: block;
+            background-color: rgba(255,255,255,0.25);
+            color: white;
+            text-decoration: none;
+            padding: 6px 8px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            transition: background-color 0.2s;
+        }
+
+        .milieu-card a:hover {
+            background-color: rgba(255,255,255,0.45);
+        }
+
+        /* Farben je Milieu */
+        .konservativ-gehoben   { background-color: #2c3e6b; }
+        .postmateriell         { background-color: #3a7d6e; }
+        .performer             { background-color: #1a6ea8; }
+        .expeditiv             { background-color: #5b3fa0; }
+        .traditionell          { background-color: #7a5c2e; }
+        .nostalgisch           { background-color: #8c6d3f; }
+        .adaptiv               { background-color: #3a7fb5; }
+        .hedonistisch          { background-color: #c0392b; }
+        .neoekologisch         { background-color: #2e7d32; }
+        .prekaer               { background-color: #555555; }
+
+        /* Leere Zellen (Platzhalter) */
+        .leer {
+            visibility: hidden;
+        }
+
+        /* Grid-Positionen */
+
+        /* Reihe 1 */
+        .pos-konservativ  { grid-column: 1; grid-row: 1; }
+        .pos-postmat      { grid-column: 2; grid-row: 1; }
+        .pos-performer    { grid-column: 3; grid-row: 1; }
+        .pos-expeditiv    { grid-column: 4; grid-row: 1; }
+        .pos-leer-r1      { grid-column: 5; grid-row: 1; }
+
+        /* Reihe 2 */
+        .pos-traditionell { grid-column: 1; grid-row: 2; }
+        .pos-nostalgisch  { grid-column: 2; grid-row: 2; }
+        .pos-adaptiv      { grid-column: 3; grid-row: 2; }
+        .pos-hedonistisch { grid-column: 4; grid-row: 2; }
+        .pos-neoeko       { grid-column: 5; grid-row: 2; }
+
+        /* Reihe 3 */
+        .pos-leer-r3a     { grid-column: 1; grid-row: 3; }
+        .pos-prekaer      { grid-column: 2; grid-row: 3; }
+        .pos-leer-r3b     { grid-column: 3; grid-row: 3; }
+        .pos-leer-r3c     { grid-column: 4; grid-row: 3; }
+        .pos-leer-r3d     { grid-column: 5; grid-row: 3; }
+
+        /* Legende */
+        .legende {
+            max-width: 960px;
+            margin: 20px auto 0 auto;
+            font-size: 0.75rem;
+            color: #999;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Sinus-Milieus – Persona Übersicht</h1>
+
+    <div class="achsen-container">
+
+        <div class="achse-y-oben">↑ Gehobene Soziale Lage</div>
+
+        <div class="achse-x">
+            <span>Tradition →</span>
+            <span>→ Modernisierung →</span>
+            <span>→ Neuorientierung</span>
+        </div>
+
+        <div class="matrix">
+
+            <!-- REIHE 1 -->
+            <div class="milieu-card konservativ-gehoben pos-konservativ">
+                <h3>Konservativ-Gehoben</h3>
+                <a href="01 persona_konservativ_gehoben_maennlich.html">♂ männlich</a>
+                <a href="01 persona_konservativ_gehoben_weiblich.html">♀ weiblich</a>
+            </div>
+
+            <div class="milieu-card postmateriell pos-postmat">
+                <h3>Postmateriell</h3>
+                <a href="02 persona_postmateriel_katharina_meurer.html">♀ weiblich</a>
+                <a href="02 persona_Postmateriell_tobias_luettmann.html">♂ männlich</a>
+            </div>
+
+            <div class="milieu-card performer pos-performer">
+                <h3>Performer</h3>
+                <a href="03 persona_performer_maennlich.html">♂ männlich</a>
+                <a href="03 persona_performer_weiblich.html">♀ weiblich</a>
+            </div>
+
+            <div class="milieu-card expeditiv pos-expeditiv">
+                <h3>Expeditiv</h3>
+                <a href="04 persona_expeditiv_maennlich.html">♂ männlich</a>
+                <a href="04 persona_expeditiv_weiblich.html">♀ weiblich</a>
+            </div>
+
+            <div class="leer pos-leer-r1"></div>
+
+            <!-- REIHE 2 -->
+            <div class="milieu-card traditionell pos-traditionell">
+                <h3>Traditionell</h3>
+                <a href="09 persona_traditionell_maennlich.html">♂ männlich</a>
+                <a href="09 persona_traditionell_weiblich.html">♀ weiblich</a>
+            </div>
+
+            <div class="milieu-card nostalgisch pos-nostalgisch">
+                <h3>Nostalgisch-Bürgerlich</h3>
+                <a href="08 persona_nostalgisch_buergerlich_maennlich.html">♂ männlich</a>
+                <a href="08 persona_nostalgisch_buergerlich_weiblich.html">♀ weiblich</a>
+            </div>
+
+            <div class="milieu-card adaptiv pos-adaptiv">
+                <h3>Adaptiv-Pragmatisch</h3>
+                <a href="07 persona_adaptiv_pragmatisch.html">♂ männlich</a>
+                <a href="07 persona_adaptiv_pragmatisch_weiblich.html">♀ weiblich</a>
+            </div>
+
+            <div class="milieu-card hedonistisch pos-hedonistisch">
+                <h3>Konsumhedonistisch</h3>
+                <a href="06 persona_hedonistisch_maennlich.html">♂ männlich</a>
+                <a href="06 persona_hedonistisch_weiblich.html">♀ weiblich</a>
+            </div>
+
+            <div class="milieu-card neoekologisch pos-neoeko">
+                <h3>Neoökologisch</h3>
+                <a href="05 persona_neoekologisch.html">♂ männlich</a>
+                <a href="05 persona_neoekologisch_weiblich.html">♀ weiblich</a>
+            </div>
+
+            <!-- REIHE 3 -->
+            <div class="leer pos-leer-r3a"></div>
+
+            <div class="milieu-card prekaer pos-prekaer">
+                <h3>Prekär</h3>
+                <a href="10 persona_prekaer_maennlich.html">♂ männlich</a>
+                <a href="10 persona_prekaer_weiblich.html">♀ weiblich</a>
+            </div>
+
+            <div class="leer pos-leer-r3b"></div>
+            <div class="leer pos-leer-r3c"></div>
+            <div class="leer pos-leer-r3d"></div>
+
+        </div>
+
+        <div class="achse-y-unten">↓ Einfache Soziale Lage</div>
+
+    </div>
+
+    <div class="legende">
+        Angelehnt an die Darstellung der Sinus-Milieus® | Alle Personas als HTML-Dateien
+    </div>
+
+</body>
+</html>

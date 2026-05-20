@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Persona · Tobias Lüttmann · Postmaterielles Milieu</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #F0F4F2;
+    --surface: #FFFFFF;
+    --surface2: #E8EFEb;
+    --text: #141A17;
+    --text2: #5A6660;
+    --text3: #8A9490;
+    --accent: #0F6E56;
+    --accent-light: #E1F5EE;
+    --purple: #3C3489;
+    --purple-light: #EEEDFE;
+    --coral: #993C1D;
+    --coral-light: #FAECE7;
+    --border: rgba(0,0,0,0.08);
+    --border2: rgba(0,0,0,0.13);
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    min-height: 100vh;
+    padding: 3rem 1.5rem 5rem;
+  }
+
+  .page { max-width: 900px; margin: 0 auto; }
+
+  .page-eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text3);
+    margin-bottom: 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .page-eyebrow::after { content: ''; flex: 1; height: 0.5px; background: var(--border2); }
+
+  .hero {
+    background: var(--surface);
+    border: 0.5px solid var(--border2);
+    border-radius: 16px;
+    padding: 2rem 2.5rem;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 2rem;
+    align-items: start;
+    margin-bottom: 1rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 280px; height: 280px;
+    background: radial-gradient(circle at top right, var(--accent-light) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .avatar {
+    width: 72px; height: 72px;
+    border-radius: 50%;
+    background: var(--accent-light);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: var(--accent);
+    border: 0.5px solid rgba(15,110,86,0.2);
+    flex-shrink: 0;
+  }
+  .hero-info .name {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px; font-weight: 400;
+    color: var(--text); margin-bottom: 4px;
+  }
+  .hero-info .meta { font-size: 13px; color: var(--text2); margin-bottom: 1rem; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag { font-size: 12px; padding: 3px 12px; border-radius: 20px; font-weight: 400; }
+  .tag-teal   { background: var(--accent-light); color: var(--accent); }
+  .tag-purple { background: var(--purple-light); color: var(--purple); }
+  .tag-coral  { background: var(--coral-light); color: var(--coral); }
+
+  .quote-block {
+    border-left: 3px solid var(--accent);
+    padding: 0.75rem 1.5rem;
+    margin: 1.5rem 0;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: var(--text);
+    line-height: 1.75;
+    background: var(--accent-light);
+    border-radius: 0 8px 8px 0;
+  }
+
+  .metrics {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px; margin-bottom: 1rem;
+  }
+  .metric { background: var(--surface2); border-radius: 10px; padding: 0.9rem 1rem; }
+  .metric-label { font-size: 11px; color: var(--text3); margin-bottom: 5px; }
+  .metric-val { font-size: 17px; font-weight: 500; color: var(--text); }
+
+  .section-label {
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--text3); margin: 2rem 0 0.75rem;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .section-label::after { content: ''; flex: 1; height: 0.5px; background: var(--border2); }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
+
+  .block {
+    background: var(--surface);
+    border: 0.5px solid var(--border2);
+    border-radius: 12px;
+    padding: 1.1rem 1.25rem;
+  }
+  .block-title {
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.07em; text-transform: uppercase;
+    color: var(--text3); margin-bottom: 10px;
+  }
+  .list-item {
+    font-size: 14px; color: var(--text);
+    padding: 5px 0; border-bottom: 0.5px solid var(--border); line-height: 1.5;
+  }
+  .list-item:last-child { border-bottom: none; }
+  .block-text { font-size: 14px; color: var(--text); line-height: 1.7; }
+
+  .bar-row { display: flex; align-items: center; gap: 12px; margin-bottom: 9px; }
+  .bar-label { font-size: 13px; color: var(--text2); width: 130px; flex-shrink: 0; }
+  .bar-track { flex: 1; height: 5px; background: var(--surface2); border-radius: 3px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 3px; }
+  .bar-pct { font-size: 12px; color: var(--text3); width: 28px; text-align: right; }
+
+  .highlight-block {
+    background: var(--accent-light);
+    border: 0.5px solid rgba(15,110,86,0.15);
+    border-radius: 12px;
+    padding: 1.1rem 1.25rem; margin-bottom: 10px;
+  }
+  .highlight-block .block-title { color: var(--accent); }
+
+  .tip-green {
+    background: var(--accent-light);
+    border: 0.5px solid rgba(15,110,86,0.15);
+    border-radius: 12px; padding: 1.1rem 1.25rem;
+  }
+  .tip-coral {
+    background: var(--coral-light);
+    border: 0.5px solid rgba(153,60,29,0.15);
+    border-radius: 12px; padding: 1.1rem 1.25rem;
+  }
+  .tip-green .block-title { color: var(--accent); }
+  .tip-coral .block-title { color: var(--coral); }
+
+  .editorial {
+    background: var(--surface);
+    border: 0.5px solid var(--border2);
+    border-radius: 16px;
+    padding: 2rem 2.5rem; margin-top: 2.5rem;
+  }
+  .editorial h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; font-weight: 400;
+    color: var(--text); margin-bottom: 1.5rem;
+  }
+  .editorial p { font-size: 15px; color: var(--text2); line-height: 1.8; margin-bottom: 1.25rem; }
+  .editorial p:last-child { margin-bottom: 0; }
+  .editorial strong { color: var(--text); font-weight: 500; }
+
+  .footer {
+    margin-top: 3rem; padding-top: 1.5rem;
+    border-top: 0.5px solid var(--border2);
+    font-size: 12px; color: var(--text3);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+
+  @media (max-width: 640px) {
+    .hero { grid-template-columns: 1fr; }
+    .metrics { grid-template-columns: 1fr 1fr; }
+    .grid-2 { grid-template-columns: 1fr; }
+    body { padding: 2rem 1rem 4rem; }
+    .hero, .editorial { padding: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="page-eyebrow">Milieuforschung · Postmaterielles Milieu · Ruhrgebiet</div>
+
+  <div class="hero">
+    <div class="avatar">TL</div>
+    <div class="hero-info">
+      <p class="name">Tobias Lüttmann</p>
+      <p class="meta">38 Jahre · Essen-Rüttenscheid · Postmaterielles Milieu</p>
+      <div class="tags">
+        <span class="tag tag-teal">Nachhaltigkeitspionier</span>
+        <span class="tag tag-purple">Digitalkritisch</span>
+        <span class="tag tag-coral">Stadtgestalter</span>
+        <span class="tag tag-teal">Systemdenker</span>
+        <span class="tag tag-purple">Kulturkonsument</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="quote-block">
+    „Ich will nicht der Letzte sein, der merkt, dass das System kaputt ist – aber ich will auch nicht so tun, als wäre mein Leinenbeutel die Lösung."
+  </div>
+
+  <div class="metrics">
+    <div class="metric"><p class="metric-label">Haushaltseinkommen</p><p class="metric-val">~3.900 €</p></div>
+    <div class="metric"><p class="metric-label">Bildungsabschluss</p><p class="metric-val">Master</p></div>
+    <div class="metric"><p class="metric-label">Wohnsituation</p><p class="metric-val">2-Zi. Altbau, allein</p></div>
+    <div class="metric"><p class="metric-label">Familienstatus</p><p class="metric-val">ledig, Fernbeziehung</p></div>
+  </div>
+
+  <div class="section-label">Beruf &amp; Alltag</div>
+  <div class="grid-2">
+    <div class="block">
+      <p class="block-title">Beruf</p>
+      <p class="block-text">Freiberuflicher Stadtplaner &amp; Projektberater für kommunale Nachhaltigkeitsprojekte. Arbeitet für Kommunen, NGOs und gelegentlich Stiftungen. Lehrt nebenberuflich an der FH Dortmund.</p>
+    </div>
+    <div class="block">
+      <p class="block-title">Tagesstruktur</p>
+      <p class="block-text">Unregelmäßige Arbeitszeiten, viel Home-Office. Morgens lange Zeitunglesen mit Kaffee. Kocht aufwendig, wenn er Zeit hat. Abends oft Veranstaltungen, Kino oder einfach Lesen.</p>
+    </div>
+  </div>
+
+  <div class="section-label">Wertehaltung &amp; Weltbild</div>
+  <div class="block" style="margin-bottom:10px;">
+    <p class="block-title">Wertekompass</p>
+    <div style="margin-top:6px;">
+      <div class="bar-row"><span class="bar-label">Systemkritik</span><div class="bar-track"><div class="bar-fill" style="width:93%;background:#1D9E75;"></div></div><span class="bar-pct">93%</span></div>
+      <div class="bar-row"><span class="bar-label">Nachhaltigkeit</span><div class="bar-track"><div class="bar-fill" style="width:90%;background:#1D9E75;"></div></div><span class="bar-pct">90%</span></div>
+      <div class="bar-row"><span class="bar-label">Selbstverwirklichung</span><div class="bar-track"><div class="bar-fill" style="width:87%;background:#7F77DD;"></div></div><span class="bar-pct">87%</span></div>
+      <div class="bar-row"><span class="bar-label">Partizipation</span><div class="bar-track"><div class="bar-fill" style="width:84%;background:#7F77DD;"></div></div><span class="bar-pct">84%</span></div>
+      <div class="bar-row"><span class="bar-label">Karrierestreben</span><div class="bar-track"><div class="bar-fill" style="width:28%;background:#888780;"></div></div><span class="bar-pct">28%</span></div>
+      <div class="bar-row"><span class="bar-label">Konformität</span><div class="bar-track"><div class="bar-fill" style="width:10%;background:#888780;"></div></div><span class="bar-pct">10%</span></div>
+    </div>
+  </div>
+
+  <div class="section-label">Konsum &amp; Lebensstil</div>
+  <div class="grid-2">
+    <div class="block">
+      <p class="block-title">Ernährung</p>
+      <div class="list-item">Flexitarisch, stark pflanzlich orientiert</div>
+      <div class="list-item">Kocht gerne aufwendig – als Ausgleich zum Kopfwork</div>
+      <div class="list-item">Wochenmarkt Essen-Rüttenscheid, türkischer Supermarkt</div>
+      <div class="list-item">Craft Beer ja, Weinabo nein (zu bürgerlich)</div>
+    </div>
+    <div class="block">
+      <p class="block-title">Mobilität</p>
+      <div class="list-item">Lastenrad für den Alltag, kein Auto</div>
+      <div class="list-item">Bahn für Dienstreisen, Flug nur im Notfall</div>
+      <div class="list-item">Findet Autokultur im Ruhrgebiet frustrierend</div>
+    </div>
+  </div>
+  <div class="grid-2" style="margin-top:10px;">
+    <div class="block">
+      <p class="block-title">Shopping &amp; Konsum</p>
+      <div class="list-item">Kauft wenig, dafür gezielt und langlebig</div>
+      <div class="list-item">Repariert lieber als neu kaufen</div>
+      <div class="list-item">Leiht Werkzeug &amp; Geräte über Repair-Café-Netzwerk</div>
+      <div class="list-item">Bücher kauft er nur noch gebraucht oder leiht</div>
+    </div>
+    <div class="block">
+      <p class="block-title">Wohnen</p>
+      <div class="list-item">Kleine 2-Zimmer-Altbauwohnung, bewusst gewählt</div>
+      <div class="list-item">Wenige Möbel, viele Pflanzen &amp; Karten an der Wand</div>
+      <div class="list-item">Kein Fernseher – Beamer für Filme</div>
+      <div class="list-item">Fahrrad steht im Flur (Standardkonfiguration)</div>
+    </div>
+  </div>
+
+  <div class="section-label">Medien &amp; Kommunikation</div>
+  <div class="grid-2">
+    <div class="block">
+      <p class="block-title">Mediennutzung</p>
+      <div class="list-item">Spiegel Online, taz, 54grad (Ruhr-Lokalmedium)</div>
+      <div class="list-item">Podcasts: Methodisch Inkorrekt, Über Land</div>
+      <div class="list-item">Mastodon statt Instagram – dezentral aus Prinzip</div>
+      <div class="list-item">Liest lieber lange Texte als Threads</div>
+      <div class="list-item">Schreibt selbst gelegentlich Substack-Beiträge</div>
+    </div>
+    <div class="block">
+      <p class="block-title">Kommunikationsstil</p>
+      <div class="list-item">Analytisch, manchmal zu komplex für Smalltalk</div>
+      <div class="list-item">Direkt, selten aufgeregt – aber klar positioniert</div>
+      <div class="list-item">Mag keine PR-Sprache, merkt sie sofort</div>
+      <div class="list-item">Baut Vertrauen über Inhalte, nicht Sympathie</div>
+    </div>
+  </div>
+
+  <div class="section-label">Politisch &amp; gesellschaftlich</div>
+  <div class="highlight-block">
+    <p class="block-title">Engagement &amp; Haltung</p>
+    <p class="block-text">Wählt Grüne oder Volt, je nach Wahlkreis. Engagiert sich in der Essener Stadtentwicklungsdebatte, schreibt Stellungnahmen, sitzt in Beratungsgremien. Skeptisch gegenüber Parteipolitik insgesamt – glaubt eher an zivilgesellschaftliche Strukturen. Verfolgt die kommunalpolitische Diskussion im Ruhrgebiet genau und kennt die Akteure.</p>
+  </div>
+
+  <div class="section-label">Ruhrgebiet-Identität</div>
+  <div class="block">
+    <p class="block-title">Verhältnis zur Region</p>
+    <p class="block-text">Aufgewachsen in Essen, Studium in Dortmund &amp; Berlin, bewusst zurückgekommen. Mag das Pragmatische des Reviers: keine Attitüde, direkte Kommunikation, Vielfalt ohne Aufhebens. Sieht das Ruhrgebiet als den spannendsten urbanen Transformationsraum Deutschlands – und ärgert sich, dass das zu wenig gewürdigt wird. Kennt jede Zeche, jeden Industriepfad, jedes Kreativquartier.</p>
+  </div>
+
+  <div class="section-label">Für Kampagnen: Ansprache-Hinweise</div>
+  <div class="grid-2">
+    <div class="tip-green">
+      <p class="block-title">Was ihn anspricht ✓</p>
+      <div class="list-item">Systemische Perspektive, nicht Einzelmaßnahmen</div>
+      <div class="list-item">Ehrliche Widersprüche benennen</div>
+      <div class="list-item">Lokaler Bezug zum Ruhrgebiet</div>
+      <div class="list-item">Partizipation als echtes Angebot</div>
+    </div>
+    <div class="tip-coral">
+      <p class="block-title">Was ihn abstößt ✗</p>
+      <div class="list-item">Greenwashing &amp; hohle Nachhaltigkeitsversprechen</div>
+      <div class="list-item">Pseudo-Beteiligung</div>
+      <div class="list-item">Zu viel Optimismus ohne Kritik</div>
+      <div class="list-item">Kampagnen, die ihn als Konsumenten adressieren</div>
+    </div>
+  </div>
+
+  <div class="editorial">
+    <h2>Einordnung &amp; Kampagnenstrategie</h2>
+    <p>Tobias verkörpert eine <strong>reflexiv-kritische Variante</strong> des postmateriellen Milieus: Wo Katharina eher kulturell-expressiv ist, ist er analytisch-strukturell. Beide teilen die Grundwerte, unterscheiden sich aber in Ausdruck und Kommunikationserwartung. Tobias lässt sich nicht durch Emotionalisierung gewinnen – er will Argumente.</p>
+    <p>Als <strong>Freiberufler und Netzwerker</strong> ist er ein Multiplikator: Wer ihn überzeugt, erreicht durch ihn Gremien, Netzwerke und lokale Entscheider. Das macht ihn als Zielgruppe besonders wertvoll für Kampagnen im Bereich Stadtentwicklung, Klimapolitik und kommunale Transformation.</p>
+    <p>Die <strong>Ruhrgebiets-Prägung</strong> ist bei Tobias tiefer als bei Katharina: Er ist hier aufgewachsen, kennt die Region historisch und strategisch. Kampagnen mit lokalem Referenzrahmen – Strukturwandel, Industriekultur, urbane Vielfalt – erzeugen bei ihm echte Resonanz, keine aufgesetzte Identifikation.</p>
+  </div>
+
+  <div class="footer">
+    <span>Persona · Postmaterielles Milieu · Ruhrgebiet</span>
+    <span>Kampagnenmanagement &amp; Milieuforschung</span>
+  </div>
+
+</div>
+</body>
+</html>

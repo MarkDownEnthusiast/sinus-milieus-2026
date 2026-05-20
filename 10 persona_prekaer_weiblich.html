@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Persona · Prekäres Milieu · Sandra Kowalski</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+  :raw-url {
+    --bg:       #1a1714;
+    --surface:  #242018;
+    --panel:    #2c2820;
+    --border:   #3d3830;
+    --muted:    #7a7268;
+    --text:     #d0cac0;
+    --white:    #f0ece4;
+    --amber:    #e8a030;
+    --amber-d:  #c08020;
+    --red:      #d04030;
+    --teal:     #3a9a80;
+    --bg:       #1a1714;
+  }
+  :root {
+    --bg:      #1a1714;
+    --surface: #242018;
+    --panel:   #2c2820;
+    --border:  #3d3830;
+    --muted:   #7a7268;
+    --text:    #d0cac0;
+    --white:   #f0ece4;
+    --amber:   #e8a030;
+    --amber-d: #c08020;
+    --red:     #d04030;
+    --teal:    #3a9a80;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'IBM Plex Sans', system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.74;
+    font-weight: 300;
+  }
+
+  /* ── HEADER ── */
+  header { background: var(--surface); border-bottom: 1px solid var(--border); position: relative; overflow: hidden; }
+  header::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--amber), transparent 60%); }
+
+  .header-inner { max-width: 1040px; margin: 0 auto; padding: 48px 40px 44px; display: grid; grid-template-columns: 1fr 320px; gap: 40px; align-items: start; }
+
+  .eyebrow { font-family: 'IBM Plex Mono', monospace; font-size: .68rem; color: var(--amber); letter-spacing: .14em; text-transform: uppercase; margin-bottom: 18px; }
+
+  header h1 { font-family: 'IBM Plex Sans', sans-serif; font-size: clamp(2.2rem, 4.5vw, 3.4rem); font-weight: 600; color: var(--white); line-height: 1.05; margin-bottom: 10px; }
+  .h1-accent { color: var(--amber); }
+  .tagline { font-size: .97rem; color: var(--muted); font-style: italic; margin-top: 8px; }
+
+  /* STECKBRIEF */
+  .steck { background: var(--panel); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
+  .steck-head { background: var(--amber); padding: 8px 16px; font-family: 'IBM Plex Mono', monospace; font-size: .65rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--bg); }
+  .steck-body { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); }
+  .si { background: var(--panel); padding: 11px 15px; }
+  .si.full { grid-column: 1/-1; }
+  .si .k { font-family: 'IBM Plex Mono', monospace; font-size: .6rem; color: var(--muted); letter-spacing: .12em; text-transform: uppercase; margin-bottom: 2px; }
+  .si .v { font-size: .88rem; color: var(--white); }
+
+  /* MOTTO */
+  .motto { background: var(--amber); padding: 14px 40px; font-family: 'IBM Plex Sans', sans-serif; font-size: 1rem; font-weight: 600; color: var(--bg); }
+
+  /* ── MAIN ── */
+  main { max-width: 1040px; margin: 0 auto; padding: 56px 40px 100px; display: grid; gap: 52px; }
+
+  .sec-head { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+  .sec-num { font-family: 'IBM Plex Mono', monospace; font-size: .66rem; color: var(--amber); letter-spacing: .1em; flex-shrink: 0; }
+  .sec-title { font-family: 'IBM Plex Sans', sans-serif; font-size: 1rem; font-weight: 600; color: var(--white); }
+
+  p { color: #9a9080; font-size: .94rem; margin-bottom: 12px; }
+  p:last-child { margin-bottom: 0; }
+  em { font-style: italic; color: var(--amber); }
+
+  /* VALUES */
+  .val-list { list-style: none; counter-reset: vv; display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 10px; }
+  .val-list li { counter-increment: vv; background: var(--panel); border: 1px solid var(--border); border-left: 3px solid var(--amber); padding: 14px 18px; display: flex; gap: 12px; align-items: flex-start; border-radius: 2px; transition: border-left-color .15s; }
+  .val-list li:hover { border-left-color: var(--teal); }
+  .val-list li::before { content: '0'counter(vv); font-family: 'IBM Plex Mono', monospace; font-size: .7rem; color: var(--amber); flex-shrink: 0; padding-top: 2px; min-width: 22px; }
+  .val-list li strong { display: block; color: var(--white); font-weight: 600; font-size: .9rem; margin-bottom: 3px; }
+  .val-list li span { font-size: .86rem; color: var(--muted); }
+
+  /* TWO COL */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } }
+
+  .card { background: var(--panel); border: 1px solid var(--border); border-radius: 4px; padding: 20px 22px; }
+  .card h3 { font-family: 'IBM Plex Mono', monospace; font-size: .68rem; color: var(--amber); letter-spacing: .12em; text-transform: uppercase; margin-bottom: 10px; }
+
+  /* TAGS */
+  .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 6px; }
+  .tag { background: transparent; border: 1px solid var(--border); color: var(--muted); font-family: 'IBM Plex Mono', monospace; font-size: .64rem; padding: 3px 10px; border-radius: 2px; letter-spacing: .04em; transition: all .13s; cursor: default; }
+  .tag:hover { border-color: var(--amber); color: var(--amber); }
+  .tag.hi { background: rgba(232,160,48,.07); border-color: rgba(232,160,48,.28); color: var(--amber); }
+  .tag.te { background: rgba(58,154,128,.06); border-color: rgba(58,154,128,.26); color: var(--teal); }
+  .tag.rd { background: rgba(208,64,48,.05); border-color: rgba(208,64,48,.22); color: var(--red); }
+
+  /* PULL */
+  .pull { background: var(--panel); border-left: 3px solid var(--amber); padding: 18px 24px; margin: 16px 0; border-radius: 0 4px 4px 0; }
+  .pull p { font-size: 1.02rem; font-style: italic; color: var(--white); margin: 0 0 8px; }
+  .pull cite { font-family: 'IBM Plex Mono', monospace; font-size: .62rem; color: var(--muted); letter-spacing: .1em; text-transform: uppercase; font-style: normal; }
+
+  /* POSITION GRID */
+  .pos-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
+  .pos-card { background: var(--panel); border: 1px solid var(--border); border-top: 2px solid var(--teal); border-radius: 2px; padding: 14px 16px; }
+  .pos-card .topic { font-family: 'IBM Plex Mono', monospace; font-size: .63rem; color: var(--teal); letter-spacing: .12em; text-transform: uppercase; margin-bottom: 6px; }
+  .pos-card p { font-size: .87rem; margin: 0; }
+
+  /* MEDIA */
+  .media-stack { display: flex; flex-direction: column; gap: 8px; }
+  .media-row { display: flex; gap: 12px; align-items: flex-start; padding: 10px 14px; background: var(--panel); border: 1px solid var(--border); border-radius: 3px; }
+  .media-lbl { font-family: 'IBM Plex Mono', monospace; font-size: .63rem; color: var(--amber); letter-spacing: .1em; text-transform: uppercase; min-width: 80px; flex-shrink: 0; padding-top: 1px; }
+  .media-c { color: var(--muted); font-size: .9rem; }
+
+  /* EMPHASIS BOX */
+  .em-box { background: rgba(58,154,128,.07); border: 1px solid rgba(58,154,128,.24); border-radius: 4px; padding: 18px 22px; margin-top: 8px; }
+  .em-box .em-head { font-family: 'IBM Plex Mono', monospace; font-size: .66rem; color: var(--teal); letter-spacing: .12em; text-transform: uppercase; margin-bottom: 8px; }
+  .em-box p { font-size: .9rem; color: #9a9080; margin: 0; }
+
+  /* FRUST */
+  .frust-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
+  @media (max-width: 640px) { .frust-list { grid-column: 1fr; } }
+  .frust-list li { background: var(--panel); border: 1px solid var(--border); border-left: 2px solid var(--red); padding: 10px 14px; font-size: .9rem; color: var(--muted); border-radius: 0 3px 3px 0; }
+
+  /* CAMPAIGN TABLE */
+  .c-table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+  .c-table thead { background: var(--amber); }
+  .c-table th { font-family: 'IBM Plex Mono', monospace; font-size: .65rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--bg); text-align: left; padding: 10px 16px; }
+  .c-table td { padding: 11px 16px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .c-table tr:nth-child(odd) td { background: var(--panel); }
+  .c-table td:first-child { font-family: 'IBM Plex Mono', monospace; font-size: .68rem; color: var(--amber); letter-spacing: .06em; white-space: nowrap; width: 120px; }
+
+  /* WARN */
+  .warn-box { background: rgba(232,160,48,.05); border: 1px solid rgba(232,160,48,.22); border-radius: 4px; padding: 20px 24px; margin-top: 8px; }
+  .warn-box .warn-head { font-family: 'IBM Plex Mono', monospace; font-size: .68rem; color: var(--amber); letter-spacing: .12em; text-transform: uppercase; margin-bottom: 10px; }
+  .warn-box p { font-size: .9rem; color: #9a9080; margin: 0; }
+
+  /* FOOTER */
+  footer { border-top: 1px solid var(--border); text-align: center; padding: 24px 40px; font-family: 'IBM Plex Mono', monospace; font-size: .65rem; color: var(--muted); letter-spacing: .08em; line-height: 2; }
+  footer span { color: var(--amber); }
+
+  /* ANIM */
+  @keyframes up { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+  main > section { animation: up .45s ease both; }
+  main > section:nth-child(1) { animation-delay: .04s; }
+  main > section:nth-child(2) { animation-delay: .09s; }
+  main > section:nth-child(3) { animation-delay: .14s; }
+  main > section:nth-child(4) { animation-delay: .19s; }
+  main > section:nth-child(5) { animation-delay: .24s; }
+  main > section:nth-child(6) { animation-delay: .29s; }
+  main > section:nth-child(7) { animation-delay: .34s; }
+  main > section:nth-child(8) { animation-delay: .39s; }
+
+  @media (max-width: 720px) {
+    .header-inner { grid-template-columns: 1fr; padding: 36px 20px; }
+    .motto { padding: 14px 20px; }
+    main { padding: 40px 20px 80px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div>
+      <div class="eyebrow">Sinus 2021 · Prekäres Milieu · 9 % · Moderner Mainstream</div>
+      <h1>Sandra <span class="h1-accent">Kowalski</span></h1>
+      <p class="tagline">„Die Kämpferin" — Gelsenkirchen-Schalke, 41 J.</p>
+    </div>
+    <div class="steck">
+      <div class="steck-head">Steckbrief</div>
+      <div class="steck-body">
+        <div class="si"><div class="k">Alter</div><div class="v">41 Jahre</div></div>
+        <div class="si"><div class="k">Wohnort</div><div class="v">Gelsenkirchen-Schalke</div></div>
+        <div class="si"><div class="k">Beruf</div><div class="v">Reinigungskraft, 25 Std./Wo.</div></div>
+        <div class="si"><div class="k">Gesamt-Netto</div><div class="v">ca. 1.650 € (Lohn + Transfers)</div></div>
+        <div class="si full"><div class="k">Familie</div><div class="v">Alleinerziehend, 1 Sohn (13 J.)</div></div>
+        <div class="si full"><div class="k">Wohnen</div><div class="v">Sozialwohnung 64 m², Aufzug defekt</div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="motto">„Für mein Kind mach ich alles."</div>
+
+<main>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">01 /</span><span class="sec-title">Persönlichkeit & Werte</span></div>
+    <p>Sandra ist eine der stärksten Personen in diesem Persona-Set – auch wenn die Gesellschaft ihr das selten zurückspiegelt. Sie hat mit wenig Unterstützung ein Kind großgezogen, zwei Jobs gemacht, eine Scheidung überstanden und trotzdem jeden Morgen funktioniert.</p>
+    <p>Was sie antreibt, ist ihr Sohn. Sie ist misstrauisch gegenüber Institutionen, aber nicht hoffnungslos. Sie hat gelernt, das System zu navigieren – nicht elegant, aber effektiv. Sozialleistungen sind für sie kein Geschenk, sondern ihr Recht.</p>
+    <ul class="val-list">
+      <li><strong>Mutterschaft</strong><span>Die Verantwortung für ihren Sohn ist ihr absoluter Lebensinhalt.</span></li>
+      <li><strong>Würde</strong><span>Sie lässt sich nicht klein machen. Von niemandem.</span></li>
+      <li><strong>Solidarität</strong><span>Mit Menschen in ähnlichen Lagen. „Wir helfen uns."</span></li>
+      <li><strong>Gerechtigkeit</strong><span>Konkret: warum hat sie weniger Chancen als andere?</span></li>
+      <li><strong>Überleben & Anpassung</strong><span>Sie findet immer einen Weg. Das ist ihr Stolz.</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">02 /</span><span class="sec-title">Lebenswelt & Alltag</span></div>
+    <div class="two-col">
+      <div class="card">
+        <h3>Wohnen</h3>
+        <p>Sauber, liebevoll eingerichtet, funktional. Auf dem Kühlschrank: Stundenplan, eine Rechnung, ein Foto vom letzten Sommerausflug. Der defekte Aufzug ist eine tägliche Erinnerung daran, dass Beschwerden nichts bewirken. Sie will raus – wegen eines Gartens für den Sohn. Irgendwann.</p>
+      </div>
+      <div class="card">
+        <h3>Mobilität</h3>
+        <p>Kein Auto. Bus und Bahn. Das Deutschlandticket war für sie eine echte Entlastung. Für weite Strecken braucht sie Planung und die Hilfe einer Nachbarin für den Sohn.</p>
+      </div>
+      <div class="card">
+        <h3>Ernährung</h3>
+        <p>Kochen ist ihr wichtig – das ist Fürsorge. Täglich, günstig, satt. Tafel gelegentlich, ohne Scham: <em>„Das Essen ist gut, und der Sohn muss was Vernünftiges essen."</em> Aldi und Lidl. Bio nicht drin.</p>
+      </div>
+      <div class="card">
+        <h3>Freizeit</h3>
+        <div class="tags">
+          <span class="tag hi">Serien mit Sohn (Netflix geteilt)</span>
+          <span class="tag hi">WhatsApp-Gruppen</span>
+          <span class="tag te">Spaziergang mit Nachbarin</span>
+          <span class="tag">Casual Games als Ausgleich</span>
+          <span class="tag hi">Früher gerne getanzt</span>
+          <span class="tag te">Traum: Ausbildung Pflegehelferin</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">03 /</span><span class="sec-title">Weltanschauung & Politik</span></div>
+    <p>Sandra hat früher SPD gewählt. Heute manchmal, manchmal nicht. „Die kümmern sich nicht um mich." Sie ist nicht apathisch – sie hat konkrete Meinungen zu Wohnen, Kitaplätzen, dem Jobcenter. Sie glaubt nur nicht, dass jemand zuhört.</p>
+    <div class="pull">
+      <p>„Ich kenn das System besser als mancher Sachbearbeiter. Aber es kostet mich Kraft, die ich kaum hab."</p>
+      <cite>Sandra über Behördenkontakt und Sozialleistungen</cite>
+    </div>
+    <div class="pos-grid">
+      <div class="pos-card"><div class="topic">Wohnen</div><p>Ihr dringlichstes Thema. Mietpreise, Sozialwohnungsabbau – sie erlebt es täglich.</p></div>
+      <div class="pos-card"><div class="topic">Bildung</div><p>Für den Sohn ist das alles. Sie kämpft für jeden Förderplatz, jeden Zuschuss.</p></div>
+      <div class="pos-card"><div class="topic">Soziales</div><p>Sie kennt ihre Rechte – und findet die Kommunikation des Systems würdelos.</p></div>
+      <div class="pos-card"><div class="topic">Migration</div><p>Differenziert. Sie lebt in einem diversen Viertel. Keine abstrakten, konkrete Positionen.</p></div>
+      <div class="pos-card"><div class="topic">Energie</div><p>Wenn Energiepreise steigen, trifft es sie zuerst. Direkte persönliche Betroffenheit.</p></div>
+      <div class="pos-card"><div class="topic">Klima</div><p>„Interessiert mich, aber ich hab andere Probleme." Kein Luxus für abstraktes Denken.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">04 /</span><span class="sec-title">Konsumgewohnheiten</span></div>
+    <p>Sandra kauft für zwei. Jede Ausgabe wird dreimal überlegt. Gleichzeitig: wenn ihr Sohn ein bestimmtes Paar Schuhe will, weil alle anderen es haben, sucht sie einen Weg. Das ist keine Schwäche – das ist soziale Teilhabe-Investition.</p>
+    <div class="two-col">
+      <div>
+        <div class="card" style="margin-bottom:10px">
+          <h3>Kaufmuster</h3>
+          <div class="tags">
+            <span class="tag hi">Aldi / Lidl (Basis)</span>
+            <span class="tag te">Tafel bei Bedarf (ohne Scham)</span>
+            <span class="tag hi">C&A / Vinted für Sohn</span>
+            <span class="tag">Second Hand für sich</span>
+            <span class="tag rd">Schulden aus Notfällen</span>
+            <span class="tag">Gerät des Sohns auf Raten</span>
+          </div>
+        </div>
+        <div class="pull" style="margin:0">
+          <p>„Wenn er die Schuhe nicht hat, wird er in der Schule ausgegrenzt. Das geht nicht."</p>
+          <cite>Sandra über Konsum als Teilhabe-Schutz</cite>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Nachhaltigkeit</h3>
+        <p>Auch Sandra lebt faktisch nachhaltig: kauft wenig, repariert viel, verschwendet nichts. Den Begriff verbindet sie mit teurer Bio-Ware und Kampagnen, die ihr nichts bringen.</p>
+        <p style="margin-top:12px; color:var(--teal); font-size:.87rem">Wenn Nachhaltigkeit günstiger wäre, wäre sie sofort dabei. Die Barriere ist finanziell, nicht attitudinär.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">05 /</span><span class="sec-title">Medien & Kommunikation</span></div>
+    <div class="two-col">
+      <div class="media-stack">
+        <div class="media-row"><div class="media-lbl">WhatsApp</div><div class="media-c">Zentrales Medium – alles läuft hier: Info, Koordination, Unterstützung, Gemeinschaft</div></div>
+        <div class="media-row"><div class="media-lbl">Facebook</div><div class="media-c">Lokale Gruppen: Nachbarschaft, Gebraucht-kaufen-tauschen, Elterngruppe</div></div>
+        <div class="media-row"><div class="media-lbl">TikTok</div><div class="media-c">Unterhaltend, manchmal informativ – schaut auch mit dem Sohn</div></div>
+        <div class="media-row"><div class="media-lbl">Streaming</div><div class="media-c">Netflix (geteilt mit Schwester), YouTube</div></div>
+        <div class="media-row"><div class="media-lbl">Kein</div><div class="media-c">Lineares TV außer selten, keine Zeitung, kein Twitter</div></div>
+      </div>
+      <div class="card">
+        <h3>Kommunikationsstil</h3>
+        <p>Direkt, warm, manchmal scharf. Sprachnachrichten bevorzugt (Zeit und Energie).</p>
+        <p style="margin-top:12px">Misstrauisch gegenüber offiziellen Schreiben – oft zu komplex, oft schlechte Nachrichten.</p>
+        <p style="margin-top:12px; color:var(--amber); font-size:.87rem">Reagiert stark auf emotionale Ansprache, die sie als Person sieht – nicht als Fall.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">06 /</span><span class="sec-title">Bezug zum Ruhrgebiet</span></div>
+    <p>Schalke, Gelsenkirchen – ihre Welt. Nicht aus Begeisterung, sondern weil sie hier verwurzelt ist. Hier ist ihre Schwester, hier ist die Schule ihres Sohnes.</p>
+    <div class="pull">
+      <p>„Der Strukturwandel – das ist keine Geschichte. Das sind die leeren Ladenzeilen und das geschlossene Schwimmbad."</p>
+      <cite>Sandra über das Ruhrgebiet und strukturelle Folgen</cite>
+    </div>
+    <div class="tags" style="margin-top:4px">
+      <span class="tag hi">Schalke als Zuhause</span>
+      <span class="tag hi">Schwester als Anker</span>
+      <span class="tag rd">Ruf des Viertels schadet dem Sohn</span>
+      <span class="tag rd">Leere Ladenzeilen, geschlossene Bäder</span>
+      <span class="tag te">Nachbarschaftsnetz trägt</span>
+      <span class="tag rd">Mietdruck steigt</span>
+    </div>
+    <div class="em-box">
+      <div class="em-head">Wichtig für Kampagnenarbeit</div>
+      <p>Sandra ist keine passive Empfängerin. Sie ist eine Akteurin mit Ressourcen, Netzwerk und Handlungswillen – nur ohne ausreichende strukturelle Unterstützung. Wer sie als Subjekt anspricht, nicht als Objekt der Fürsorge, wird gehört.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">07 /</span><span class="sec-title">Frustrationen & Reibungspunkte</span></div>
+    <ul class="frust-list">
+      <li>Jeden Monat rechnen, ob es reicht</li>
+      <li>Behörden, die sie wie eine Fallnummer behandeln</li>
+      <li>Einsamkeit, die sie nicht laut ausspricht</li>
+      <li>Schlechtere Startchancen für den Sohn</li>
+      <li>Energiepreise, Mieterhöhungen – immer zuerst betroffen</li>
+      <li>Stigma: arbeitet und bekommt trotzdem Transfers</li>
+      <li>Social Media zeigt eine Welt, die ihr unerreichbar scheint</li>
+      <li>Förderprogramme in Sprache, die sie ausschließt</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">08 /</span><span class="sec-title">Kampagnen-Empfehlungen</span></div>
+    <table class="c-table">
+      <thead><tr><th>Aspekt</th><th>Empfehlung</th></tr></thead>
+      <tbody>
+        <tr><td>TON</td><td>Respektvoll, menschlich, ohne Mitleid – sie ist Expertin ihres eigenen Lebens</td></tr>
+        <tr><td>ARGUMENTE</td><td>Konkrete Verbesserungen für Kinder, Wohnen, Energie, Würde im Behördenkontakt</td></tr>
+        <tr><td>KANÄLE</td><td>WhatsApp (über Multiplikatoren), Facebook (lokale Gruppen), TikTok, persönlich vor Ort</td></tr>
+        <tr><td>VERMEIDEN</td><td>Sozialarbeiter-Sprache, komplexe Anträge, abstrakte Solidaritätsappelle, Armuts-Ästhetik</td></tr>
+        <tr><td>MOBILISIERUNG</td><td>Über lokale Vertrauenspersonen, niedrigschwellige Angebote, sichtbare Alltagswirkung</td></tr>
+        <tr><td>BOTSCHAFT</td><td>„Dein Einsatz verdient Unterstützung. Wir machen's einfacher."</td></tr>
+      </tbody>
+    </table>
+    <div class="warn-box">
+      <div class="warn-head">⚠ Hinweis für die Kampagnenarbeit</div>
+      <p>Das Prekäre Milieu ist das am schwersten erreichbare und gleichzeitig das am meisten vernachlässigte. Wer diese Zielgruppe ernst nimmt, gewinnt Vertrauen dauerhaft – Instrumentalisierung oder Mitleids-Ästhetik schließen sie sofort aus.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <span>Prekäres Milieu · Sinus 2021</span> · Ruhrgebiet · Weibliche Persona<br>
+  Kampagnenplanung & Zielgruppenanalyse · Auf Basis Sinus-Milieuforschung
+</footer>
+
+</body>
+</html>

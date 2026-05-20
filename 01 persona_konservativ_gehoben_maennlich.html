@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Persona – Konservativ-Gehobenes Milieu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1710;
+    --ink-soft: #3d3a30;
+    --ink-muted: #7a7060;
+    --paper: #f5f0e8;
+    --paper-warm: #ede8dc;
+    --paper-mid: #ddd6c8;
+    --gold: #8b6f3a;
+    --gold-light: #c4a055;
+    --gold-pale: #e8d9b8;
+    --rule: #c8bfaa;
+    --accent: #2c4a6e;
+    --accent-light: #3d6a9e;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 16px;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* ── Header ── */
+  .masthead {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .masthead::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 39px,
+      rgba(255,255,255,0.03) 39px,
+      rgba(255,255,255,0.03) 40px
+    );
+  }
+  .masthead-inner {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px 48px 52px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 32px;
+    align-items: end;
+  }
+  .milieu-label {
+    font-family: 'Source Serif 4', serif;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 16px;
+  }
+  .masthead h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: var(--paper);
+  }
+  .masthead h1 em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+  .masthead-sub {
+    font-size: 13px;
+    color: rgba(245,240,232,0.55);
+    letter-spacing: 0.05em;
+    margin-top: 10px;
+  }
+  .steckbrief-quick {
+    text-align: right;
+    font-size: 12px;
+    color: rgba(245,240,232,0.6);
+    line-height: 2;
+    white-space: nowrap;
+  }
+  .steckbrief-quick strong {
+    color: var(--gold-light);
+    font-weight: 400;
+  }
+  .gold-rule {
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 50%, transparent 100%);
+  }
+
+  /* ── Layout ── */
+  .page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 48px 80px;
+  }
+
+  /* ── Intro Band ── */
+  .intro-band {
+    background: var(--paper-warm);
+    border-left: 3px solid var(--gold);
+    padding: 32px 40px;
+    margin: 48px 0 52px;
+    position: relative;
+  }
+  .intro-band::after {
+    content: '\201C';
+    position: absolute;
+    top: -10px;
+    right: 32px;
+    font-family: 'Playfair Display', serif;
+    font-size: 120px;
+    color: var(--gold-pale);
+    line-height: 1;
+    pointer-events: none;
+  }
+  .intro-band p {
+    font-size: 17px;
+    font-style: italic;
+    color: var(--ink-soft);
+    max-width: 680px;
+  }
+
+  /* ── Sections ── */
+  .section {
+    margin-bottom: 52px;
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 28px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .section-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.25em;
+    color: var(--gold);
+    min-width: 28px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--ink);
+    letter-spacing: 0.01em;
+  }
+
+  /* ── Steckbrief Table ── */
+  .profile-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+  .profile-cell {
+    background: var(--paper);
+    padding: 16px 20px;
+  }
+  .profile-cell:nth-child(odd) { background: var(--paper-warm); }
+  .cell-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 4px;
+  }
+  .cell-value {
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+
+  /* ── Body Text ── */
+  .body-text p {
+    color: var(--ink-soft);
+    margin-bottom: 14px;
+    font-size: 15.5px;
+  }
+  .body-text p:last-child { margin-bottom: 0; }
+
+  /* ── Value Pills ── */
+  .value-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 4px;
+  }
+  .value-pill {
+    background: var(--paper-warm);
+    border: 1px solid var(--rule);
+    color: var(--ink-soft);
+    font-size: 13px;
+    padding: 6px 16px;
+    letter-spacing: 0.03em;
+  }
+  .value-pill.accent {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--paper);
+  }
+
+  /* ── Konsum-Karten ── */
+  .konsum-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 8px;
+  }
+  .konsum-card {
+    background: var(--paper-warm);
+    border-top: 2px solid var(--gold);
+    padding: 20px 18px;
+  }
+  .konsum-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .konsum-card ul {
+    list-style: none;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    line-height: 1.9;
+  }
+  .konsum-card li::before {
+    content: '—\00a0';
+    color: var(--gold);
+  }
+
+  /* ── Medien-Tabelle ── */
+  .media-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  .media-table thead tr {
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .media-table thead th {
+    padding: 12px 18px;
+    text-align: left;
+    font-family: 'Source Serif 4', serif;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    font-size: 11px;
+    text-transform: uppercase;
+  }
+  .media-table tbody tr:nth-child(odd) { background: var(--paper-warm); }
+  .media-table tbody tr:nth-child(even) { background: var(--paper); }
+  .media-table td {
+    padding: 11px 18px;
+    color: var(--ink-soft);
+    border-bottom: 1px solid var(--paper-mid);
+    vertical-align: top;
+  }
+  .media-table td:first-child {
+    font-weight: 400;
+    color: var(--ink);
+  }
+
+  /* ── Psycho-Profil Balken ── */
+  .psycho-grid {
+    display: grid;
+    gap: 14px;
+    margin-top: 8px;
+  }
+  .psycho-row {
+    display: grid;
+    grid-template-columns: 200px 1fr auto;
+    align-items: center;
+    gap: 16px;
+  }
+  .psycho-label {
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+  .psycho-bar-track {
+    height: 4px;
+    background: var(--paper-mid);
+    position: relative;
+  }
+  .psycho-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light));
+    transition: width 0.3s ease;
+  }
+  .psycho-value {
+    font-size: 12px;
+    color: var(--gold);
+    white-space: nowrap;
+    min-width: 60px;
+    text-align: right;
+  }
+
+  /* ── Kampagnen-Box ── */
+  .kampagnen-box {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 40px;
+    margin-top: 8px;
+  }
+  .kampagnen-box h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--gold-light);
+    margin-bottom: 20px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .kampagnen-items {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+  .kampagnen-item-label {
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+  .kampagnen-item-text {
+    font-size: 14px;
+    color: rgba(245,240,232,0.8);
+    line-height: 1.7;
+  }
+  .slogan {
+    grid-column: 1 / -1;
+    border-top: 1px solid rgba(255,255,255,0.12);
+    padding-top: 24px;
+    margin-top: 8px;
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-style: italic;
+    color: var(--gold-light);
+    letter-spacing: 0.03em;
+  }
+
+  /* ── Footer ── */
+  footer {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 48px 48px;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    color: var(--ink-muted);
+    letter-spacing: 0.1em;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 680px) {
+    .masthead-inner { grid-template-columns: 1fr; padding: 40px 24px; }
+    .steckbrief-quick { display: none; }
+    .page { padding: 0 24px 60px; }
+    .profile-grid { grid-template-columns: 1fr; }
+    .konsum-grid { grid-template-columns: 1fr; }
+    .psycho-row { grid-template-columns: 140px 1fr auto; }
+    .kampagnen-items { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <div>
+      <p class="milieu-label">Milieu-Persona · Ruhrgebiet · Konservativ-Gehobenes Milieu</p>
+      <h1><em>Dr. Klaus-Heinrich</em> Brandt</h1>
+      <p class="masthead-sub">Geschäftsführer · 58 Jahre · Essen-Bredeney</p>
+    </div>
+    <div class="steckbrief-quick">
+      <div><strong>Milieu</strong> Konservativ-Gehoben</div>
+      <div><strong>Beruf</strong> Unternehmer (3. Gen.)</div>
+      <div><strong>Bildung</strong> Dr.-Ing. + MBA</div>
+      <div><strong>Einkommen</strong> 180–250 T€ p.a.</div>
+      <div><strong>Wohnort</strong> Essen-Bredeney</div>
+    </div>
+  </div>
+  <div class="gold-rule"></div>
+</header>
+
+<main class="page">
+
+  <div class="intro-band">
+    <p>Klaus-Heinrich Brandt ist kein Mann der großen Gesten. Er ist ein Mann der verlässlichen Qualität – im Betrieb, in der Familie, in der Gesellschaft. Das Ruhrgebiet ist für ihn keine Kulisse, sondern Verantwortung. Und die trägt er gerne.</p>
+  </div>
+
+  <!-- 1. Steckbrief -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-number">01</span>
+      <h2 class="section-title">Persönlicher Steckbrief</h2>
+    </div>
+    <div class="profile-grid">
+      <div class="profile-cell"><div class="cell-label">Vollständiger Name</div><div class="cell-value">Dr. Klaus-Heinrich Brandt</div></div>
+      <div class="profile-cell"><div class="cell-label">Alter</div><div class="cell-value">58 Jahre</div></div>
+      <div class="profile-cell"><div class="cell-label">Beruf</div><div class="cell-value">Geschäftsführer, Maschinenbau-KMU (Familienunternehmen, 3. Generation)</div></div>
+      <div class="profile-cell"><div class="cell-label">Familienstand</div><div class="cell-value">Verheiratet (30 Jahre), zwei erwachsene Kinder</div></div>
+      <div class="profile-cell"><div class="cell-label">Bildung</div><div class="cell-value">Diplom-Ingenieur + Promotion (RWTH Aachen), MBA-Weiterbildung</div></div>
+      <div class="profile-cell"><div class="cell-label">Wohnort</div><div class="cell-value">Essen-Bredeney / Werden, freistehendes EFH, ~280 m²</div></div>
+      <div class="profile-cell"><div class="cell-label">Einkommen</div><div class="cell-value">ca. 180.000–250.000 € brutto/Jahr + Unternehmensgewinnanteile</div></div>
+      <div class="profile-cell"><div class="cell-label">Fahrzeuge</div><div class="cell-value">Mercedes E-Klasse (Dienst) · Porsche Macan (privat)</div></div>
+    </div>
+  </section>
+
+  <!-- 2. Lebenswelt -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-number">02</span>
+      <h2 class="section-title">Lebenswelt & Alltagsrealität</h2>
+    </div>
+    <div class="body-text">
+      <p>Klaus-Heinrich lebt in Essen-Bredeney, einem der wohlhabendsten und grünsten Stadtteile des Ruhrgebiets. Die Nähe zur Villa Hügel und zum Baldeneysee ist für ihn nicht zufällig – sie ist symbolisch. Er schätzt das Prestige der Adresse, die Ruhe der Villenviertel und gleichzeitig die kurze Erreichbarkeit der Essener Innenstadt sowie der A52.</p>
+      <p>Sein Alltag ist stark strukturiert und diszipliniert: Frühaufsteher (5:45 Uhr), morgens 30 Minuten Lektüre der FAZ am Frühstückstisch, pünktlich um 7:30 Uhr im Betrieb. Er führt das Unternehmen mit klarer Handschrift, legt Wert auf persönliche Präsenz und Verlässlichkeit. Digitale Tools nutzt er pragmatisch, aber er misstraut Hypes.</p>
+      <p>Feierabend bedeutet Rückzug ins Private: Garten, Hund (Labrador), klassische Musik. An Wochenenden Tennis im Essener Tennisclub oder Golf im Golfclub Essen-Heidhausen. Sonntags kocht er selbst – das ist sein Ritual.</p>
+    </div>
+  </section>
+
+  <!-- 3. Werte -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-number">03</span>
+      <h2 class="section-title">Weltanschauung & Werte</h2>
+    </div>
+    <div class="body-text">
+      <p>Ordnung, Leistung und Verantwortung sind für Klaus-Heinrich keine abstrakten Begriffe, sondern gelebte Prinzipien. Er entstammt einem bürgerlich-konservativen Wertekanon, in dem Familie, Eigentum und Kontinuität zentrale Säulen bilden.</p>
+      <p>Religiös ist er evangelisch-lutherisch – kirchlich ohne Frömmigkeit. Der Kirchenbeitrag ist für ihn soziale Pflicht und kulturelle Identität zugleich. Gegenüber sozialen Bewegungen wie Klimaaktivismus oder Gender-Diskursen ist er skeptisch bis ablehnend – nicht aus Ignoranz, sondern aus dem Gefühl, dass der Mittelstand dabei vergessen wird.</p>
+    </div>
+    <div style="margin-top: 20px;">
+      <div class="value-list">
+        <span class="value-pill accent">Leistungsprinzip</span>
+        <span class="value-pill accent">Generationendenken</span>
+        <span class="value-pill accent">Soziale Marktwirtschaft</span>
+        <span class="value-pill">Eigenverantwortung</span>
+        <span class="value-pill">Familientradition</span>
+        <span class="value-pill">Qualität vor Quantität</span>
+        <span class="value-pill">Lokale Verwurzelung</span>
+        <span class="value-pill">Kontinuität</span>
+        <span class="value-pill">Diskretion</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Politik -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-number">04</span>
+      <h2 class="section-title">Politische Haltung</h2>
+    </div>
+    <div class="body-text">
+      <p>Traditionell CDU-Wähler, gelegentlich FDP, wenn es um Wirtschaftspolitik geht. Seit einigen Jahren wächst die Frustration mit der CDU: zu wenig klare Kante, zu viele Kompromisse. Keine AfD-Sympathie – zu laut, zu populistisch –, aber Verständnis dafür, dass andere Menschen „dahin abdriften".</p>
+      <p>Er schätzt Kommunalpolitik mehr als Bundespolitik. Persönliche Beziehungen zu lokalen Politikern, gelegentlich selbst in Ausschüssen engagiert. Mitglied im Unternehmerverband Ruhr und im Kuratorium einer Essener Stiftung zur Förderung handwerklicher Berufe.</p>
+    </div>
+  </section>
+
+  <!-- 5. Konsum -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-number">05</span>
+      <h2 class="section-title">Konsumgewohnheiten</h2>
+    </div>
+    <div class="konsum-grid">
+      <div class="konsum-card">
+        <div class="konsum-card-title">Automobile</div>
+        <ul>
+          <li>Mercedes E-Klasse (Dienst)</li>
+          <li>Porsche Macan (privat)</li>
+          <li>Kein E-Auto — pragmatische Ablehnung</li>
+          <li>Offen für Hybrid, wenn rentabel</li>
+        </ul>
+      </div>
+      <div class="konsum-card">
+        <div class="konsum-card-title">Mode & Stil</div>
+        <ul>
+          <li>Boss, Brax, Zegna</li>
+          <li>Maßhemden (lokaler Schneider)</li>
+          <li>IWC Portofino — seit 15 Jahren</li>
+          <li>Qualität soll für sich sprechen</li>
+        </ul>
+      </div>
+      <div class="konsum-card">
+        <div class="konsum-card-title">Ernährung</div>
+        <ul>
+          <li>Sonntagskochen als Ritual</li>
+          <li>Gehobene dt. Küche, frz. Bistros</li>
+          <li>Schloss Hugenpoet (Kettwig)</li>
+          <li>Bordeaux, Burgunder, Rheingau-Riesling</li>
+        </ul>
+      </div>
+      <div class="konsum-card">
+        <div class="konsum-card-title">Reisen</div>
+        <ul>
+          <li>Sommer: Toskana / Provence</li>
+          <li>Winter: St. Anton / Lech</li>
+          <li>Business Class auf Langstrecken</li>
+          <li>Kein Massentourismus</li>
+        </ul>
+      </div>
+      <div class="konsum-card">
+        <div class="konsum-card-title">Kultur & Freizeit</div>
+        <ul>
+          <li>Abo Essener Philharmoniker (20 J.)</li>
+          <li>Tennis, Golf</li>
+          <li>Biographien, Wirtschaftsgeschichte</li>
+          <li>Arte, ARD/ZDF-Dokumentationen</li>
+        </ul>
+      </div>
+      <div class="konsum-card">
+        <div class="konsum-card-title">Soziales Netzwerk</div>
+        <ul>
+          <li>Rotary Club Essen (aktiv)</li>
+          <li>Unternehmerverband Ruhr</li>
+          <li>Stiftungskuratorium</li>
+          <li>IHK-Netzwerk, Unternehmerkollegen</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Medien -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-number">06</span>
+      <h2 class="section-title">Medien- & Kommunikationsverhalten</h2>
+    </div>
+    <table class="media-table">
+      <thead>
+        <tr>
+          <th>Kanal</th>
+          <th>Nutzungsintensität</th>
+          <th>Beschreibung</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>FAZ (Print + Digital)</td><td>Täglich</td><td>Erste und primäre Informationsquelle, morgens am Frühstückstisch</td></tr>
+        <tr><td>LinkedIn</td><td>Regelmäßig</td><td>Beruflich aktiv, Posts zu Industrie- und Wirtschaftsthemen</td></tr>
+        <tr><td>E-Mail</td><td>Täglich</td><td>Primäres Kommunikationsmittel, formal und strukturiert</td></tr>
+        <tr><td>Wirtschaftswoche / Capital</td><td>Wöchentlich</td><td>Ergänzende Wirtschaftslektüre</td></tr>
+        <tr><td>WhatsApp</td><td>Täglich (privat)</td><td>Nur Familie und enger Freundeskreis, kein Gruppen-Chaos</td></tr>
+        <tr><td>Podcasts</td><td>Gelegentlich</td><td>„Handelsblatt Today", Geschichts- und Wirtschaftspodcasts</td></tr>
+        <tr><td>Instagram</td><td>Passiv / selten</td><td>Konsumiert gelegentlich, kein eigenes Posting</td></tr>
+        <tr><td>Twitter / X</td><td>Abgemeldet</td><td>Account nach 2022 aufgegeben</td></tr>
+        <tr><td>TikTok</td><td>Nicht vorhanden</td><td>Keine Relevanz, keine Berührungspunkte</td></tr>
+      </tbody>
+    </table>
+    <div class="body-text" style="margin-top: 20px;">
+      <p><strong>Kommunikationsstil:</strong> Präzise, sachlich, direkt. Schätzt klare Botschaften ohne Euphemismus. Reagiert negativ auf Floskeln, Buzzwords und erkennbares „Marketing-Deutsch". Persönliche Ansprache und lokale Referenzen kommen gut an.</p>
+    </div>
+  </section>
+
+  <!-- 7. Psychografisches Profil -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-number">07</span>
+      <h2 class="section-title">Psychografisches Profil</h2>
+    </div>
+    <div class="psycho-grid">
+      <div class="psycho-row">
+        <span class="psycho-label">Sicherheitsbedürfnis</span>
+        <div class="psycho-bar-track"><div class="psycho-bar-fill" style="width:90%"></div></div>
+        <span class="psycho-value">Sehr hoch</span>
+      </div>
+      <div class="psycho-row">
+        <span class="psycho-label">Statusorientierung</span>
+        <div class="psycho-bar-track"><div class="psycho-bar-fill" style="width:75%"></div></div>
+        <span class="psycho-value">Hoch (dezent)</span>
+      </div>
+      <div class="psycho-row">
+        <span class="psycho-label">Offenheit für Neues</span>
+        <div class="psycho-bar-track"><div class="psycho-bar-fill" style="width:50%"></div></div>
+        <span class="psycho-value">Mittel</span>
+      </div>
+      <div class="psycho-row">
+        <span class="psycho-label">Risikobereitschaft</span>
+        <div class="psycho-bar-track"><div class="psycho-bar-fill" style="width:30%"></div></div>
+        <span class="psycho-value">Gering</span>
+      </div>
+      <div class="psycho-row">
+        <span class="psycho-label">Emot. Ansprechbarkeit</span>
+        <div class="psycho-bar-track"><div class="psycho-bar-fill" style="width:25%"></div></div>
+        <span class="psycho-value">Gering</span>
+      </div>
+      <div class="psycho-row">
+        <span class="psycho-label">Lokalpatriotismus</span>
+        <div class="psycho-bar-track"><div class="psycho-bar-fill" style="width:85%"></div></div>
+        <span class="psycho-value">Stark</span>
+      </div>
+      <div class="psycho-row">
+        <span class="psycho-label">Generationendenken</span>
+        <div class="psycho-bar-track"><div class="psycho-bar-fill" style="width:95%"></div></div>
+        <span class="psycho-value">Sehr stark</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. Kampagnen-Empfehlungen -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-number">08</span>
+      <h2 class="section-title">Kampagnen-Empfehlungen</h2>
+    </div>
+    <div class="kampagnen-box">
+      <h3>Ansprache-Strategie</h3>
+      <div class="kampagnen-items">
+        <div>
+          <div class="kampagnen-item-label">Ton & Sprache</div>
+          <div class="kampagnen-item-text">Seriös, substanziell, ohne Schnörkel. Keine Superlative, kein Lifestyle-Framing. Sachargumente statt Emotionsappelle.</div>
+        </div>
+        <div>
+          <div class="kampagnen-item-label">Glaubwürdigkeit</div>
+          <div class="kampagnen-item-text">Zahlen, Fakten, wirtschaftliche Nachhaltigkeit. Vertrauen durch lokale Referenzen, persönliche Ansprache und Kontinuität.</div>
+        </div>
+        <div>
+          <div class="kampagnen-item-label">Ideale Kanäle</div>
+          <div class="kampagnen-item-text">FAZ-Anzeigen, LinkedIn, Rotary/IHK-Events, hochwertiges Direktmailing auf Papier. Keine Social-Media-Kampagnen.</div>
+        </div>
+        <div>
+          <div class="kampagnen-item-label">Zu vermeiden</div>
+          <div class="kampagnen-item-text">Digitaljargon, politisch aufgeladene Sprache, soziale Appelle ohne wirtschaftliche Fundierung, trendige Ästhetik.</div>
+        </div>
+        <div class="slogan">„Bewährt. Verlässlich. Für die nächste Generation."</div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <span>Milieu-basierte Kampagnenplanung · Konservativ-Gehobenes Milieu</span>
+  <span>Standort: Ruhrgebiet · Essen-Bredeney</span>
+</footer>
+
+</body>
+</html>

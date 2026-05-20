@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Persona · Katharina Meurer · Postmaterielles Milieu</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #F5F2EC;
+    --surface: #FFFFFF;
+    --surface2: #F0EDE5;
+    --text: #1A1814;
+    --text2: #6B6760;
+    --text3: #9A9490;
+    --accent: #3C3489;
+    --accent-light: #EEEDFE;
+    --teal: #0F6E56;
+    --teal-light: #E1F5EE;
+    --coral: #993C1D;
+    --coral-light: #FAECE7;
+    --border: rgba(0,0,0,0.08);
+    --border2: rgba(0,0,0,0.14);
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    min-height: 100vh;
+    padding: 3rem 1.5rem 5rem;
+  }
+
+  .page {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  /* Page header */
+  .page-eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text3);
+    margin-bottom: 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .page-eyebrow::after {
+    content: '';
+    flex: 1;
+    height: 0.5px;
+    background: var(--border2);
+  }
+
+  /* Hero card */
+  .hero {
+    background: var(--surface);
+    border: 0.5px solid var(--border2);
+    border-radius: 16px;
+    padding: 2rem 2.5rem;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 2rem;
+    align-items: start;
+    margin-bottom: 1rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 280px; height: 280px;
+    background: radial-gradient(circle at top right, var(--accent-light) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: var(--accent-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: var(--accent);
+    border: 0.5px solid rgba(83,74,183,0.2);
+    flex-shrink: 0;
+  }
+  .hero-info .name {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 400;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+  .hero-info .meta {
+    font-size: 13px;
+    color: var(--text2);
+    margin-bottom: 1rem;
+  }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag {
+    font-size: 12px;
+    padding: 3px 12px;
+    border-radius: 20px;
+    font-weight: 400;
+  }
+  .tag-purple { background: var(--accent-light); color: var(--accent); }
+  .tag-teal   { background: var(--teal-light); color: var(--teal); }
+  .tag-coral  { background: var(--coral-light); color: var(--coral); }
+
+  /* Quote */
+  .quote-block {
+    border-left: 3px solid var(--accent);
+    padding: 0.75rem 1.5rem;
+    margin: 1.5rem 0;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: var(--text);
+    line-height: 1.75;
+    background: var(--accent-light);
+    border-radius: 0 8px 8px 0;
+  }
+
+  /* Metrics */
+  .metrics {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 1rem;
+  }
+  .metric {
+    background: var(--surface2);
+    border-radius: 10px;
+    padding: 0.9rem 1rem;
+  }
+  .metric-label {
+    font-size: 11px;
+    color: var(--text3);
+    margin-bottom: 5px;
+  }
+  .metric-val {
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--text);
+  }
+
+  /* Section label */
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text3);
+    margin: 2rem 0 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 0.5px;
+    background: var(--border2);
+  }
+
+  /* Grid */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  /* Block card */
+  .block {
+    background: var(--surface);
+    border: 0.5px solid var(--border2);
+    border-radius: 12px;
+    padding: 1.1rem 1.25rem;
+  }
+  .block-title {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--text3);
+    margin-bottom: 10px;
+  }
+  .list-item {
+    font-size: 14px;
+    color: var(--text);
+    padding: 5px 0;
+    border-bottom: 0.5px solid var(--border);
+    line-height: 1.5;
+  }
+  .list-item:last-child { border-bottom: none; }
+  .block-text {
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.7;
+  }
+
+  /* Bar chart */
+  .bar-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 9px;
+  }
+  .bar-label {
+    font-size: 13px;
+    color: var(--text2);
+    width: 130px;
+    flex-shrink: 0;
+  }
+  .bar-track {
+    flex: 1;
+    height: 5px;
+    background: var(--surface2);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 1s ease;
+  }
+  .bar-pct {
+    font-size: 12px;
+    color: var(--text3);
+    width: 28px;
+    text-align: right;
+  }
+
+  /* Highlight block */
+  .highlight-block {
+    background: var(--accent-light);
+    border: 0.5px solid rgba(83,74,183,0.15);
+    border-radius: 12px;
+    padding: 1.1rem 1.25rem;
+    margin-bottom: 10px;
+  }
+  .highlight-block .block-title { color: var(--accent); }
+  .highlight-block .block-text { color: var(--text); }
+
+  /* Campaign tips */
+  .tip-block-green {
+    background: var(--teal-light);
+    border: 0.5px solid rgba(15,110,86,0.15);
+    border-radius: 12px;
+    padding: 1.1rem 1.25rem;
+  }
+  .tip-block-coral {
+    background: var(--coral-light);
+    border: 0.5px solid rgba(153,60,29,0.15);
+    border-radius: 12px;
+    padding: 1.1rem 1.25rem;
+  }
+  .tip-block-green .block-title { color: var(--teal); }
+  .tip-block-coral .block-title { color: var(--coral); }
+
+  /* Editorial section */
+  .editorial {
+    background: var(--surface);
+    border: 0.5px solid var(--border2);
+    border-radius: 16px;
+    padding: 2rem 2.5rem;
+    margin-top: 2.5rem;
+  }
+  .editorial h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--text);
+    margin-bottom: 1.5rem;
+  }
+  .editorial p {
+    font-size: 15px;
+    color: var(--text2);
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
+  }
+  .editorial p:last-child { margin-bottom: 0; }
+  .editorial p strong {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  /* Footer */
+  .footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 0.5px solid var(--border2);
+    font-size: 12px;
+    color: var(--text3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  @media (max-width: 640px) {
+    .hero { grid-template-columns: 1fr; }
+    .metrics { grid-template-columns: 1fr 1fr; }
+    .grid-2 { grid-template-columns: 1fr; }
+    body { padding: 2rem 1rem 4rem; }
+    .hero { padding: 1.5rem; }
+    .editorial { padding: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <div class="page-eyebrow">Milieuforschung · Postmaterielles Milieu · Ruhrgebiet</div>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="avatar">KM</div>
+    <div class="hero-info">
+      <p class="name">Katharina Meurer</p>
+      <p class="meta">44 Jahre · Bochum-Ehrenfeld · Postmaterielles Milieu</p>
+      <div class="tags">
+        <span class="tag tag-purple">Bildungsbürgertum</span>
+        <span class="tag tag-teal">Kulturaffin</span>
+        <span class="tag tag-coral">Nachhaltigkeitsorientiert</span>
+        <span class="tag tag-purple">Politisch engagiert</span>
+        <span class="tag tag-teal">Postmaterialistin</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quote -->
+  <div class="quote-block">
+    „Was wir hinterlassen, ist wichtiger als das, was wir besitzen. Das Ruhrgebiet zeigt mir jeden Tag, wie Wandel möglich ist – wenn man ihn will."
+  </div>
+
+  <!-- Metrics -->
+  <div class="metrics">
+    <div class="metric"><p class="metric-label">Haushaltseinkommen</p><p class="metric-val">~4.800 €</p></div>
+    <div class="metric"><p class="metric-label">Bildungsabschluss</p><p class="metric-val">Promotion</p></div>
+    <div class="metric"><p class="metric-label">Wohnsituation</p><p class="metric-val">Altbau + Partner</p></div>
+    <div class="metric"><p class="metric-label">Haustiere</p><p class="metric-val">1 Katze</p></div>
+  </div>
+
+  <!-- Beruf & Alltag -->
+  <div class="section-label">Beruf &amp; Alltag</div>
+  <div class="grid-2">
+    <div class="block">
+      <p class="block-title">Beruf</p>
+      <p class="block-text">Leiterin eines gemeinnützigen Kulturzentrums in Bochum. Vorher Kulturwissenschaften studiert, kurze Zeit in einer NGO für Stadtentwicklung tätig. Wählt Sinnhaftigkeit konsequent über Gehalt.</p>
+    </div>
+    <div class="block">
+      <p class="block-title">Tagesstruktur</p>
+      <p class="block-text">Früh aufstehen, Fahrrad zum Wochenmarkt, viel Kaffee &amp; Podcasts. Abends: Buchclub, Vernissagen oder Nachbarschaftstreffen. Selten vor 23 Uhr im Bett.</p>
+    </div>
+  </div>
+
+  <!-- Wertehaltung -->
+  <div class="section-label">Wertehaltung &amp; Weltbild</div>
+  <div class="block" style="margin-bottom:10px;">
+    <p class="block-title">Wertekompass</p>
+    <div style="margin-top:6px;">
+      <div class="bar-row"><span class="bar-label">Selbstverwirklichung</span><div class="bar-track"><div class="bar-fill" style="width:95%;background:#7F77DD;"></div></div><span class="bar-pct">95%</span></div>
+      <div class="bar-row"><span class="bar-label">Ökologie</span><div class="bar-track"><div class="bar-fill" style="width:92%;background:#1D9E75;"></div></div><span class="bar-pct">92%</span></div>
+      <div class="bar-row"><span class="bar-label">Soziale Gerechtigkeit</span><div class="bar-track"><div class="bar-fill" style="width:89%;background:#7F77DD;"></div></div><span class="bar-pct">89%</span></div>
+      <div class="bar-row"><span class="bar-label">Antikonsumismus</span><div class="bar-track"><div class="bar-fill" style="width:82%;background:#1D9E75;"></div></div><span class="bar-pct">82%</span></div>
+      <div class="bar-row"><span class="bar-label">Materielle Sicherheit</span><div class="bar-track"><div class="bar-fill" style="width:34%;background:#888780;"></div></div><span class="bar-pct">34%</span></div>
+      <div class="bar-row"><span class="bar-label">Statusstreben</span><div class="bar-track"><div class="bar-fill" style="width:12%;background:#888780;"></div></div><span class="bar-pct">12%</span></div>
+    </div>
+  </div>
+
+  <!-- Konsum -->
+  <div class="section-label">Konsum &amp; Lebensstil</div>
+  <div class="grid-2">
+    <div class="block">
+      <p class="block-title">Ernährung</p>
+      <div class="list-item">Überwiegend vegan, gelegentlich vegetarisch</div>
+      <div class="list-item">Wochenmarkt Bochum, Bioläden, Foodcoops</div>
+      <div class="list-item">Kochen als soziales Ritual, nicht als Pflicht</div>
+      <div class="list-item">Kein Fast Food – aber Döner gilt als Ausnahme</div>
+    </div>
+    <div class="block">
+      <p class="block-title">Mobilität</p>
+      <div class="list-item">Primär Fahrrad + ÖPNV (kein Auto)</div>
+      <div class="list-item">Fernreisen per Zug, Flüge selten &amp; reflektiert</div>
+      <div class="list-item">Mitglied im Carsharing-Verein</div>
+    </div>
+  </div>
+  <div class="grid-2" style="margin-top:10px;">
+    <div class="block">
+      <p class="block-title">Shopping &amp; Mode</p>
+      <div class="list-item">Secondhand-First-Prinzip</div>
+      <div class="list-item">Wenige, langlebige Kleidungsstücke</div>
+      <div class="list-item">Lokale Läden &amp; faire Marken bewusst bevorzugt</div>
+      <div class="list-item">Anti-Fast-Fashion als Haltung, nicht als Trend</div>
+    </div>
+    <div class="block">
+      <p class="block-title">Wohnen</p>
+      <div class="list-item">Gründerzeitaltbau, Parkettboden, hohe Decken</div>
+      <div class="list-item">Bücherregale als Statussymbol (bewusst ironisch)</div>
+      <div class="list-item">Pflanzen, keine Designer-Möbel</div>
+      <div class="list-item">Offene Küche = Herzstück der Wohnung</div>
+    </div>
+  </div>
+
+  <!-- Medien -->
+  <div class="section-label">Medien &amp; Kommunikation</div>
+  <div class="grid-2">
+    <div class="block">
+      <p class="block-title">Mediennutzung</p>
+      <div class="list-item">taz, Zeit Online, Deutschlandfunk Nova</div>
+      <div class="list-item">Podcasts: Lage der Nation, Feminist Book Club</div>
+      <div class="list-item">Kein Twitter/X – findet es toxisch</div>
+      <div class="list-item">Instagram: nur für Kultur &amp; Lokales</div>
+      <div class="list-item">Newsletter &gt; Algorithmus</div>
+    </div>
+    <div class="block">
+      <p class="block-title">Kommunikationsstil</p>
+      <div class="list-item">Differenziert, reflexiv, manchmal lang</div>
+      <div class="list-item">Nutzt Gendern konsequent</div>
+      <div class="list-item">Direkte Sprache, kein Corporate-Speak</div>
+      <div class="list-item">Netzwerkt über Kultur- &amp; Nachbarschaftsprojekte</div>
+    </div>
+  </div>
+
+  <!-- Politisch -->
+  <div class="section-label">Politisch &amp; gesellschaftlich</div>
+  <div class="highlight-block">
+    <p class="block-title">Engagement &amp; Haltung</p>
+    <p class="block-text">Wählt Grüne oder SPD-links, taktisch bewusst. Engagiert sich im Kulturrat NRW und in der lokalen Klimagruppe. Demonstriert, aber kritisch gegenüber performativem Aktivismus. Findet Populismus gefährlich und sagt das auch laut. Hat eine tiefe Ambivalenz gegenüber Deutschland: liebt die Infrastruktur, kämpft mit dem Konservatismus.</p>
+  </div>
+
+  <!-- Ruhrgebiet -->
+  <div class="section-label">Ruhrgebiet-Identität</div>
+  <div class="block">
+    <p class="block-title">Verhältnis zur Region</p>
+    <p class="block-text">Ursprünglich aus Münster, seit 15 Jahren in Bochum. Schätzt die Direktheit, die Mischung, die Kreativszene im Strukturwandel. Engagiert sich für Industriekultur-Erhalt (Zeche Bochum, Jahrhunderthalle). Nervt sich über Gentrifizierung, die sie selbst teilweise mitbringt – und ist sich dessen bewusst. Fühlt sich mehr im Revier zu Hause als in ihrer Heimatstadt.</p>
+  </div>
+
+  <!-- Kampagnen -->
+  <div class="section-label">Für Kampagnen: Ansprache-Hinweise</div>
+  <div class="grid-2">
+    <div class="tip-block-green">
+      <p class="block-title">Was sie anspricht</p>
+      <div class="list-item" style="color:var(--text);">Authentizität statt Hochglanz</div>
+      <div class="list-item" style="color:var(--text);">Konkrete Wirkung, kein Greenwashing</div>
+      <div class="list-item" style="color:var(--text);">Community &amp; kollektives Handeln</div>
+      <div class="list-item" style="color:var(--text);">Lokale Verankerung, Revier-Stolz</div>
+    </div>
+    <div class="tip-block-coral">
+      <p class="block-title">Was sie abstößt</p>
+      <div class="list-item" style="color:var(--text);">Oberflächliches Purpose-Marketing</div>
+      <div class="list-item" style="color:var(--text);">Zu viel Corporate-Sprache</div>
+      <div class="list-item" style="color:var(--text);">Fehlende Intersektionalität</div>
+      <div class="list-item" style="color:var(--text);">Symbolpolitik ohne Substanz</div>
+    </div>
+  </div>
+
+  <!-- Editorial Commentary -->
+  <div class="editorial">
+    <h2>Einordnung &amp; Kampagnenstrategie</h2>
+    <p>Das <strong>Postmaterielle Milieu</strong> zeichnet sich durch eine grundlegende Verschiebung weg von materiellen Werten und hin zu Selbstverwirklichung, sozialer Verantwortung und ökologischem Denken aus. Es handelt sich typischerweise um Menschen mit hohem Bildungskapital, aber bewusst moderatem Materialismus – ein Milieu, das den Sinn des Lebens nicht im Besitz, sondern in Haltung, Teilhabe und Wirkung sucht.</p>
+
+    <p>Die <strong>Ruhrgebiets-Variante des postmateriellen Milieus</strong> hat eine besondere Textur: Die industrielle Arbeitergeschichte der Region schafft ein geteiltes kulturelles Gedächtnis, das dieses Milieu zwar nicht erlebt hat, aber romantisiert und schützen will. Der Strukturwandel ist kein abstraktes Konzept, sondern gelebte Stadtbiografie. Das erzeugt eine starke Identifikation mit dem Revier, die sich gut für lokale Kampagnen nutzen lässt.</p>
+
+    <p>Für die <strong>Kommunikationsstrategie</strong> gilt: nicht überzeugen wollen, sondern einladen. Katharina und ihr Milieu reagieren allergisch auf Manipulation oder aufgesetzte Betroffenheit. Sie wollen als kluge Erwachsene mit eigener Urteilsfähigkeit angesprochen werden.</p>
+  </div>
+
+  <div class="footer">
+    <span>Persona · Postmaterielles Milieu · Ruhrgebiet</span>
+    <span>Kampagnenmanagement &amp; Milieuforschung</span>
+  </div>
+
+</div>
+
+</body>
+</html>

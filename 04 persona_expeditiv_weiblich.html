@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Persona · Expeditives Milieu · Mia Korell</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Syne+Mono&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:      #f8f6f2;
+    --white:   #ffffff;
+    --panel:   #f0ede7;
+    --rule:    #ddd9d0;
+    --ink:     #1a1714;
+    --muted:   #7a7060;
+    --mid:     #a09880;
+    --violet:  #6930c3;
+    --violet-l:#8b5cf6;
+    --rose:    #e11d48;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'DM Sans', system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.72;
+    font-weight: 300;
+  }
+
+  /* ── HEADER ── */
+  header { background: var(--ink); position: relative; overflow: hidden; }
+
+  .header-top {
+    background: var(--violet);
+    padding: 10px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .header-top span { font-family: 'Syne Mono', monospace; font-size: .68rem; color: var(--bg); letter-spacing: .12em; text-transform: uppercase; }
+
+  .header-body {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 56px 40px 52px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+
+  .header-left { padding-right: 40px; border-right: 1px solid rgba(255,255,255,.1); }
+
+  header h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(3.5rem, 7vw, 6rem);
+    font-weight: 800;
+    color: var(--bg);
+    line-height: 0.88;
+    letter-spacing: -.04em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .h1-accent { color: var(--violet-l); display: block; }
+  .header-desc { font-style: italic; color: rgba(255,255,255,.4); font-size: .95rem; margin-top: 16px; line-height: 1.5; }
+
+  .header-right { padding-left: 40px; display: flex; flex-direction: column; justify-content: center; }
+  .milieu-label { font-family: 'Syne', sans-serif; font-size: .72rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--violet-l); margin-bottom: 20px; }
+
+  .steck { display: flex; flex-direction: column; gap: 1px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.08); }
+  .si { display: grid; grid-template-columns: 90px 1fr; gap: 12px; padding: 9px 14px; background: rgba(255,255,255,.03); font-size: .87rem; }
+  .si .k { font-family: 'Syne Mono', monospace; font-size: .62rem; color: var(--violet-l); letter-spacing: .1em; text-transform: uppercase; padding-top: 2px; }
+  .si .v { color: rgba(255,255,255,.8); }
+
+  .motto { background: var(--bg); padding: 18px 40px; font-family: 'Syne', sans-serif; font-size: 1.05rem; font-weight: 700; color: var(--ink); letter-spacing: .02em; text-transform: uppercase; border-bottom: 1px solid var(--rule); }
+  .motto::before { content: '— '; color: var(--violet); }
+
+  /* ── MAIN ── */
+  main { max-width: 1040px; margin: 0 auto; padding: 60px 40px 100px; display: grid; gap: 56px; }
+
+  .sec-head { display: flex; align-items: center; gap: 16px; margin-bottom: 26px; }
+  .sec-num { font-family: 'Syne Mono', monospace; font-size: .68rem; color: var(--violet); letter-spacing: .1em; }
+  .sec-rule { flex: 1; height: 1px; background: var(--rule); }
+  .sec-title { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; color: var(--ink); letter-spacing: .04em; text-transform: uppercase; }
+
+  p { color: var(--muted); font-size: .94rem; margin-bottom: 12px; }
+  p:last-child { margin-bottom: 0; }
+  em { font-style: italic; color: var(--violet); }
+
+  .val-list { list-style: none; counter-reset: vv; display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 10px; }
+  .val-list li { counter-increment: vv; background: var(--white); border: 1px solid var(--rule); border-left: 3px solid var(--violet); padding: 14px 18px; display: flex; gap: 12px; align-items: flex-start; transition: border-left-color .15s; }
+  .val-list li:hover { border-left-color: var(--rose); }
+  .val-list li::before { content: counter(vv); font-family: 'Syne', sans-serif; font-size: 1.4rem; font-weight: 800; color: var(--violet); flex-shrink: 0; line-height: 1; }
+  .val-list li strong { display: block; color: var(--ink); font-weight: 600; font-size: .9rem; margin-bottom: 3px; }
+  .val-list li span { font-size: .86rem; color: var(--muted); }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } }
+
+  .card { background: var(--white); border: 1px solid var(--rule); padding: 20px 22px; }
+  .card h3 { font-family: 'Syne', sans-serif; font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--violet); margin-bottom: 10px; padding-bottom: 8px; border-bottom: 1px solid var(--rule); }
+
+  .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 6px; }
+  .tag { background: transparent; border: 1px solid var(--rule); color: var(--mid); font-family: 'Syne Mono', monospace; font-size: .65rem; padding: 3px 10px; letter-spacing: .04em; transition: all .13s; cursor: default; }
+  .tag:hover { border-color: var(--violet); color: var(--violet); }
+  .tag.hi { background: rgba(105,48,195,.06); border-color: rgba(105,48,195,.22); color: var(--violet); }
+  .tag.ro { background: rgba(225,29,72,.05); border-color: rgba(225,29,72,.2); color: var(--rose); }
+  .tag.dk { background: rgba(26,23,20,.04); border-color: rgba(26,23,20,.12); color: var(--muted); }
+
+  .pull { background: var(--panel); border-left: 3px solid var(--violet); padding: 18px 24px; margin: 16px 0; }
+  .pull p { font-family: 'Syne', sans-serif; font-size: 1.05rem; font-style: normal; font-weight: 600; color: var(--ink); margin: 0 0 8px; line-height: 1.3; }
+  .pull cite { font-family: 'Syne Mono', monospace; font-size: .62rem; color: var(--mid); letter-spacing: .1em; text-transform: uppercase; font-style: normal; }
+
+  .pos-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
+  .pos-card { background: var(--white); border: 1px solid var(--rule); border-top: 2px solid var(--ink); padding: 14px 16px; }
+  .pos-card .topic { font-family: 'Syne', sans-serif; font-size: .68rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--ink); margin-bottom: 6px; }
+  .pos-card p { font-size: .87rem; margin: 0; }
+
+  .media-stack { display: flex; flex-direction: column; gap: 8px; }
+  .media-row { display: flex; gap: 12px; align-items: flex-start; padding: 10px 14px; background: var(--white); border: 1px solid var(--rule); }
+  .media-lbl { font-family: 'Syne Mono', monospace; font-size: .62rem; color: var(--violet); letter-spacing: .1em; text-transform: uppercase; min-width: 80px; flex-shrink: 0; padding-top: 1px; }
+  .media-c { color: var(--muted); font-size: .9rem; }
+
+  .frust-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
+  @media (max-width: 640px) { .frust-list { grid-template-columns: 1fr; } }
+  .frust-list li { background: var(--white); border: 1px solid var(--rule); border-left: 2px solid var(--rose); padding: 10px 14px; font-size: .9rem; color: var(--muted); }
+
+  .c-table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+  .c-table thead { background: var(--ink); }
+  .c-table th { font-family: 'Syne', sans-serif; font-size: .7rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--bg); text-align: left; padding: 10px 16px; }
+  .c-table td { padding: 11px 16px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  .c-table tr:nth-child(even) td { background: var(--panel); }
+  .c-table td:first-child { font-family: 'Syne Mono', monospace; font-size: .68rem; color: var(--violet); letter-spacing: .06em; white-space: nowrap; width: 120px; }
+
+  footer { background: var(--ink); text-align: center; padding: 24px 40px; font-family: 'Syne Mono', monospace; font-size: .65rem; color: rgba(255,255,255,.35); letter-spacing: .08em; text-transform: uppercase; line-height: 2; }
+  footer span { color: var(--violet-l); }
+
+  @keyframes up { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+  main > section { animation: up .45s ease both; }
+  main > section:nth-child(1) { animation-delay: .04s; }
+  main > section:nth-child(2) { animation-delay: .09s; }
+  main > section:nth-child(3) { animation-delay: .14s; }
+  main > section:nth-child(4) { animation-delay: .19s; }
+  main > section:nth-child(5) { animation-delay: .24s; }
+  main > section:nth-child(6) { animation-delay: .29s; }
+  main > section:nth-child(7) { animation-delay: .34s; }
+  main > section:nth-child(8) { animation-delay: .39s; }
+
+  @media (max-width: 720px) {
+    .header-body { grid-template-columns: 1fr; }
+    .header-left { border-right: none; border-bottom: 1px solid rgba(255,255,255,.1); padding-right: 0; padding-bottom: 32px; margin-bottom: 32px; }
+    .header-right { padding-left: 0; }
+    .header-top, .motto { padding-left: 20px; padding-right: 20px; }
+    main { padding: 40px 20px 80px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-top">
+    <span>Sinus-Milieus® 2021 · Expeditives Milieu · 10 % · Zukunftsmilieu</span>
+    <span>Ruhrgebiet · Weiblich</span>
+  </div>
+  <div class="header-body">
+    <div class="header-left">
+      <h1>Mia<span class="h1-accent">Korell</span></h1>
+      <p class="header-desc">„Die postmoderne Vordenkerin" — Bochum-Ehrenfeld, 26 J.<br>Kulturmanagerin & Kuratorin · Mehrsprachig · Kosmopolitin</p>
+    </div>
+    <div class="header-right">
+      <div class="milieu-label">Expeditives Milieu · Zukunftsmilieu</div>
+      <div class="steck">
+        <div class="si"><span class="k">Alter</span><span class="v">26 Jahre</span></div>
+        <div class="si"><span class="k">Wohnort</span><span class="v">Bochum-Ehrenfeld</span></div>
+        <div class="si"><span class="k">Beruf</span><span class="v">Kulturmanagerin & freie Kuratorin</span></div>
+        <div class="si"><span class="k">Einkommen</span><span class="v">ca. 2.200 € (Projekt + Fördergelder)</span></div>
+        <div class="si"><span class="k">Bildung</span><span class="v">M.A. Kulturwiss. (RUB) + Erasmus Warschau</span></div>
+        <div class="si"><span class="k">Wohnen</span><span class="v">3er-WG Altbau, Gemeinschaft als Prinzip</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="motto">„Die interessantesten Orte sind immer da, wo verschiedene Welten aufeinanderprallen."</div>
+
+<main>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">01</span><div class="sec-rule"></div><span class="sec-title">Persönlichkeit & Werte</span></div>
+    <p>Mia ist jemand, der Räume öffnet. Buchstäblich – sie organisiert Ausstellungen, Festivals, Gesprächsformate. Und metaphorisch: Sie bringt Menschen zusammen, die sich normalerweise nicht begegnen würden, und schafft Bedingungen, unter denen etwas Neues entstehen kann.</p>
+    <p>Was sie antreibt: das Gefühl, an etwas Wichtigem mitzuwirken. Nicht an einem Konzern. Nicht an einer Karriere. An Kultur, an Gemeinschaft, an einem breiteren Verständnis davon, wie wir zusammenleben wollen.</p>
+    <ul class="val-list">
+      <li><strong>Weltoffenheit</strong><span>Identitäten sind fluide, Grenzen sind verhandelbar.</span></li>
+      <li><strong>Kollaboration</strong><span>Die besten Dinge entstehen, wenn niemand die Lorbeeren für sich will.</span></li>
+      <li><strong>Kulturelle Diversität</strong><span>Nicht Buzzword, sondern Lebensrealität und Erkenntnisquelle.</span></li>
+      <li><strong>Haltung</strong><span>Sie positioniert sich. Neutralität ist für sie keine Option.</span></li>
+      <li><strong>Prozess</strong><span>Das Ergebnis ist weniger wichtig als der Weg, der dorthin führt.</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">02</span><div class="sec-rule"></div><span class="sec-title">Lebenswelt & Alltag</span></div>
+    <div class="two-col">
+      <div class="card">
+        <h3>Wohnen</h3>
+        <p>Bücherregale, Korktafel mit Projekten, Klappbett das tagsüber zum Sofa wird. Die WG ist Knotenpunkt: es klingelt oft, Gäste auf dem Sofa sind normal. Sie besitzt wenig – weiß, dass sie in zwei Jahren vielleicht woanders ist.</p>
+      </div>
+      <div class="card">
+        <h3>Mobilität</h3>
+        <p>Fahrrad und ÖPNV. Deutschlandticket, das ihr ein Förderprojekt bezahlt. Fliegt selten – mit Bewusstsein dafür. Für Festivals und Projekte oft in anderen Städten und Ländern, meist Bahn.</p>
+      </div>
+      <div class="card">
+        <h3>Ernährung</h3>
+        <p>Vegan, mit Überzeugung aber ohne Predigt. Kocht gerne kollektiv – das gemeinsame Kochen ist für sie ein politischer Akt. Wochenmarkt, Food-Sharing-Initiativen, kleine unabhängige Lokale.</p>
+      </div>
+      <div class="card">
+        <h3>Freizeit</h3>
+        <div class="tags">
+          <span class="tag hi">Eigenes Kulturmagazin (sporadisch)</span>
+          <span class="tag hi">Contemporary Dance & Improvisation</span>
+          <span class="tag dk">Spazieren mit Ideen im Kopfhörer</span>
+          <span class="tag hi">Dekoloniale Theorie & Literatur Global South</span>
+          <span class="tag">Arabisch lernen (B1)</span>
+          <span class="tag hi">Feminist Reading Circle monatlich</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">03</span><div class="sec-rule"></div><span class="sec-title">Weltanschauung & Politik</span></div>
+    <p>Mia wählt – und hat konkrete Meinungen. Aber ihr Aktivismus findet woanders statt: in Projekten, in Gesprächen, in Räumen die sie schafft. Sie ist überzeugte Europäerin, Antirassistin und Feministin – und findet diese Begriffe nicht erschöpfend.</p>
+    <div class="pull">
+      <p>„Klimapolitik ohne Klassenfrage ist unvollständig. Genauso wie Feminismus ohne Intersektionalität."</p>
+      <cite>Mia über verknüpfte politische Themen</cite>
+    </div>
+    <div class="pos-grid">
+      <div class="pos-card"><div class="topic">Postkolonial</div><p>Ihr theoretisches Zuhause. Sie versteht keine Kulturpolitik ohne diesen Rahmen.</p></div>
+      <div class="pos-card"><div class="topic">Klima</div><p>Verknüpft mit sozialer Gerechtigkeit. Ohne Klassenfrage ist Klimapolitik unvollständig.</p></div>
+      <div class="pos-card"><div class="topic">Migration</div><p>Persönlich berührt durch ihren internationalen Freundeskreis. Offene Grenzen als Leitbild.</p></div>
+      <div class="pos-card"><div class="topic">Feminismus</div><p>Intersektional, radikal, praxisorientiert. Kein Lean-In-Feminismus.</p></div>
+      <div class="pos-card"><div class="topic">Demokratie</div><p>Sie glaubt daran – aber nicht naiv. Sie sieht die Fragilität.</p></div>
+      <div class="pos-card"><div class="topic">Debatten</div><p>Kann gut zuhören. Neugierig auf andersdenkende Menschen, wenn sie in gutem Glauben handeln.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">04</span><div class="sec-rule"></div><span class="sec-title">Konsumgewohnheiten</span></div>
+    <p>Mia kauft konsequent wenig und nach Haltung. Second Hand ist Standard, Neues ist die Ausnahme. Sie gibt Geld gerne für Erlebnisse, Bücher und Essen aus – nicht für Besitz.</p>
+    <div class="two-col">
+      <div>
+        <div class="card" style="margin-bottom:10px">
+          <h3>Kaufmuster</h3>
+          <div class="tags">
+            <span class="tag hi">Ausschließlich Second Hand & Tausch</span>
+            <span class="tag hi">Unabhängige Buchhandlung</span>
+            <span class="tag dk">Gebrauchtes MacBook + altes iPhone</span>
+            <span class="tag hi">Überdurchschn. Ausgaben: Konzerte, Ausst.</span>
+            <span class="tag ro">Kein Amazon, direkt bei der Quelle</span>
+            <span class="tag">Kein Rücklagenkonto, keine Schulden</span>
+          </div>
+        </div>
+        <div class="pull" style="margin:0">
+          <p>„Besitz ist oft nur gefrorene Entscheidungsfreiheit."</p>
+          <cite>Mia über Konsumverzicht und Mobilität</cite>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Nachhaltigkeit</h3>
+        <p>Für Mia ist Nachhaltigkeit untrennbar von sozialer Gerechtigkeit. Sie misstraut individualistischen Nachhaltigkeitsansätzen – Systemkritik ist der einzige ehrliche Rahmen.</p>
+        <p style="margin-top:12px; color:var(--rose); font-size:.88rem">Greenwashing und tokenisierte Diversität: erkennt sie sofort und benennt es direkt.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">05</span><div class="sec-rule"></div><span class="sec-title">Medien & Kommunikation</span></div>
+    <div class="two-col">
+      <div class="media-stack">
+        <div class="media-row"><div class="media-lbl">Instagram</div><div class="media-c">Werkzeug für ihre Arbeit – kuratiert, selektiv, kein Lifestyle-Account</div></div>
+        <div class="media-row"><div class="media-lbl">Newsletter</div><div class="media-c">Eigenes Kulturmagazin (sporadisch), Substack (Essayisten, dekoloniale Theorie)</div></div>
+        <div class="media-row"><div class="media-lbl">Podcasts</div><div class="media-c">Radio Open Source, Ear Hustle, Zeit-Feuilleton-Podcast, internationale Kulturformate</div></div>
+        <div class="media-row"><div class="media-lbl">Kino</div><div class="media-c">Programmkino, Arthouse – wöchentlich wenn möglich</div></div>
+        <div class="media-row"><div class="media-lbl">Kein</div><div class="media-c">Facebook, TikTok, LinkedIn, lineares TV – bewusste und reflektierte Entscheidungen</div></div>
+      </div>
+      <div class="card">
+        <h3>Kommunikationsstil</h3>
+        <p>Schreibt präzise und warmherzig zugleich – eine seltene Kombination. E-Mail für Projektliches, WhatsApp für Freundinnen, Signal für politisch Sensibles.</p>
+        <p style="margin-top:12px; color:var(--violet); font-size:.88rem">Antwortet nicht sofort – aber wenn, dann mit Substanz. Persönliche Empfehlung ist der einzige Weg zu ihr.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">06</span><div class="sec-rule"></div><span class="sec-title">Bezug zum Ruhrgebiet</span></div>
+    <p>Mia ist in Köln aufgewachsen und hat bewusst das Ruhrgebiet gewählt – weil es günstiger, echter und kulturell weniger saturiert ist als Köln oder Berlin. Hier kann sie Dinge aufbauen, die anderswo schon besetzt sind.</p>
+    <div class="pull">
+      <p>„Mein Langzeit-Traum: ein interdisziplinäres Kulturzentrum im Ruhrgebiet mit internationalem Programm."</p>
+      <cite>Mia über ihr kulturpolitisches Projekt</cite>
+    </div>
+    <div class="tags" style="margin-top:4px">
+      <span class="tag hi">Bewusste Wahl: Ruhrgebiet statt Berlin</span>
+      <span class="tag hi">Netzwerk: Diversere Kulturförderung NRW</span>
+      <span class="tag dk">Liebt: Mischung, Direktheit, echte Räume</span>
+      <span class="tag ro">Ärgert: Unterfinanzierung Kulturszene</span>
+      <span class="tag ro">Ärgert: Fehlende Sichtbarkeit nach außen</span>
+      <span class="tag hi">Ziel: Interdizipl. Kulturzentrum Ruhrgebiet</span>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">07</span><div class="sec-rule"></div><span class="sec-title">Frustrationen & Reibungspunkte</span></div>
+    <ul class="frust-list">
+      <li>Projektbasierte Finanzierung: ständige Antragstellerei</li>
+      <li>Kulturförderung reproduziert bestehende Machtstrukturen</li>
+      <li>Die Wichtigsten zu überzeugen sind die Schwierigsten</li>
+      <li>Gentrifizierung verdrängt kreative Räume auch im Revier</li>
+      <li>Tokenisierung: Diversität als Dekoration statt Grundlage</li>
+      <li>Grenzen zwischen Arbeit und Privatleben existieren kaum</li>
+      <li>Einkommensunsicherheit trotz hoher Arbeitslast</li>
+      <li>Mangel an strukturellen Ressourcen für marginalisierte Gruppen</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">08</span><div class="sec-rule"></div><span class="sec-title">Kampagnen-Empfehlungen</span></div>
+    <table class="c-table">
+      <thead><tr><th>Aspekt</th><th>Empfehlung</th></tr></thead>
+      <tbody>
+        <tr><td>TON</td><td>Haltungsstark, reflektiert, ohne Vereinfachung – sie erkennt Greenwashing und Tokenisierung sofort</td></tr>
+        <tr><td>ARGUMENTE</td><td>Gestaltungsmacht, Ermöglichung, Gemeinschaft, kulturelle Relevanz, strukturelle Wirkung</td></tr>
+        <tr><td>KANÄLE</td><td>Instagram (ästhetisch + inhaltlich), Newsletter, Programmkino, Empfehlung in der Szene</td></tr>
+        <tr><td>VERMEIDEN</td><td>Tokenisierung, Corporate-Sprech, oberflächliche Diversitätssymbolik, Massenmedien</td></tr>
+        <tr><td>MOBILISIERUNG</td><td>Über gemeinsame Projekte, Residencies, ko-kreative Formate – nicht über klassische Werbung</td></tr>
+        <tr><td>BOTSCHAFT</td><td>„Für alle, die Kultur nicht konsumieren, sondern gestalten."</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+</main>
+
+<footer>
+  <span>Expeditives Milieu · Sinus 2021</span> · Ruhrgebiet · Weibliche Persona<br>
+  Kampagnenplanung & Zielgruppenanalyse · Auf Basis Sinus-Milieuforschung
+</footer>
+
+</body>
+</html>
